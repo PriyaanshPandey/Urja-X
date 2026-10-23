@@ -1,0 +1,12 @@
+# Raw OSM binary files (exceeds GitHub file limits)
+*.osm.pbf
+*.pbf
+*.bin
+*.part
+
+# Environment and Python artifacts
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
