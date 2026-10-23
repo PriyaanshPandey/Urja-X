@@ -1,0 +1,44 @@
+﻿District,Sub-centres,PHCs,Dispensaries,Sub-district Hospitals,District hospitals,General Hospitals,Women Hospitals,Rural Hospitals
+Brihanmumbai,-,-,-,-,-,1,0,0
+Thane,191,33,9,3,1,2,1,6
+Palghar,314,46,34,3,0,0,0,9
+Raigad,288,54,11,6,1,0,0,8
+Ratnagiri,378,68,0,3,0,0,0,8
+Sindhudurg,248,38,10,3,0,0,1,7
+KOKAN DIV.,"1,419",239,64,18,2,3,2,38
+Nashik,592,112,31,6,1,1,1,22
+Dhule,232,43,15,2,1,0,1,6
+Nandurbar,293,61,19,2,1,0,0,11
+Jalgaon,443,78,20,3,0,0,1,18
+Ahmednagar,565,98,9,3,1,0,0,22
+NASHIK DIV.,"2,125",392,94,16,4,1,3,79
+Pune,542,101,33,5,1,0,1,19
+Satara,414,84,26,2,1,0,0,16
+Sangli,348,65,17,2,0,0,0,13
+Solapur,434,77,6,3,0,0,0,14
+Kolhapur,413,78,29,4,0,1,0,16
+PUNE DIV.,"2,151",405,111,16,2,1,1,78
+Aurangabad,279,51,12,3,1,0,0,10
+Jalna,223,44,9,1,1,0,1,9
+Parbhani,215,37,11,2,0,0,1,6
+Hingoli,134,24,8,2,1,0,1,3
+Beed,296,52,21,3,1,0,2,10
+Nanded,377,69,19,4,1,0,1,13
+Osmanabad,215,44,10,5,0,0,0,5
+Latur,252,50,8,1,0,1,1,11
+AURANGABAD DIV.,"1,991",371,98,21,5,1,7,67
+Buldhana,280,52,75,1,1,2,0,13
+Akola,179,31,31,1,0,0,1,5
+Washim,155,27,12,1,1,0,1,6
+Amravati,339,59,105,5,1,0,2,9
+Yavatmal,446,67,25,3,0,0,1,14
+AMRAVATI DIV.,"1,399",236,248,11,3,2,5,47
+Wardha,183,31,31,2,1,0,0,8
+Nagpur,316,53,63,2,0,0,1,10
+Bhandara,193,33,33,2,1,0,0,7
+Gondia,253,40,34,1,0,0,0,10
+Chandrapur,342,65,27,3,0,0,0,10
+Gadchiroli,376,48,48,3,1,0,1,10
+NAGPUR DIV.,"1,663",270,236,13,3,0,2,55
+State,"10,748","1,913",851,95,19,8,20,364
+Date,Mar-24,,,,,,,

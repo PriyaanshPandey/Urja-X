@@ -1,0 +1,37 @@
+Category,Type of Vehicles,31.03.2025
+Transport - Stage Carriages,Public (Stu),20527
+Transport - Stage Carriages,Private,7764
+Transport - Stage Carriages,Mini bus,2857
+Transport - Stage Carriages,TOTAL,31148
+Transport - Contract Carriages,Autorickshaw,346954
+Transport - Contract Carriages,Motor Cab (SP),117107
+Transport - Contract Carriages,Motor Cab (AIP),8167
+Transport - Contract Carriages,Maxi Cab(SP),83220
+Transport - Contract Carriages,Maxi CAB (AIP),3878
+Transport - Contract Carriages,Omni Bus (SP),2164
+Transport - Contract Carriages,Omni Bus (AIP),1298
+Transport - Contract Carriages,TOTAL,562788
+Transport - others,Private Service Vehicles,16086
+Transport - others,School Bus,40415
+Transport - others,Ambulance,15025
+Transport - others,Fire Fighter,1860
+Transport - others,TOTAL,73386
+Transport - Goods carriages,Lorries,333325
+Transport - Goods carriages,National Permit Lorries,139489
+Transport - Goods carriages,Tractor & Trailer,78482
+Transport - Goods carriages,Light Commercial Vehicles,194291
+Transport - Goods carriages,Articulated Vehicles,35360
+Transport - Goods carriages,TOTAL,780947
+Transport,Grand Total Transport vehicles,1448269
+Non-Transport - Two-wheelers,Motor cycle,21985365
+Non-Transport - Two-wheelers,Scooters,3831935
+Non-Transport - Two-wheelers,Mopeds,5763762
+Non-Transport - Two-wheelers,TotalTwo wheelers,31581062
+Non-Transport,Motor car,3837306
+Non-Transport,Jeep,46232
+Non-Transport,Tractor,482354
+Non-Transport,Threewheeler,68561
+Non-Transport,Road Roller,2546
+Non-Transport,Others,142835
+Non-Transport,Non-Transport Grand Total,36160896
+Grand Total - Transport and Non-transport,Total all vehicles ,37609165
