@@ -40,19 +40,33 @@ def parse_tag(other_tags, tag_key):
 def generate_interactive_map():
     print("[*] Loading Infrastructure Data from GeoPackages...")
 
-    # Initialize map centered on India
+    # Base Map: 100% Free & Keyless OpenStreetMap
     m = folium.Map(
         location=[22.5, 79.5],
         zoom_start=5,
-        tiles="OpenStreetMap",
+        tiles=None,
         control_scale=True,
     )
 
-    # Alternate Tile Layers
     folium.TileLayer(
-        tiles="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-        attr='&copy; <a href="https://carto.com/">CARTO</a>',
-        name="Clean Voyager Map"
+        tiles="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        attr='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        name="OpenStreetMap (Default)",
+        control=True
+    ).add_to(m)
+
+    folium.TileLayer(
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+        attr='Tiles &copy; Esri',
+        name="Esri World Street Map",
+        control=True
+    ).add_to(m)
+
+    folium.TileLayer(
+        tiles="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        attr='Tiles &copy; Esri',
+        name="Esri Satellite View",
+        control=True
     ).add_to(m)
 
     table_records = []
