@@ -1,59 +1,67 @@
-# EV-Roads: OpenStreetMap (OSM) Infrastructure Data
+# EV-Roads: OpenStreetMap (OSM) Infrastructure & Spatial Intelligence
 
-This directory contains OpenStreetMap extraction pipelines and data for India's roads, highways, transport corridors, and Points of Interest (POIs).
+This directory provides extraction pipelines, GeoPackage spatial datasets, interactive web visualizers, and QGIS projects for India's roads, highways, transport corridors, and Points of Interest (POIs).
 
-## Data Source
-- **Geofabrik OpenStreetMap Extracts**: [India OSM PBF](https://download.geofabrik.de/asia/india.html)
-- Source file: `india-latest.osm.pbf` (~1.6 GB)
+---
 
-## Extracted Layers
+## 🗺️ Layers Extracted (`.gpkg`)
 
-| Layer | Output PBF | Tags / Filter Criteria | Description |
-|---|---|---|---|
-| **Major Highways** | `india_highways.osm.pbf` | `w/highway=motorway,trunk,primary,secondary,motorway_link,trunk_link,primary_link,secondary_link` | Expressways, National Highways (NH), and State Highways |
-| **Transport Corridors** | `india_corridors.osm.pbf` | `w/railway=rail,light_rail,subway,narrow_gauge` & `r/route=road,railway,bus` | Railways, freight/passenger rail corridors, and key transit routes |
-| **All Roads** | `india_roads.osm.pbf` | `w/highway` | Complete road network across all road classifications |
-| **POIs** | `india_pois.osm.pbf` | `nwr/amenity`, `nwr/shop`, `nwr/tourism`, `nwr/leisure` | Charging stations, fuel stations, bus terminals, public amenities |
+| Layer | File Name | Description |
+|---|---|---|
+| **National Highways** | `india_nh.gpkg` | Filtered National Highway network (`ref` starting with `NH`) |
+| **Major Highways** | `india_highways.gpkg` | Expressways, National Highways (NH), State Highways & trunk roads |
+| **Transport Corridors** | `india_corridors.gpkg` | Railway tracks, subways, light rail, and primary transit routes |
+| **Points of Interest** | `india_pois.gpkg` | Charging stations, fuel stations, bus terminals, public amenities |
+| **All Roads (Complete)** | `india_roads.gpkg` | Complete road network across all road classifications |
+| **Raw Source File** | `india-latest.osm.pbf` | Original OpenStreetMap extract (~1.71 GB, kept for future filtering) |
 
-## Running the Extraction
+---
 
-### Prerequisites
-Activate the Conda environment containing Osmium and GDAL:
+## 🖥️ Visualization & Analysis
+
+### 1. Interactive Web Map (`ev_corridors_map.html`)
+Generate and open the interactive map:
 ```powershell
-conda activate osm
+python visualize_ev_infrastructure.py
+Start-Process "ev_corridors_map.html"
 ```
+- **Layer Controls**: Toggle National Highways, Clustered EV Stations, and Charging Density Heatmap.
+- **Fast vs Slow EV Charging**: Fast DC chargers (CCS-2, `>=25 kW`) marked in green; standard chargers marked in blue.
+- **Popups**: CPO name, capacity (kW), connector type, city, and state.
 
-### Run Extraction Pipeline
-Run either via PowerShell or Python:
-```powershell
-# Using PowerShell
-cd EV-Roads
-.\filter_and_export.ps1
+### 2. QGIS Project (`Urja_X_Infrastructure.qgs`)
+Double-click `Urja_X_Infrastructure.qgs` to open the project in QGIS. All GeoPackage layers will load automatically with pre-configured color schemes:
+- **National Highways**: Orange stroke
+- **Transport Corridors**: Blue stroke
+- **Points of Interest**: Emerald point markers
+- **Major Highways**: Red/Amber stroke
 
-# Or using Python
-python filter_and_export.py
-```
+---
 
-### Manual CLI Commands (Osmium)
-```bash
-# 1. Major Highways
-osmium tags-filter india-latest.osm.pbf w/highway=motorway,trunk,primary,secondary,motorway_link,trunk_link,primary_link,secondary_link -o india_highways.osm.pbf --overwrite
+## ⚡ How to Reproduce Extraction
 
-# 2. Transport Corridors
-osmium tags-filter india-latest.osm.pbf w/railway=rail,light_rail,subway,narrow_gauge r/route=road,railway,bus -o india_corridors.osm.pbf --overwrite
+1. **Install Prerequisites**:
+   ```powershell
+   conda create -n osm -c conda-forge osmium-tool gdal -y
+   conda activate osm
+   pip install folium geopandas pandas shapely
+   ```
 
-# 3. All Roads
-osmium tags-filter india-latest.osm.pbf w/highway -o india_roads.osm.pbf --overwrite
+2. **Download OSM PBF**:
+   ```powershell
+   curl.exe -L -C - -o india-latest.osm.pbf https://download.geofabrik.de/asia/india-latest.osm.pbf
+   ```
 
-# 4. POIs
-osmium tags-filter india-latest.osm.pbf nwr/amenity nwr/shop nwr/tourism nwr/leisure -o india_pois.osm.pbf --overwrite
-```
+3. **Run Extraction Pipeline**:
+   ```powershell
+   # PowerShell
+   .\filter_and_export.ps1
 
-### GeoPackage (GPKG) Export via GDAL
-```bash
-# Convert Major Highways to GeoPackage
-ogr2ogr -f GPKG india_highways.gpkg india_highways.osm.pbf lines
+   # Or Python
+   python filter_and_export.py
+   ```
 
-# Filter National Highways (ref starts with 'NH')
-ogr2ogr -f GPKG india_nh.gpkg india_highways.osm.pbf lines -where "other_tags LIKE '%\"ref\"=>\"NH%'"
-```
+4. **Run Visualizer**:
+   ```powershell
+   python visualize_ev_infrastructure.py
+   ```
