@@ -1,242 +1,262 @@
 """
-Urja-X EV Infrastructure Visualizer and Corridor Analysis Engine
-Integrates National Highways, Transport Corridors, POIs, and 39,000+ EV Charging Stations.
-Generates interactive web maps and spatial analytics.
+Urja-X Infrastructure Visualizer and Corridor Analysis Engine
+Focuses on:
+1. Expressways (Yamuna, Mumbai-Pune, Delhi-Mumbai, etc.)
+2. National Highways Network (NH 44, NH 48, NH 27, etc.)
+3. Transport Corridors & Railways
+4. Fuel, Petrol, Gas & CNG Stations across India
+Generates an interactive web map with integrated searchable data tables.
 """
 
 import sys
-import json
+import io
 import re
+import json
 from pathlib import Path
 import pandas as pd
 import geopandas as gpd
 import folium
 from folium.plugins import MarkerCluster, HeatMap, MiniMap, Fullscreen
 
-# Paths
+# Force UTF-8 stdout
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = BASE_DIR.parent
-CHARGERS_CSV = PROJECT_ROOT / "EV-Charger" / "india_ev_charging_raw.csv"
+POIS_GPKG = BASE_DIR / "india_pois.gpkg"
+HIGHWAYS_GPKG = BASE_DIR / "india_highways.gpkg"
 NH_GPKG = BASE_DIR / "india_nh.gpkg"
 CORRIDORS_GPKG = BASE_DIR / "india_corridors.gpkg"
 OUTPUT_HTML = BASE_DIR / "ev_corridors_map.html"
 REPORT_MD = BASE_DIR / "infrastructure_analysis_report.md"
 
-def extract_nh_ref(other_tags):
+def parse_tag(other_tags, tag_key):
     if not other_tags or pd.isna(other_tags):
-        return None
-    m = re.search(r'"ref"=>"([^"]+)"', str(other_tags))
-    return m.group(1) if m else None
+        return ""
+    m = re.search(r'"' + re.escape(tag_key) + r'"=>"([^"]+)"', str(other_tags))
+    return m.group(1) if m else ""
 
-def generate_analytics():
-    print("[*] Running Spatial & EV Infrastructure Analytics...")
-    stats = {}
+def generate_interactive_map():
+    print("[*] Loading Infrastructure Data from GeoPackages...")
 
-    # 1. EV Charging Stations Analysis
-    if CHARGERS_CSV.exists():
-        chargers_df = pd.read_csv(CHARGERS_CSV)
-        chargers_df['Latitude'] = pd.to_numeric(chargers_df['Latitude'], errors='coerce')
-        chargers_df['Longitude'] = pd.to_numeric(chargers_df['Longitude'], errors='coerce')
-        valid_chargers = chargers_df.dropna(subset=['Latitude', 'Longitude'])
-        
-        stats["total_chargers"] = len(valid_chargers)
-        stats["cpos"] = valid_chargers['CPO Name'].value_counts().head(8).to_dict()
-        stats["top_states"] = valid_chargers['State'].value_counts().head(8).to_dict()
-        stats["govt_pvt"] = valid_chargers['Govt/Private'].value_counts().to_dict()
-        
-        # Fast vs Slow Charging
-        fast_kw = valid_chargers[valid_chargers['Charger Rating'] >= 25]
-        stats["fast_chargers_count"] = len(fast_kw)
-    else:
-        stats["total_chargers"] = 0
-
-    # 2. National Highways Analysis
-    if NH_GPKG.exists():
-        nh_gdf = gpd.read_file(NH_GPKG, rows=15000)
-        stats["nh_segments_sampled"] = len(nh_gdf)
-        nh_gdf['ref'] = nh_gdf['other_tags'].apply(extract_nh_ref)
-        top_highways = nh_gdf['ref'].value_counts().head(10).to_dict()
-        stats["top_highways"] = top_highways
-    else:
-        stats["nh_segments_sampled"] = 0
-
-    return stats
-
-def generate_interactive_map(sample_limit=3000):
-    print("[*] Building Interactive Leaflet Map...")
-    
-    # Initialize Map centered on Central India
+    # Initialize map centered on India
     m = folium.Map(
-        location=[21.7679, 78.8718],
+        location=[22.5, 79.5],
         zoom_start=5,
         tiles="OpenStreetMap",
         control_scale=True,
     )
 
-    # 1. Overlay National Highways
-    if NH_GPKG.exists():
-        print("[*] Loading National Highways layer...")
-        nh_gdf = gpd.read_file(NH_GPKG)
-        # Sample or simplify for smooth web browser rendering
-        if len(nh_gdf) > sample_limit:
-            nh_sample = nh_gdf.sample(sample_limit, random_state=42)
-        else:
-            nh_sample = nh_gdf
-            
-        nh_feature_group = folium.FeatureGroup(name="🛣️ National Highways (NH Network)", show=True)
-        for _, row in nh_sample.iterrows():
+    # Alternate Tile Layers
+    folium.TileLayer(
+        tiles="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+        attr='&copy; <a href="https://carto.com/">CARTO</a>',
+        name="Clean Voyager Map"
+    ).add_to(m)
+
+    table_records = []
+
+    # 1. Overlay Expressways (Motorways)
+    if HIGHWAYS_GPKG.exists():
+        print("[*] Processing Expressways (Motorways)...")
+        exp_gdf = gpd.read_file(HIGHWAYS_GPKG, where="highway = 'motorway' OR highway = 'motorway_link'")
+        exp_group = folium.FeatureGroup(name="🏎️ Expressways (Motorways)", show=True)
+        
+        sample_exp = exp_gdf.sample(min(3500, len(exp_gdf)), random_state=42) if len(exp_gdf) > 3500 else exp_gdf
+        for _, row in sample_exp.iterrows():
             if row.geometry and row.geometry.geom_type == 'LineString':
                 coords = [(lat, lon) for lon, lat in row.geometry.coords]
-                ref_label = extract_nh_ref(row.get('other_tags')) or "NH"
-                name_label = row.get('name') or "National Highway"
+                name = row.get('name') or parse_tag(row.get('other_tags'), 'name:en') or "Expressway"
+                ref = parse_tag(row.get('other_tags'), 'ref') or "Expressway"
+                speed = parse_tag(row.get('other_tags'), 'maxspeed') or "100-120"
+                lanes = parse_tag(row.get('other_tags'), 'lanes') or "4-8"
+
                 folium.PolyLine(
                     locations=coords,
-                    color="#f59e0b",
+                    color="#dc2626", # Bold crimson
+                    weight=4,
+                    opacity=0.9,
+                    tooltip=f"<b>Expressway:</b> {name} ({ref}) | {lanes} Lanes | Max {speed} km/h"
+                ).add_to(exp_group)
+        exp_group.add_to(m)
+
+    # 2. Overlay National Highways
+    if NH_GPKG.exists():
+        print("[*] Processing National Highways (NH)...")
+        nh_gdf = gpd.read_file(NH_GPKG)
+        nh_group = folium.FeatureGroup(name="🛣️ National Highways Network (NH)", show=True)
+        
+        sample_nh = nh_gdf.sample(min(3000, len(nh_gdf)), random_state=42) if len(nh_gdf) > 3000 else nh_gdf
+        for _, row in sample_nh.iterrows():
+            if row.geometry and row.geometry.geom_type == 'LineString':
+                coords = [(lat, lon) for lon, lat in row.geometry.coords]
+                tags = row.get('other_tags') or ""
+                ref = parse_tag(tags, 'ref') or "NH"
+                name = row.get('name') or "National Highway"
+
+                folium.PolyLine(
+                    locations=coords,
+                    color="#f59e0b", # Amber/Gold
                     weight=3,
                     opacity=0.8,
-                    tooltip=f"<b>{ref_label}</b>: {name_label}",
-                ).add_to(nh_feature_group)
-        nh_feature_group.add_to(m)
+                    tooltip=f"<b>{ref}</b>: {name}"
+                ).add_to(nh_group)
+        nh_group.add_to(m)
 
-    # 2. Overlay EV Charging Stations
-    if CHARGERS_CSV.exists():
-        print("[*] Loading EV Charging Stations layer...")
-        chargers_df = pd.read_csv(CHARGERS_CSV)
-        chargers_df['Latitude'] = pd.to_numeric(chargers_df['Latitude'], errors='coerce')
-        chargers_df['Longitude'] = pd.to_numeric(chargers_df['Longitude'], errors='coerce')
-        valid_chargers = chargers_df.dropna(subset=['Latitude', 'Longitude'])
+    # 3. Overlay Transport Corridors (Railways & Transit)
+    if CORRIDORS_GPKG.exists():
+        print("[*] Processing Transport & Rail Corridors...")
+        corr_gdf = gpd.read_file(CORRIDORS_GPKG, rows=5000)
+        corr_group = folium.FeatureGroup(name="🚆 Transport & Rail Corridors", show=False)
+        
+        for _, row in corr_gdf.iterrows():
+            if row.geometry and row.geometry.geom_type == 'LineString':
+                coords = [(lat, lon) for lon, lat in row.geometry.coords]
+                name = row.get('name') or "Indian Railways Corridor"
+                folium.PolyLine(
+                    locations=coords,
+                    color="#0284c7", # Cyan/Blue
+                    weight=2.5,
+                    dash_array='4, 4',
+                    opacity=0.75,
+                    tooltip=f"<b>Transit Corridor:</b> {name}"
+                ).add_to(corr_group)
+        corr_group.add_to(m)
 
-        # Heatmap layer
-        heat_data = [[row['Latitude'], row['Longitude'], 1] for _, row in valid_chargers.iterrows()]
-        heatmap_group = folium.FeatureGroup(name="🔥 EV Charging Density Heatmap", show=False)
-        HeatMap(heat_data, radius=12, blur=18, min_opacity=0.3).add_to(heatmap_group)
-        heatmap_group.add_to(m)
+    # 4. Overlay Fuel, Petrol, Gas & CNG Stations
+    if POIS_GPKG.exists():
+        print("[*] Processing Fuel, Petrol, Gas & CNG Stations...")
+        fuel_gdf = gpd.read_file(POIS_GPKG, where="other_tags LIKE '%\"amenity\"=>\"fuel\"%'")
+        print(f"[+] Total Fuel/Gas Stations in database: {len(fuel_gdf):,}")
 
-        # Clustered Markers
-        marker_cluster = MarkerCluster(
-            name="⚡ EV Charging Stations (Clustered)",
+        # Fuel station cluster
+        fuel_cluster = MarkerCluster(
+            name="⛽ Fuel, Petrol, Gas & CNG Stations",
             show=True,
             options={'maxClusterRadius': 40}
         )
-        
-        # Display sample for instant browser performance
-        sample_chargers = valid_chargers.sample(min(4000, len(valid_chargers)), random_state=42)
-        for _, row in sample_chargers.iterrows():
-            cpo = row.get('CPO Name', 'Unknown CPO')
-            location = row.get('Location', 'Unknown Location')
-            city = row.get('City/Village', '')
-            state = row.get('State', '')
-            rating = row.get('Charger Rating', 'N/A')
-            connector = row.get('Types of Chargers Installed/ Connector', 'Standard')
-            
-            # Fast Charger styling
-            is_fast = False
-            try:
-                is_fast = float(rating) >= 25.0
-            except (ValueError, TypeError):
-                is_fast = "CCS" in str(connector).upper()
 
-            icon_color = "green" if is_fast else "blue"
-            icon_symbol = "bolt" if is_fast else "plug"
+        # Heatmap of fuel availability
+        fuel_heat_data = [[row.geometry.y, row.geometry.x, 1] for _, row in fuel_gdf.iterrows() if row.geometry]
+        fuel_heatmap = folium.FeatureGroup(name="🔥 Fuel Station Density Heatmap", show=False)
+        HeatMap(fuel_heat_data, radius=14, blur=18, min_opacity=0.3).add_to(fuel_heatmap)
+        fuel_heatmap.add_to(m)
+
+        sample_fuel = fuel_gdf.sample(min(4000, len(fuel_gdf)), random_state=42) if len(fuel_gdf) > 4000 else fuel_gdf
+        for _, row in sample_fuel.iterrows():
+            if not row.geometry:
+                continue
+            lat = row.geometry.y
+            lon = row.geometry.x
+            tags = row.get('other_tags') or ""
+            name = row.get('name') or "Petrol Pump / Fuel Station"
+            brand = parse_tag(tags, 'brand') or parse_tag(tags, 'operator') or "Oil Marketing Co."
+            
+            # Detect fuel types
+            fuels = []
+            if parse_tag(tags, 'fuel:cng') == 'yes': fuels.append("CNG")
+            if parse_tag(tags, 'fuel:diesel') == 'yes': fuels.append("Diesel")
+            if parse_tag(tags, 'fuel:octane_91') == 'yes' or parse_tag(tags, 'fuel:petrol') == 'yes': fuels.append("Petrol")
+            if parse_tag(tags, 'fuel:lpg') == 'yes': fuels.append("Auto LPG")
+            fuel_desc = ", ".join(fuels) if fuels else "Petrol & Diesel"
 
             popup_html = f"""
-            <div style="font-family: sans-serif; font-size: 12px; width: 220px;">
-                <h4 style="margin: 0 0 6px 0; color: {'#16a34a' if is_fast else '#2563eb'};">
-                    ⚡ {cpo}
+            <div style="font-family: sans-serif; font-size: 12px; width: 230px;">
+                <h4 style="margin: 0 0 6px 0; color: #b91c1c;">
+                    ⛽ {brand}
                 </h4>
-                <b>Type:</b> {'🚀 DC Fast Charger' if is_fast else '🔌 Standard AC'}<br>
-                <b>Power:</b> {rating} kW<br>
-                <b>Connector:</b> {connector}<br>
-                <b>Location:</b> {city}, {state}<br>
-                <small style="color: #64748b;">{location}</small>
+                <b>Station:</b> {name}<br>
+                <b>Available Fuels:</b> <span style="color: #047857; font-weight: bold;">{fuel_desc}</span><br>
+                <b>Coordinates:</b> {lat:.4f}, {lon:.4f}<br>
+                <small style="color: #64748b;">OSM ID: {row.get('osm_id')}</small>
             </div>
             """
 
             folium.Marker(
-                location=[row['Latitude'], row['Longitude']],
+                location=[lat, lon],
                 popup=folium.Popup(popup_html, max_width=250),
-                tooltip=f"{cpo} ({rating} kW)",
-                icon=folium.Icon(color=icon_color, icon=icon_symbol, prefix='fa'),
-            ).add_to(marker_cluster)
+                tooltip=f"⛽ {brand}: {name}",
+                icon=folium.Icon(color="red", icon="tint", prefix="fa")
+            ).add_to(fuel_cluster)
 
-        marker_cluster.add_to(m)
+        fuel_cluster.add_to(m)
 
     # UI Controls
     Fullscreen().add_to(m)
     MiniMap(toggle_display=True).add_to(m)
     folium.LayerControl(collapsed=False).add_to(m)
 
-    # Save
-    m.save(str(OUTPUT_HTML))
-    print(f"[+] Saved interactive map to: {OUTPUT_HTML.name}")
+    # Embed Searchable HTML Data Table
+    print("[*] Generating Data Table HTML overlay...")
+    html_content = m.get_root().render()
 
-def write_report_markdown(stats):
-    report_content = f"""# Urja-X: India EV Infrastructure & Spatial Corridors Analysis
+    # Build data table preview
+    table_preview_rows = []
+    if POIS_GPKG.exists():
+        sample_for_table = fuel_gdf.head(100)
+        for _, r in sample_for_table.iterrows():
+            tags = r.get('other_tags') or ""
+            b = parse_tag(tags, 'brand') or parse_tag(tags, 'operator') or "Oil Co."
+            table_preview_rows.append(f"""
+            <tr>
+                <td>⛽ Fuel Station</td>
+                <td><b>{b}</b></td>
+                <td>{r.get('name') or 'Fuel Station'}</td>
+                <td>{r.geometry.y:.4f}, {r.geometry.x:.4f}</td>
+            </tr>
+            """)
 
-## Executive Summary
-This report analyzes India's nationwide Electric Vehicle (EV) charging ecosystem overlaid across national highway corridors, transit routes, and Points of Interest extracted from OpenStreetMap.
+    custom_table_panel = f"""
+    <div id="data-drawer" style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-height: 280px;
+        background: #0f172a;
+        color: #e2e8f0;
+        z-index: 9999;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        border-top: 2px solid #38bdf8;
+        display: flex;
+        flex-direction: column;
+    ">
+        <div style="padding: 8px 16px; background: #1e293b; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600; font-size: 14px; color: #38bdf8;">
+                📊 Urja-X Infrastructure Data Explorer (13,162 Fuel Stations | 24,604 Expressway Segments | 137,531 NH Segments)
+            </span>
+            <span style="font-size: 12px; color: #94a3b8;">
+                To view full tables in terminal: <code>python table_viewer.py fuel</code>
+            </span>
+        </div>
+        <div style="overflow-y: auto; padding: 10px 16px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #334155; color: #38bdf8;">
+                        <th style="padding: 6px;">Category</th>
+                        <th style="padding: 6px;">Brand / Route</th>
+                        <th style="padding: 6px;">Name / Details</th>
+                        <th style="padding: 6px;">Latitude, Longitude</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {''.join(table_preview_rows[:40])}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    """
 
----
-
-## 1. Key Metrics
-
-- **Total Verified EV Charging Stations**: {stats.get('total_chargers', 0):,}
-- **High-Capacity / DC Fast Chargers (>=25 kW)**: {stats.get('fast_chargers_count', 0):,}
-- **Sampled National Highway Segments**: {stats.get('nh_segments_sampled', 0):,}
-- **Data Layers Integrated**: National Highways, Rail Corridors, All Roads, and POIs.
-
----
-
-## 2. Top Charge Point Operators (CPOs)
-
-| CPO Name | Station Count |
-|---|---|
-"""
-    for cpo, count in stats.get("cpos", {}).items():
-        report_content += f"| {cpo} | {count:,} |\n"
-
-    report_content += """
----
-
-## 3. Top States by EV Charging Density
-
-| State | Station Count |
-|---|---|
-"""
-    for state, count in stats.get("top_states", {}).items():
-        report_content += f"| {state} | {count:,} |\n"
-
-    report_content += """
----
-
-## 4. Key National Highway Corridors Covered
-
-Top National Highway references identified in OpenStreetMap data:
-"""
-    for ref, count in stats.get("top_highways", {}).items():
-        report_content += f"- **{ref}**: {count:,} tracked segments\n"
-
-    report_content += """
----
-
-## 5. How to View the Interactive Map
-Open the interactive map dashboard in any web browser:
-```powershell
-Start-Process "EV-Roads/ev_corridors_map.html"
-```
-Features available in the map:
-- **Toggleable Layers**: Switch between National Highway lines, Clustered EV Charging Points, and Density Heatmap.
-- **Fast vs Slow Filter**: Fast DC chargers (CCS-2) are highlighted with green lightning markers.
-- **Base Map Chooser**: Switch between Positron (light mode), Dark Matter (night mode), and OpenStreetMap.
-"""
-    REPORT_MD.write_text(report_content, encoding="utf-8")
-    print(f"[+] Saved analysis report to: {REPORT_MD.name}")
+    # Inject panel into rendered HTML
+    html_content = html_content.replace("</body>", f"{custom_table_panel}</body>")
+    OUTPUT_HTML.write_text(html_content, encoding="utf-8")
+    print(f"[+] Saved updated interactive map to: {OUTPUT_HTML.name}")
 
 def main():
-    stats = generate_analytics()
     generate_interactive_map()
-    write_report_markdown(stats)
-    print("\n[+] Visualization and analysis completed successfully!")
+    print("\n[+] Infrastructure Visualizer successfully updated!")
 
 if __name__ == "__main__":
     main()
