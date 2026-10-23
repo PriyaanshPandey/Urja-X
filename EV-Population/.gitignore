@@ -1,0 +1,6 @@
+# Ignore large raster datasets (kept locally)
+*.tif
+*.tiff
+*.zip
+*.tar.gz
+data/
