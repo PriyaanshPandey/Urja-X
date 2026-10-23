@@ -5,6 +5,7 @@
 *.gpkg-journal
 *.bin
 *.part
+EV-Roads/*.csv
 
 # Environment and Python artifacts
 .venv/
