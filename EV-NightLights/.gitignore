@@ -1,0 +1,6 @@
+# Ignore large satellite raster images
+*.tif
+*.tiff
+*.zip
+*.tar.gz
+data/

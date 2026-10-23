@@ -18,14 +18,25 @@ Urja-X/
 │   ├── opencity_ev_data/        # OpenCity state/district-level vehicle registrations
 │   └── vahan_raw_data/          # Year-wise Vahan fuel and registration figures
 │
-└── EV-Roads/                    # OpenStreetMap (OSM) spatial corridor extraction pipeline
-    ├── filter_and_export.py     # Automated Osmium + GDAL GeoPackage extraction script
-    ├── filter_and_export.ps1    # PowerShell runner for Windows
-    ├── visualize_ev_infrastructure.py # Folium interactive web map generator & analytics engine
-    ├── Urja_X_Infrastructure.qgs# Pre-styled QGIS project file (ready to double-click & view)
-    ├── ev_corridors_map.html    # Interactive Leaflet web map (highways + EV charging clusters)
-    ├── infrastructure_analysis_report.md # Spatial analytics report
-    └── README.md                # Dedicated EV-Roads documentation
+├── EV-Roads/                    # OpenStreetMap spatial corridor extraction pipeline
+│   ├── filter_and_export.py     # Automated Osmium + GDAL GeoPackage extraction script
+│   ├── table_viewer.py          # Interactive table viewer for expressways, NH, and fuel stations
+│   ├── visualize_ev_infrastructure.py # Interactive web map visualizer & analytics engine
+│   ├── Urja_X_Infrastructure.qgs# Pre-styled QGIS project file (ready to double-click & view)
+│   ├── ev_corridors_map.html    # Interactive Leaflet web map (highways + fuel stations)
+│   └── README.md                # Dedicated EV-Roads documentation
+│
+├── EV-Population/               # WorldPop 1km gridded population density & corridor demographics
+│   ├── data/                    # WorldPop GeoTIFF (excluded from Git via .gitignore)
+│   ├── download_worldpop.py     # Automated streaming downloader for India GeoTIFF
+│   ├── population_table_viewer.py # Demographic density & EV spacing table viewer
+│   └── README.md                # Population metrics & methodology
+│
+└── EV-NightLights/              # NOAA/VIIRS night-time lights & economic vitality indicators
+    ├── data/                    # Radiance GeoTIFFs (excluded from Git via .gitignore)
+    ├── gee_export_india_ntl.js  # Headless Google Earth Engine export script
+    ├── nightlights_table_viewer.py # Corridor economic radiance & commercial viability table viewer
+    └── README.md                # Night-time lights documentation
 ```
 
 ---
