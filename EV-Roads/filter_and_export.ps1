@@ -61,6 +61,12 @@ if ($ogrCmd) {
 }
 
 if ($ogrExe) {
+    $gdalShare = "$env:USERPROFILE\anaconda3\envs\osm\Library\share\gdal"
+    if (Test-Path $gdalShare) {
+        $env:GDAL_DATA = $gdalShare
+        $env:OSM_CONFIG_FILE = "$gdalShare\osmconf.ini"
+    }
+
     Write-Host "`n[+] Converting Major Highways to GeoPackage..." -ForegroundColor Yellow
     & $ogrExe -f GPKG india_highways.gpkg india_highways.osm.pbf lines
     Write-Host "[+] Converted -> india_highways.gpkg" -ForegroundColor Green

@@ -69,7 +69,12 @@ def find_ogr2ogr_binary():
             return str(p)
     return None
 
-def filter_with_osmium(osmium_cmd, filter_name, filter_rules, input_file, output_file):
+def filter_with_osmium(osmium_cmd, filter_name, filter_rules, input_file, output_file, force=False):
+    if not force and output_file.exists() and output_file.stat().st_size > 0:
+        size_mb = output_file.stat().st_size / (1024 * 1024)
+        print(f"[i] {output_file.name} already exists ({size_mb:.2f} MB). Skipping. Use --force to re-extract.")
+        return
+
     print(f"\n==========================================")
     print(f"[*] Filtering: {filter_name}")
     print(f"    Input:  {input_file.name}")
@@ -91,7 +96,14 @@ def convert_to_gpkg(ogr_cmd, osm_pbf, layer_type, gpkg_output, where_clause=None
     if where_clause:
         cmd += ["-where", where_clause]
     print(f"Running: {' '.join(cmd)}")
-    subprocess.run(cmd)
+    env = os.environ.copy()
+    gdal_share = Path(ogr_cmd).parents[1] / "share" / "gdal"
+    if gdal_share.exists():
+        env["GDAL_DATA"] = str(gdal_share)
+        osmconf = gdal_share / "osmconf.ini"
+        if osmconf.exists():
+            env["OSM_CONFIG_FILE"] = str(osmconf)
+    subprocess.run(cmd, env=env)
 
 def main():
     if not INPUT_PBF.exists():
@@ -157,6 +169,10 @@ def main():
             BASE_DIR / "india_nh.gpkg",
             where_clause='other_tags LIKE \'%"ref"=>"NH%\'',
         )
+        # Convert Corridors to GeoPackage
+        convert_to_gpkg(ogr_bin, OUTPUT_FILES["corridors"], "lines", BASE_DIR / "india_corridors.gpkg")
+        # Convert POIs to GeoPackage (points)
+        convert_to_gpkg(ogr_bin, OUTPUT_FILES["pois"], "points", BASE_DIR / "india_pois.gpkg")
     else:
         print("\n[i] ogr2ogr not found. GeoPackage conversion skipped (PBF files are ready for QGIS/GDAL).")
 

@@ -1,6 +1,8 @@
-# Raw OSM binary files (exceeds GitHub file limits)
+# Raw OSM and GIS binary files (exceeds GitHub 100MB file limit)
 *.osm.pbf
 *.pbf
+*.gpkg
+*.gpkg-journal
 *.bin
 *.part
 
