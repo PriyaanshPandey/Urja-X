@@ -1,0 +1,603 @@
+Station_ID,Station_Name,Operator,Capacity_Sockets,Max_Power_kW,Access,Fee,Latitude,Longitude,City,State,Source
+OSM_node_763446417,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,18.496101,73.8088593,,,OpenStreetMap
+OSM_node_1024717983,Cycle Kiosk / E-Vehicle Recharge,Independent / Unspecified,1,15.0,yes,unknown,12.0010333,79.8100656,,,OpenStreetMap
+OSM_node_2636339970,Unnamed Charging Station,tata,50,15.0,yes,yes,17.7085964,83.3107898,,,OpenStreetMap
+OSM_node_3485765661,Unnamed Charging Station,BMW,20,15.0,yes,yes,16.511133,80.6192659,,,OpenStreetMap
+OSM_node_3612553734,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,17.3649588,78.4749286,,,OpenStreetMap
+OSM_node_4376874204,Unnamed Charging Station,PRSANNA,1,15.0,yes,unknown,19.9245214,79.3168107,,,OpenStreetMap
+OSM_node_4376876211,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,19.9677547,79.308204,,,OpenStreetMap
+OSM_node_4376876214,Unnamed Charging Station,INDIAN OILS,1,15.0,yes,unknown,19.9584753,79.3164742,,,OpenStreetMap
+OSM_node_4376877604,Unnamed Charging Station,Hindustan petroleum,1,15.0,yes,unknown,19.9503234,79.2979527,,,OpenStreetMap
+OSM_node_4376878409,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,25.8275913,80.568888,,,OpenStreetMap
+OSM_node_4434163189,Elanthikkara,KSEB,1,15.0,yes,unknown,10.1796957,76.2673207,,,OpenStreetMap
+OSM_node_4845919917,Unnamed Charging Station,Tata power,50,15.0,yes,yes,17.7131833,83.298845,,,OpenStreetMap
+OSM_node_5295274409,Unnamed Charging Station,voltran,10,15.0,yes,yes,17.8384022,82.9994147,,,OpenStreetMap
+OSM_node_5295276530,Unnamed Charging Station,Ather,10,15.0,yes,yes,17.840483,82.9998377,,,OpenStreetMap
+OSM_node_5305546325,Unnamed Charging Station,KPTCL,1,15.0,yes,unknown,16.8129246,75.7157248,,,OpenStreetMap
+OSM_node_5694140128,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.555381,77.228418,,,OpenStreetMap
+OSM_node_6116153836,Unnamed Charging Station,PowerUP,1,15.0,yes,unknown,18.567214,73.7719864,,,OpenStreetMap
+OSM_node_6128146875,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,16.8075405,77.1444785,,,OpenStreetMap
+OSM_node_6128170285,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,16.8860925,76.9843397,,,OpenStreetMap
+OSM_node_6305362606,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.0045118,79.8007503,,,OpenStreetMap
+OSM_node_6404118987,Unnamed Charging Station,Energy Efficiency Services Limited (EESL),1,15.0,yes,unknown,28.6336834,77.2219946,,,OpenStreetMap
+OSM_node_6404118988,Unnamed Charging Station,Energy Efficiency Services Limited (EESL),2,15.0,yes,unknown,28.6336147,77.2218243,,,OpenStreetMap
+OSM_node_6562168075,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.9311189,77.099711,,,OpenStreetMap
+OSM_node_6757221285,Unnamed Charging Station,ZEVFY,1,15.0,yes,unknown,26.719541,88.4239516,,,OpenStreetMap
+OSM_node_6761961056,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6341092,77.2202799,,,OpenStreetMap
+OSM_node_6761961057,Unnamed Charging Station,Energy Efficiency Services Limited (EESL),1,15.0,yes,unknown,28.633798,77.2208339,,,OpenStreetMap
+OSM_node_6769723885,Unnamed Charging Station,Solar Powered Charging Station,1,15.0,yes,unknown,11.9808709,79.7768883,,,OpenStreetMap
+OSM_node_6798121626,C.S.R. Hospital,tata power,5,15.0,yes,yes,17.706036,83.3068947,,Andhra Pradesh,OpenStreetMap
+OSM_node_6918479540,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5854347,77.2203893,,,OpenStreetMap
+OSM_node_6918479558,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.587056,77.2120476,,,OpenStreetMap
+OSM_node_6961442929,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5865591,77.1934263,,,OpenStreetMap
+OSM_node_6961442954,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5866112,77.1934058,,,OpenStreetMap
+OSM_node_6988161557,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6342608,77.2206422,,,OpenStreetMap
+OSM_node_6988161559,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.634276,77.2209612,,,OpenStreetMap
+OSM_node_7083796927,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6350123,77.2197325,,,OpenStreetMap
+OSM_node_7083916144,Unnamed Charging Station,EESL,1,15.0,yes,unknown,28.6341151,77.217651,,,OpenStreetMap
+OSM_node_7123744187,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.6488315,76.0710605,,,OpenStreetMap
+OSM_node_7241502289,Unnamed Charging Station,Afzal,1,15.0,yes,unknown,17.8029367,73.1020851,,,OpenStreetMap
+OSM_node_7274257107,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6327684,77.2228545,,,OpenStreetMap
+OSM_node_7333964934,Essar petrol pump,Independent / Unspecified,1,15.0,yes,unknown,9.4781662,76.5861987,,,OpenStreetMap
+OSM_node_7334004308,Hindhusthan petrolium,Independent / Unspecified,1,15.0,yes,unknown,9.4772838,76.5817059,,,OpenStreetMap
+OSM_node_7387205059,FCS,Independent / Unspecified,1,15.0,yes,unknown,28.6680488,77.3739552,,,OpenStreetMap
+OSM_node_7387324503,FCS -2,AB,20,15.0,yes,unknown,28.6699882,77.3792992,,,OpenStreetMap
+OSM_node_7387335133,FCS,Independent / Unspecified,1,15.0,yes,unknown,28.6669889,77.3716593,,,OpenStreetMap
+OSM_node_7554422920,GBU- CHARGING STATION,AB,1,15.0,yes,unknown,28.4245314,77.5209704,GREATER NOIDA,,OpenStreetMap
+OSM_node_7570518867,BISRAKH FCS,AB,1,15.0,yes,unknown,28.5747161,77.4453156,GREATER NOIDA,,OpenStreetMap
+OSM_node_7572304299,BOTANICAL FCS,Independent / Unspecified,1,15.0,yes,unknown,28.5651948,77.3343937,,,OpenStreetMap
+OSM_node_8189928160,Unnamed Charging Station,Tata power,50,15.0,yes,unknown,17.7163716,83.326209,,,OpenStreetMap
+OSM_node_8212529301,Unnamed Charging Station,tata power,50,15.0,yes,yes,17.710847,83.3011276,,,OpenStreetMap
+OSM_node_8286066651,KSEB charging station,Kerala State Electricity Board,2,15.0,yes,yes,8.8926952,76.5790255,,,OpenStreetMap
+OSM_node_8836770673,KEL Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.9488824,76.383094,,,OpenStreetMap
+OSM_node_8893808042,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,8.4810673,76.9126537,,,OpenStreetMap
+OSM_node_8901628132,ELECTRICITY HOUSE,Independent / Unspecified,1,15.0,yes,unknown,27.8943813,78.0735323,,,OpenStreetMap
+OSM_node_8919501650,Tata Motors True Sai Works FC,Tata Power EZ Charge,25,15.0,customers,unknown,11.6828829,78.1260507,,,OpenStreetMap
+OSM_node_8919511936,Zeon Charging Navakkarai,Zeon,50,15.0,yes,yes,10.8559725,76.8624485,,,OpenStreetMap
+OSM_node_8948790096,Plug N Go,Independent / Unspecified,1,15.0,yes,unknown,28.6214714,77.2936333,,,OpenStreetMap
+OSM_node_9096832477,Ather Energy Charging Point,Independent / Unspecified,1,15.0,yes,unknown,9.9804506,76.317433,,,OpenStreetMap
+OSM_node_9104747115,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5288838,77.2137728,,,OpenStreetMap
+OSM_node_9202909866,Ather Charging Grid,Ather Energy,8,15.0,yes,unknown,12.975668,77.6413089,,,OpenStreetMap
+OSM_node_9204462345,veev,veev,1,15.0,yes,yes,11.3300012,76.902597,,,OpenStreetMap
+OSM_node_9204495608,srt tata ev charging station,tata power,2,15.0,yes,yes,11.022897,76.9515473,,,OpenStreetMap
+OSM_node_9215039103,Fortum EV Charger,Fortum,1,15.0,yes,yes,19.2329576,72.9760606,,,OpenStreetMap
+OSM_node_9237403818,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.630944,77.2233578,,,OpenStreetMap
+OSM_node_9237403820,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6310563,77.2230955,,,OpenStreetMap
+OSM_node_9252505223,PowerGrid Charging Station,PowerGrid,1,15.0,yes,yes,19.0245243,73.0135121,,,OpenStreetMap
+OSM_node_9411828530,Unnamed Charging Station,Ather Energy,1,15.0,yes,yes,18.5071941,73.8037729,,,OpenStreetMap
+OSM_node_9508125095,Ather Charging Station,Ather Grid,1,15.0,yes,unknown,11.1380148,76.9405241,,,OpenStreetMap
+OSM_node_9524427359,TATA Charging Station,TATA,1,15.0,yes,unknown,10.0773023,76.3376442,,,OpenStreetMap
+OSM_node_9527221544,veev,veev,2,15.0,yes,yes,11.3217865,76.9162515,,,OpenStreetMap
+OSM_node_9527967749,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.0415766,77.6204588,,,OpenStreetMap
+OSM_node_9529343817,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,27.2708197,78.0407736,,,OpenStreetMap
+OSM_node_9684753376,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6040475,77.1977963,,,OpenStreetMap
+OSM_node_9684753377,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6040394,77.1977808,,,OpenStreetMap
+OSM_node_9684753378,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6040316,77.1977661,,,OpenStreetMap
+OSM_node_9717918117,Electric vehicle charging station,Independent / Unspecified,1,15.0,yes,unknown,22.5408647,88.3680476,,,OpenStreetMap
+OSM_node_9717920317,Electric vehicle chargeing station,Independent / Unspecified,1,15.0,yes,unknown,22.5665448,88.3521064,,,OpenStreetMap
+OSM_node_9717923217,Electric vehicle charging station tata,Independent / Unspecified,1,15.0,yes,unknown,22.5475251,88.3495487,,,OpenStreetMap
+OSM_node_9717925317,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.5813902,88.3421409,,,OpenStreetMap
+OSM_node_9739308831,EV Charging station,Independent / Unspecified,1,15.0,yes,unknown,9.5798915,76.9697219,,,OpenStreetMap
+OSM_node_9739382793,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5483686,77.2547221,,,OpenStreetMap
+OSM_node_9739382794,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5482674,77.2545695,,,OpenStreetMap
+OSM_node_9739382795,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5483966,77.2547099,,,OpenStreetMap
+OSM_node_9740697395,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,31.2197083,75.7769537,,,OpenStreetMap
+OSM_node_9780694390,Zeon Charging station,Zeon Network,50,50 kW,yes,unknown,11.5193364,77.9350619,,,OpenStreetMap
+OSM_node_9780784996,Zeon Charging station,Zeon Network,22,15.0,yes,unknown,11.7783495,78.1987759,,,OpenStreetMap
+OSM_node_9793208900,EV Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.4628605,72.1589043,,,OpenStreetMap
+OSM_node_9796873472,Unnamed Charging Station,BESCOM,2,15.0,yes,unknown,12.9947371,77.6993007,,,OpenStreetMap
+OSM_node_9811396097,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.9775829,77.6389895,,,OpenStreetMap
+OSM_node_9837771580,Electric Vehicle Charging Station,Plug Share,1,15.0,yes,unknown,23.3962613,85.314143,,,OpenStreetMap
+OSM_node_9837771581,Electric Vehicle Charging Station,Plug Share,1,15.0,yes,unknown,23.371942,85.3261981,,,OpenStreetMap
+OSM_node_9917415768,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.9733967,77.6357561,,,OpenStreetMap
+OSM_node_9917415769,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.9733738,77.6357554,,,OpenStreetMap
+OSM_node_9952180939,Autocraft charging,Independent / Unspecified,1,15.0,yes,unknown,9.6338138,76.3336507,,,OpenStreetMap
+OSM_node_9952802373,Unnamed Charging Station,ElectriVa,1,15.0,yes,unknown,28.5692695,77.1884585,,,OpenStreetMap
+OSM_node_9952802374,Unnamed Charging Station,ElectriVa,1,15.0,yes,unknown,28.5692799,77.1883649,,,OpenStreetMap
+OSM_node_9956403209,Zeon Charging Station,Zeon Network,1,15.0,yes,unknown,11.7553892,78.0509746,,,OpenStreetMap
+OSM_node_9956542246,Zeon Charging Station,Zeon Network,50,43kW,yes,no,11.4925016,78.1536802,,,OpenStreetMap
+OSM_node_9992403939,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.1085033,80.2810805,,,OpenStreetMap
+OSM_node_10000890138,Unnamed Charging Station,Tata Power,4,15.0,yes,yes,17.273827,74.1802556,,,OpenStreetMap
+OSM_node_10008994593,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.622372,77.290246,,,OpenStreetMap
+OSM_node_10008994594,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6223602,77.2902508,,,OpenStreetMap
+OSM_node_10013758817,Unnamed Charging Station,Tata power,2,15.0,yes,yes,18.6111535,73.7831554,,,OpenStreetMap
+OSM_node_10036499344,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.0317217,80.2419487,,,OpenStreetMap
+OSM_node_10048789353,Sai Krupa,Nikol EV,2,15.0,yes,yes,19.3480213,74.2068907,,,OpenStreetMap
+OSM_node_10049044828,Unnamed Charging Station,Car Mall,2,15.0,yes,yes,19.9518444,73.7539002,,,OpenStreetMap
+OSM_node_10050798916,Hotel Sanskruti,Tata Power,2,15.0,yes,yes,19.97183,73.6802627,,,OpenStreetMap
+OSM_node_10053873979,Unnamed Charging Station,Laxmi Refreshments,1,15.0,yes,yes,19.3166356,74.1749919,,,OpenStreetMap
+OSM_node_10055287289,Unnamed Charging Station,Shridha,2,15.0,yes,yes,18.9913873,73.9427761,,,OpenStreetMap
+OSM_node_10089151842,Unnamed Charging Station,ElectriVa,4,15.0,yes,unknown,28.5426954,77.2219126,,,OpenStreetMap
+OSM_node_10097434142,Unnamed Charging Station,Bolt,8,15.0,yes,unknown,18.5095633,73.8147009,,,OpenStreetMap
+OSM_node_10097434143,Unnamed Charging Station,Ather Energy,1,15.0,yes,unknown,18.5105681,73.781902,,,OpenStreetMap
+OSM_node_10097434144,Unnamed Charging Station,Ather Energy,1,15.0,yes,yes,18.4844962,73.8496753,,,OpenStreetMap
+OSM_node_10097460085,Unnamed Charging Station,Ather Energy,1,15.0,yes,unknown,18.5189771,73.8304638,,,OpenStreetMap
+OSM_node_10115952217,Electric vehicle charging station,Independent / Unspecified,1,15.0,yes,unknown,22.6075228,88.3922575,,,OpenStreetMap
+OSM_node_10115962717,Electric vehicle charging station 20kw &7kw,CESC,1,15.0,yes,unknown,22.5093598,88.3674117,,,OpenStreetMap
+OSM_node_10121102748,Indian oil mammoodu,Independent / Unspecified,1,15.0,yes,unknown,9.4804068,76.599247,,,OpenStreetMap
+OSM_node_10137291010,Zeon Charging,Zeon Network,50,15.0,yes,unknown,12.9069204,78.9619166,,,OpenStreetMap
+OSM_node_10177662896,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.9137732,77.6441735,,,OpenStreetMap
+OSM_node_10178076779,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.1973512,77.7076171,,,OpenStreetMap
+OSM_node_10197717353,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.9732863,78.2159576,,,OpenStreetMap
+OSM_node_10203122676,Statiq Nandagav,Statiq,1,15.0,yes,yes,18.6186752,72.9004606,,,OpenStreetMap
+OSM_node_10205648223,Go e go,Independent / Unspecified,4,15.0,yes,yes,18.6433491,72.8762211,,,OpenStreetMap
+OSM_node_10240014908,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.633573,77.2234733,,,OpenStreetMap
+OSM_node_10241768254,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5903206,77.2201483,,,OpenStreetMap
+OSM_node_10241775591,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5902808,77.2197587,,,OpenStreetMap
+OSM_node_10241805232,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5903207,77.2201225,,,OpenStreetMap
+OSM_node_10241808063,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5903054,77.2199561,,,OpenStreetMap
+OSM_node_10250046452,Unnamed Charging Station,Tata,2,15.0,yes,unknown,18.5536336,73.806562,,,OpenStreetMap
+OSM_node_10258816479,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.4166463,76.5755312,,,OpenStreetMap
+OSM_node_10285005409,Maa Tara Fuel Centre,Independent / Unspecified,1,15.0,yes,unknown,25.6536964,87.3612525,,,OpenStreetMap
+OSM_node_10285393622,Tata Power,Tata Power,1,15.0,yes,unknown,18.9561767,73.1627884,,,OpenStreetMap
+OSM_node_10285406628,Jio-BP,Jio-BP,2,15.0,yes,unknown,19.0874903,73.0796316,,,OpenStreetMap
+OSM_node_10290789663,Unnamed Charging Station,Go Ego,1,15.0,yes,unknown,18.5788787,73.7624887,,,OpenStreetMap
+OSM_node_10293872605,inGO,Independent / Unspecified,1,15.0,yes,unknown,12.9712776,77.6078832,,,OpenStreetMap
+OSM_node_10294506356,Unnamed Charging Station,Yulu,1,15.0,yes,unknown,12.9764825,77.6268299,,,OpenStreetMap
+OSM_node_10553764693,Unnamed Charging Station,Tata power,1,15.0,yes,yes,19.1597944,72.858293,,,OpenStreetMap
+OSM_node_10553919109,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.5942498,88.4719544,,,OpenStreetMap
+OSM_node_10553919709,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.5994781,88.4719664,,,OpenStreetMap
+OSM_node_10553919710,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.5845228,88.4908908,,,OpenStreetMap
+OSM_node_10553924809,Mahindra Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.5785223,88.4529998,,,OpenStreetMap
+OSM_node_10553925409,EESL Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.5785173,88.4526568,,,OpenStreetMap
+OSM_node_10553967709,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.5815869,88.4481696,,,OpenStreetMap
+OSM_node_10554039609,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.6606704,88.4418053,,,OpenStreetMap
+OSM_node_10554040909,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.6308074,88.4217376,,,OpenStreetMap
+OSM_node_10564130631,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6003513,77.2267809,,,OpenStreetMap
+OSM_node_10564291409,Electric Vehicle Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.6256458,88.4131756,,,OpenStreetMap
+OSM_node_10573903209,Unnamed Charging Station,relux,1,15.0,yes,yes,11.3021696,77.600583,,,OpenStreetMap
+OSM_node_10576228241,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.596925,77.2229085,,,OpenStreetMap
+OSM_node_10593602327,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.4188726,77.0392065,,,OpenStreetMap
+OSM_node_10596152553,Unnamed Charging Station,relux,1,15.0,yes,yes,11.1824544,77.2845422,,,OpenStreetMap
+OSM_node_10609400587,Unnamed Charging Station,Electriva,1,15.0,yes,yes,26.4783538,80.3149431,,,OpenStreetMap
+OSM_node_10615755147,Unnamed Charging Station,Trimurti Motors,1,15.0,yes,unknown,18.5114349,73.7770341,,,OpenStreetMap
+OSM_node_10617217605,Tata EZ power Charging station,Tata Power,1,15.0,yes,unknown,10.2497804,76.3686533,,,OpenStreetMap
+OSM_node_10661050413,Electric vehicle charging,Independent / Unspecified,1,15.0,yes,unknown,9.5923007,76.5252561,,,OpenStreetMap
+OSM_node_10671202586,Unnamed Charging Station,Shell,3,15.0,yes,yes,18.5857278,73.7817517,,,OpenStreetMap
+OSM_node_10694479767,Unnamed Charging Station,Independent / Unspecified,2,15.0,yes,unknown,28.563383,77.2647745,,,OpenStreetMap
+OSM_node_10703875766,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.7263595,77.1628441,,,OpenStreetMap
+OSM_node_10719100420,Unnamed Charging Station,goEgo Charging Station,1,15.0,yes,unknown,18.6170757,73.7673099,,,OpenStreetMap
+OSM_node_10763275239,Magenta ChargeGrid Charging Station,Magenta Group,1,15.0,yes,yes,12.9154635,77.6158909,,,OpenStreetMap
+OSM_node_10778185195,Unnamed Charging Station,IOCL,2,15.0,yes,unknown,21.3830946,80.5815147,,,OpenStreetMap
+OSM_node_10778957417,Unnamed Charging Station,Independent / Unspecified,1,15.0,private,unknown,28.7242899,77.1802238,,,OpenStreetMap
+OSM_node_10797010207,Unnamed Charging Station,Tata power,1,15.0,yes,unknown,18.5998693,73.7548665,,,OpenStreetMap
+OSM_node_10797010208,Unnamed Charging Station,Tata power,1,15.0,yes,unknown,18.5995979,73.7548745,,,OpenStreetMap
+OSM_node_10827297703,Unnamed Charging Station,Mahavitaran,1,15.0,yes,yes,19.0671494,73.0075344,,,OpenStreetMap
+OSM_node_10830973004,Unnamed Charging Station,Independent / Unspecified,30,15.0,no,unknown,32.0855844,77.1263081,,,OpenStreetMap
+OSM_node_10841782157,Unnamed Charging Station,Ather Energy,1,15.0,yes,yes,18.5887644,73.7827295,,,OpenStreetMap
+OSM_node_10844985580,Unnamed Charging Station,Independent / Unspecified,2,15.0,yes,yes,18.5778315,73.9073489,,,OpenStreetMap
+OSM_node_10870849607,Unnamed Charging Station,GoEgo,1,15.0,yes,yes,18.5906635,73.7457888,,,OpenStreetMap
+OSM_node_10905351902,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6342282,77.2195272,,,OpenStreetMap
+OSM_node_10908485585,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6993047,77.203949,,,OpenStreetMap
+OSM_node_10908485595,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6992861,77.203999,,,OpenStreetMap
+OSM_node_10917018646,Unnamed Charging Station,Ather grid,1,15.0,yes,yes,11.2870573,76.9637875,,,OpenStreetMap
+OSM_node_10922054270,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6315233,77.2199032,,,OpenStreetMap
+OSM_node_10948867107,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5404442,77.2349474,,,OpenStreetMap
+OSM_node_10978384002,"KSEB Charging station, Kottiyam",Kerala State Electricity Board,1,15.0,yes,yes,8.8664309,76.6688105,,,OpenStreetMap
+OSM_node_11005778506,Unnamed Charging Station,Jio pulse,1,15.0,yes,yes,18.5638072,73.8068573,,,OpenStreetMap
+OSM_node_11021950303,Unnamed Charging Station,Tata power,5,15.0,yes,yes,17.8277665,82.9597409,,,OpenStreetMap
+OSM_node_11021950304,Unnamed Charging Station,tata power,5,15.0,yes,yes,17.828448,82.9600491,,,OpenStreetMap
+OSM_node_11030050466,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5715108,77.2369501,,,OpenStreetMap
+OSM_node_11030050467,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5715706,77.2369881,,,OpenStreetMap
+OSM_node_11033745938,Unnamed Charging Station,Tata Power,2,15.0,yes,yes,18.5897559,73.7381716,,,OpenStreetMap
+OSM_node_11034491772,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,12.6406664,78.0642455,,,OpenStreetMap
+OSM_node_11052398205,KSEB,Independent / Unspecified,1,15.0,yes,unknown,8.601781,76.8976448,,,OpenStreetMap
+OSM_node_11083172400,Unnamed Charging Station,Charge Karo,6,15.0,yes,unknown,28.5443474,77.2455856,,,OpenStreetMap
+OSM_node_11083172401,Unnamed Charging Station,Charge Karo,1,15.0,yes,unknown,28.5443273,77.2455165,,,OpenStreetMap
+OSM_node_11111611044,Unnamed Charging Station,KSEB Charging Station,1,15.0,yes,unknown,10.5972682,76.4872287,,,OpenStreetMap
+OSM_node_11116285790,ATHER Fast Charger,Independent / Unspecified,1,15.0,yes,unknown,10.0029987,76.3616989,,,OpenStreetMap
+OSM_node_11132023351,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5844378,77.2205342,,,OpenStreetMap
+OSM_node_11132025761,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.9490802,76.3031193,,,OpenStreetMap
+OSM_node_11148213616,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,28.622435,77.2890724,,,OpenStreetMap
+OSM_node_11157574366,EV Super charging station,Independent / Unspecified,1,15.0,yes,unknown,10.7740371,76.6982216,,,OpenStreetMap
+OSM_node_11178123519,Unnamed Charging Station,Ather,1,15.0,yes,unknown,12.9576825,77.5684466,,,OpenStreetMap
+OSM_node_11214889013,Pulse,Independent / Unspecified,1,15.0,yes,unknown,12.9805484,77.5978893,,,OpenStreetMap
+OSM_node_11215379064,Ather Grid,Independent / Unspecified,1,15.0,yes,unknown,15.6141958,73.8141229,,,OpenStreetMap
+OSM_node_11217502924,Unnamed Charging Station,Westend Mall,5,15.0,yes,unknown,18.5623306,73.8069355,,,OpenStreetMap
+OSM_node_11283405698,Ola Hypercharger,Independent / Unspecified,4,15.0,yes,unknown,12.9322172,77.6142725,,,OpenStreetMap
+OSM_node_11286212936,Unnamed Charging Station,BESCOM,2,15.0,yes,unknown,12.916907,77.6102709,,,OpenStreetMap
+OSM_node_11288409893,KSEB,Independent / Unspecified,1,15.0,yes,unknown,10.3314912,76.2152726,,,OpenStreetMap
+OSM_node_11288533005,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5497356,77.2594429,,,OpenStreetMap
+OSM_node_11288533006,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5497042,77.2594888,,,OpenStreetMap
+OSM_node_11288533008,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5496589,77.2595584,,,OpenStreetMap
+OSM_node_11288533010,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5496792,77.2595256,,,OpenStreetMap
+OSM_node_11288533011,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5497534,77.2594016,,,OpenStreetMap
+OSM_node_11297781805,Unnamed Charging Station,Hero Vida,1,15.0,yes,unknown,12.9710109,77.597788,,,OpenStreetMap
+OSM_node_11338045964,Unnamed Charging Station,Hitachi,1,15.0,yes,unknown,29.864049,77.8950343,,,OpenStreetMap
+OSM_node_11368545133,Unnamed Charging Station,Charge Karo,1,15.0,yes,unknown,28.5697606,77.2381099,,,OpenStreetMap
+OSM_node_11406900271,Unnamed Charging Station,Tata Power,1,15.0,yes,unknown,28.6019401,77.2372754,,,OpenStreetMap
+OSM_node_11408768738,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.9736666,77.5830855,,,OpenStreetMap
+OSM_node_11414388215,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5508417,77.2343743,,,OpenStreetMap
+OSM_node_11414388216,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5508303,77.2343614,,,OpenStreetMap
+OSM_node_11421789517,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6177007,77.28703,,,OpenStreetMap
+OSM_node_11421789521,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6176864,77.2870367,,,OpenStreetMap
+OSM_node_11449177423,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6606575,77.1433393,,,OpenStreetMap
+OSM_node_11452082417,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,18.6347952,73.7990514,,,OpenStreetMap
+OSM_node_11454822427,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6672518,77.2532299,,,OpenStreetMap
+OSM_node_11454822430,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6672527,77.2532856,,,OpenStreetMap
+OSM_node_11454822431,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.667252,77.2532583,,,OpenStreetMap
+OSM_node_11463172582,Unnamed Charging Station,Honda e:swap,1,15.0,yes,unknown,12.9302614,77.614821,,,OpenStreetMap
+OSM_node_11478464616,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6229566,77.2989161,,,OpenStreetMap
+OSM_node_11505634206,ather,ather energy,type2,15.0,yes,unknown,18.0801331,83.3855776,,,OpenStreetMap
+OSM_node_11536826351,Unnamed Charging Station,jio-bp pulse ev charging station,1,15.0,yes,yes,11.2789059,76.9478415,,,OpenStreetMap
+OSM_node_11542817290,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,12.9362684,77.6076884,,,OpenStreetMap
+OSM_node_11574632419,Ola Hypercharger,OLA Electric,2,15.0,yes,unknown,10.5352175,76.2156115,,,OpenStreetMap
+OSM_node_11578223404,Unnamed Charging Station,Zeal Energy Services,1,15.0,yes,unknown,18.4600725,73.786174,,,OpenStreetMap
+OSM_node_11601441778,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6531076,77.1562309,,,OpenStreetMap
+OSM_node_11601441779,Switch Station,Independent / Unspecified,1,15.0,yes,unknown,28.6530158,77.1563495,,,OpenStreetMap
+OSM_node_11601441781,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6531276,77.1561984,,,OpenStreetMap
+OSM_node_11637354348,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6338798,77.2175045,,,OpenStreetMap
+OSM_node_11642004107,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6272979,77.2319249,,,OpenStreetMap
+OSM_node_11669054294,Unnamed Charging Station,KSEB,5,15.0,yes,unknown,10.0696976,77.0613927,,,OpenStreetMap
+OSM_node_11697454694,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5508115,77.2510865,,,OpenStreetMap
+OSM_node_11697454712,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5508585,77.2510569,,,OpenStreetMap
+OSM_node_11738870963,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,17.9053122,83.4066291,,,OpenStreetMap
+OSM_node_11748976480,Unnamed Charging Station,tata power,50,15.0,yes,yes,17.7118163,83.317447,,,OpenStreetMap
+OSM_node_11771960493,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5544887,77.195939,,,OpenStreetMap
+OSM_node_11795617114,Unnamed Charging Station,Xicom,1,15.0,yes,unknown,28.6286105,77.2196866,,,OpenStreetMap
+OSM_node_11818010038,Unnamed Charging Station,Tata,20,15.0,yes,yes,17.7241475,83.3107145,,,OpenStreetMap
+OSM_node_11818587530,GLIDA Charging Station,Independent / Unspecified,15,15.0,yes,yes,13.1831411,77.6760596,,,OpenStreetMap
+OSM_node_11818587531,BluSmart Charging Station,Independent / Unspecified,24,15.0,yes,yes,13.1821565,77.6710546,,,OpenStreetMap
+OSM_node_11821495340,Unnamed Charging Station,Charj Karo,3,15.0,yes,unknown,28.6799791,77.2085882,,,OpenStreetMap
+OSM_node_11849592981,Unnamed Charging Station,ChargeZone,1,15.0,yes,yes,17.6377006,74.0123809,,,OpenStreetMap
+OSM_node_11854233582,Gogate Plaza,Tata Power,3,15.0,yes,yes,15.9287213,74.5291412,,,OpenStreetMap
+OSM_node_11864351274,Tata Power TSS Sirsi,Tata power,4,15.0,yes,yes,14.6243646,74.8415578,,,OpenStreetMap
+OSM_node_11871740090,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5649281,77.2245367,,,OpenStreetMap
+OSM_node_11873258339,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5540272,77.212758,,,OpenStreetMap
+OSM_node_11875814624,Ganpati Smart Point,Independent / Unspecified,1,15.0,yes,yes,28.6775315,77.2080457,,,OpenStreetMap
+OSM_node_11875926233,Unnamed Charging Station,EESL,4,15.0,yes,no,28.6219707,77.1948236,,,OpenStreetMap
+OSM_node_11882034350,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5416057,77.2328267,,,OpenStreetMap
+OSM_node_11882034351,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5333783,77.2317719,,,OpenStreetMap
+OSM_node_11882034353,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.541597,77.2328551,,,OpenStreetMap
+OSM_node_11891087067,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5483295,77.2547433,,,OpenStreetMap
+OSM_node_11891087068,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5482916,77.2547553,,,OpenStreetMap
+OSM_node_11898903434,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,30.7448331,76.9033098,,,OpenStreetMap
+OSM_node_11902522652,Unnamed Charging Station,Okaya,1,15.0,no,unknown,9.9670832,76.3227725,,,OpenStreetMap
+OSM_node_11919269548,Unnamed Charging Station,Hyundai,2,15.0,yes,yes,12.5884081,78.1463084,,,OpenStreetMap
+OSM_node_11924865741,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.2552998,76.8142379,,,OpenStreetMap
+OSM_node_11924937497,Unnamed Charging Station,KSEB charging station,16kW,15.0,yes,unknown,9.2644997,76.808217,,,OpenStreetMap
+OSM_node_11927677057,Ola Hyper Charger,ChargePoint,2,15.0,yes,no,12.9337755,77.6236693,,,OpenStreetMap
+OSM_node_11927677058,Battery Swap,ChargePoint,1,15.0,yes,unknown,12.9285835,77.6241904,,,OpenStreetMap
+OSM_node_11934109023,Ather Grid,Independent / Unspecified,1,15.0,yes,unknown,15.2649717,73.9599198,,,OpenStreetMap
+OSM_node_11934676233,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.586642,77.2407912,,,OpenStreetMap
+OSM_node_11936564076,Ather Charging Station,ChargePoint,1,15.0,yes,no,12.9311453,77.6238461,,,OpenStreetMap
+OSM_node_11962153068,Unnamed Charging Station,Colombierlabs,1,15.0,yes,unknown,9.9323551,76.3885362,,,OpenStreetMap
+OSM_node_11964269550,Unnamed Charging Station,KSEB,1,15.0,yes,unknown,9.9916932,76.2659936,,,OpenStreetMap
+OSM_node_11964269551,Unnamed Charging Station,Porsche Destination Charging,1,15.0,yes,unknown,9.9876654,76.2643992,,,OpenStreetMap
+OSM_node_11964275810,Unnamed Charging Station,E Drive Charging Station,1,15.0,yes,unknown,9.9905715,76.2712145,,,OpenStreetMap
+OSM_node_11964375344,Unnamed Charging Station,GOEC,1,15.0,yes,unknown,10.1166661,76.4457594,,,OpenStreetMap
+OSM_node_11964400670,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.099556,76.3474161,,,OpenStreetMap
+OSM_node_11964404840,Unnamed Charging Station,Exicom,1,15.0,yes,unknown,10.0722779,76.3337758,,,OpenStreetMap
+OSM_node_11964404990,EVOK Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0819847,76.3399993,,,OpenStreetMap
+OSM_node_11964409805,Unnamed Charging Station,KSEB,1,15.0,yes,unknown,10.0889338,76.4230504,,,OpenStreetMap
+OSM_node_11964604757,Unnamed Charging Station,KSEB,1,15.0,yes,unknown,10.0334782,76.2210572,,,OpenStreetMap
+OSM_node_11964630608,Unnamed Charging Station,KSEB,1,15.0,yes,unknown,10.0758202,76.2704908,,,OpenStreetMap
+OSM_node_11964642849,Unnamed Charging Station,GOEC,1,15.0,yes,unknown,9.9478069,76.31863,,,OpenStreetMap
+OSM_node_11964645149,Unnamed Charging Station,EESL,1,15.0,yes,unknown,9.9774283,76.2774341,,,OpenStreetMap
+OSM_node_11964655417,Unnamed Charging Station,EESL,1,15.0,yes,unknown,9.9768976,76.2777053,,,OpenStreetMap
+OSM_node_11970079921,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0187038,76.3131132,,,OpenStreetMap
+OSM_node_11970092378,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0628926,76.3211413,,,OpenStreetMap
+OSM_node_11970092379,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0348207,76.3230895,,,OpenStreetMap
+OSM_node_11970095292,Unnamed Charging Station,EVOK,1,15.0,yes,unknown,10.0463291,76.339378,,,OpenStreetMap
+OSM_node_11970103073,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0153299,76.306108,,,OpenStreetMap
+OSM_node_11970115721,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.993494,76.3274149,,,OpenStreetMap
+OSM_node_11970662648,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0208814,76.3447159,,,OpenStreetMap
+OSM_node_11970671706,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0324149,76.3364536,,,OpenStreetMap
+OSM_node_11970686660,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0231528,76.341238,,,OpenStreetMap
+OSM_node_11970703533,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0404762,76.3385796,,,OpenStreetMap
+OSM_node_11970703598,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0173589,76.3488958,,,OpenStreetMap
+OSM_node_11970725379,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0540834,76.3268137,,,OpenStreetMap
+OSM_node_11970726776,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.0215768,76.334191,,,OpenStreetMap
+OSM_node_11982372933,Unnamed Charging Station,One Delhi,1,15.0,yes,unknown,28.5964138,77.2935572,,,OpenStreetMap
+OSM_node_11982458750,Unnamed Charging Station,CESL,1,15.0,yes,unknown,28.5964138,77.2935572,,,OpenStreetMap
+OSM_node_11987023859,BluSmart Charging Station,Independent / Unspecified,1,15.0,yes,yes,13.1776646,77.6630831,,,OpenStreetMap
+OSM_node_12002046035,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,12.977855,77.5812757,,,OpenStreetMap
+OSM_node_12016136802,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.027001,77.5425776,,,OpenStreetMap
+OSM_node_12031201050,Swap Point,Sun Mobility,1,15.0,yes,unknown,28.5442512,77.264671,,,OpenStreetMap
+OSM_node_12064267225,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6382309,77.2873054,,,OpenStreetMap
+OSM_node_12078138004,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.9810756,77.5966804,,,OpenStreetMap
+OSM_node_12090459397,Unnamed Charging Station,Zeon,120,15.0,yes,unknown,11.3718054,77.647312,,,OpenStreetMap
+OSM_node_12096869239,Unnamed Charging Station,HP eCharge EV Charging Station,1,15.0,yes,unknown,17.9034473,83.4437435,,,OpenStreetMap
+OSM_node_12098546110,Unnamed Charging Station,Energy Efficiency Services Limited (EESL),2,15.0,yes,unknown,28.6316265,77.222004,,,OpenStreetMap
+OSM_node_12100028686,Honda e:swap,Honda e:swap,1,15.0,yes,yes,13.0000143,77.5499059,,,OpenStreetMap
+OSM_node_12101733050,Unnamed Charging Station,Ola Hypercharger,1,15.0,yes,unknown,12.965406,77.6002473,,,OpenStreetMap
+OSM_node_12123396312,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.6952457,77.2153259,,,OpenStreetMap
+OSM_node_12125802596,Honda e:swap,Honda e:swap,1,15.0,yes,yes,12.9781045,77.6389105,,,OpenStreetMap
+OSM_node_12135600916,Bharat Petroleum,KOTPALLIWAR,1,15.0,yes,unknown,19.9724104,79.2871566,,,OpenStreetMap
+OSM_node_12169023077,Battery Swapping Station,Independent / Unspecified,1,15.0,yes,unknown,12.8894274,77.5563647,,,OpenStreetMap
+OSM_node_12181413140,Unnamed Charging Station,Zeon Charging,1,15.0,yes,unknown,9.4552131,76.5424575,,,OpenStreetMap
+OSM_node_12183518228,KSEB EV Charging Station,Independent / Unspecified,1,15.0,yes,unknown,10.7727816,75.9471268,,,OpenStreetMap
+OSM_node_12192527479,Unnamed Charging Station,Statiq,1,15.0,yes,yes,28.5133039,77.1860742,,,OpenStreetMap
+OSM_node_12192684763,Ather charger,Independent / Unspecified,1,15.0,yes,unknown,12.3323233,78.2138537,,,OpenStreetMap
+OSM_node_12196467738,Unnamed Charging Station,Battery Smart,3,15.0,yes,yes,28.688648,77.2067275,,,OpenStreetMap
+OSM_node_12197027554,Unnamed Charging Station,Ather,1,15.0,private,unknown,10.7702552,76.6377821,,,OpenStreetMap
+OSM_node_12224096371,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,10.163392,77.7360648,,,OpenStreetMap
+OSM_node_12327155403,EV Point,Independent / Unspecified,1,15.0,yes,unknown,10.3806893,76.2975931,,,OpenStreetMap
+OSM_node_12334310661,Unnamed Charging Station,kazam,1,15.0,yes,unknown,18.4979616,73.7941778,,,OpenStreetMap
+OSM_node_12350373268,Unnamed Charging Station,EV Dock,1,15.0,customers,yes,18.5857921,73.734433,,,OpenStreetMap
+OSM_node_12350440058,Unnamed Charging Station,Shell,30 kw,15.0,customers,yes,18.5907601,73.7410354,,,OpenStreetMap
+OSM_node_12350467611,Unnamed Charging Station,Bijlify,20 kw,15.0,customers,yes,18.5781719,73.7368921,,,OpenStreetMap
+OSM_node_12352455245,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6492602,77.316582,,,OpenStreetMap
+OSM_node_12410120832,Unnamed Charging Station,ElectriGo,2,15.0,yes,unknown,9.9647636,76.2941177,,,OpenStreetMap
+OSM_node_12431364584,Ather Grid,Independent / Unspecified,1,15.0,yes,unknown,27.0402782,88.2663931,,,OpenStreetMap
+OSM_node_12432219066,Unnamed Charging Station,Shell,41,15.0,unknown,unknown,13.1543775,77.702793,,,OpenStreetMap
+OSM_node_12439001141,VoltronEV,Independent / Unspecified,1,15.0,yes,yes,16.5580075,80.5667983,,,OpenStreetMap
+OSM_node_12450672051,Unnamed Charging Station,Ola fast charger,3,15.0,yes,no,10.7292683,75.9472621,,,OpenStreetMap
+OSM_node_12458871181,Unnamed Charging Station,Statiq,60,15.0,yes,yes,18.5638929,73.8070465,,,OpenStreetMap
+OSM_node_12468474654,Unnamed Charging Station,Zeon Charging,22kw,15.0,yes,unknown,12.6245373,80.1977797,,,OpenStreetMap
+OSM_node_12468514473,Unnamed Charging Station,Minooki Mobility,1,15.0,yes,unknown,12.6430987,80.2004767,,,OpenStreetMap
+OSM_node_12468546310,Unnamed Charging Station,Chargezone,60kw,15.0,yes,unknown,12.6133518,80.1706767,,,OpenStreetMap
+OSM_node_12470580711,Super Hub EV Charging Hub,Independent / Unspecified,1,15.0,yes,unknown,12.2401178,79.662529,,,OpenStreetMap
+OSM_node_12473454969,Unnamed Charging Station,Bijlify,1,15.0,yes,yes,18.5228186,73.8410529,,,OpenStreetMap
+OSM_node_12492566397,Honda e:swap,Honda e:swap,1,15.0,yes,yes,12.9383537,77.5802162,,,OpenStreetMap
+OSM_node_12492581619,Honda e:swap,Honda e:swap,1,15.0,yes,yes,12.9217078,77.5805052,,,OpenStreetMap
+OSM_node_12509386001,Electric vehicle charging station,Independent / Unspecified,1,15.0,yes,unknown,9.9489443,76.3476112,,,OpenStreetMap
+OSM_node_12519643346,Honda e:swap,Honda e:swap,1,15.0,yes,yes,13.0330528,77.533757,,,OpenStreetMap
+OSM_node_12534145133,Honda e:swap,Independent / Unspecified,1,15.0,yes,unknown,12.993427,77.7043141,,,OpenStreetMap
+OSM_node_12534184756,Honda e:swap,Independent / Unspecified,1,15.0,yes,unknown,12.993427,77.7043141,,,OpenStreetMap
+OSM_node_12550935042,Unnamed Charging Station,ChargeMOD,1,15.0,yes,unknown,9.9657227,76.2439317,,,OpenStreetMap
+OSM_node_12595513176,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,29.1437683,78.2392668,,,OpenStreetMap
+OSM_node_12596454002,Unnamed Charging Station,Ather energy,3,15.0,yes,unknown,25.2815281,83.0032971,,,OpenStreetMap
+OSM_node_12596574170,Unnamed Charging Station,Electric Vehicle Charging Station,1,15.0,yes,unknown,28.6622203,77.3000898,,,OpenStreetMap
+OSM_node_12624560446,Unnamed Charging Station,eesl,60,22,yes,no,13.0791255,80.261572,,,OpenStreetMap
+OSM_node_12647193426,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.5910595,77.0429824,,,OpenStreetMap
+OSM_node_12672890507,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,28.5904687,77.2331036,,,OpenStreetMap
+OSM_node_12679343545,Unnamed Charging Station,Necell,1,15.0,yes,yes,23.2297636,72.6662988,,,OpenStreetMap
+OSM_node_12788139581,Honda e:swap,Honda e:swap,1,15.0,yes,yes,12.9861844,77.6156891,,,OpenStreetMap
+OSM_node_12791449753,Unnamed Charging Station,Jio Bp,1,15.0,yes,yes,10.7736633,76.6647262,,,OpenStreetMap
+OSM_node_12793391154,Unnamed Charging Station,go ec,1,15.0,yes,yes,11.7410487,78.0502782,,,OpenStreetMap
+OSM_node_12811975823,Unnamed Charging Station,Okaya,1,15.0,yes,unknown,28.5679245,77.2427016,,,OpenStreetMap
+OSM_node_12823839873,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6251684,77.3056013,,,OpenStreetMap
+OSM_node_12828589994,Unnamed Charging Station,Esygo,30,15.0,yes,unknown,10.7719508,76.65726,,,OpenStreetMap
+OSM_node_12864701235,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,17.7021023,83.2965766,,,OpenStreetMap
+OSM_node_12880786515,Unnamed Charging Station,Jio BP Pulse,1,15.0,unknown,unknown,22.5682609,88.472598,,,OpenStreetMap
+OSM_node_12894372007,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6112384,77.2449181,,,OpenStreetMap
+OSM_node_12901933482,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5875463,77.226213,,,OpenStreetMap
+OSM_node_12901933483,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.58752,77.226218,,,OpenStreetMap
+OSM_node_12903526837,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.5810704,77.2390952,,,OpenStreetMap
+OSM_node_12918480635,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,21.22498,79.0819574,,,OpenStreetMap
+OSM_node_12946107084,Unnamed Charging Station,Hero Electric Charging Station,1,15.0,yes,unknown,22.4701255,88.309999,,,OpenStreetMap
+OSM_node_12968864355,Unnamed Charging Station,Independent / Unspecified,1,15.0,private,yes,13.020096,77.6929133,,,OpenStreetMap
+OSM_node_12972970667,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5793023,77.1883978,,,OpenStreetMap
+OSM_node_12973875562,Unnamed Charging Station,Independent / Unspecified,1,15.0,no,unknown,28.5613597,77.0813217,,,OpenStreetMap
+OSM_node_12982255490,Unnamed Charging Station,êpump,1,15.0,yes,unknown,12.9421168,77.7471967,,,OpenStreetMap
+OSM_node_12990861171,Unnamed Charging Station,TGRedCo,1,15.0,yes,unknown,17.4943813,78.3499994,,,OpenStreetMap
+OSM_node_12993620112,Unnamed Charging Station,Électricité de France,1,15.0,yes,unknown,16.5094737,80.7204214,,,OpenStreetMap
+OSM_node_13040660047,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,10.5220574,76.2276618,,,OpenStreetMap
+OSM_node_13110034737,Unnamed Charging Station,BAAZ,1,15.0,yes,yes,28.6856903,77.205345,,,OpenStreetMap
+OSM_node_13110034738,Unnamed Charging Station,Charj Karo,1,15.0,yes,yes,28.6857175,77.2053595,,,OpenStreetMap
+OSM_node_13124549208,Unnamed Charging Station,Jio-bp,1,15.0,yes,yes,26.2382501,72.9525828,,,OpenStreetMap
+OSM_node_13138300765,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,26.521324,88.7206674,,,OpenStreetMap
+OSM_node_13152054327,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,26.725708,88.415126,,,OpenStreetMap
+OSM_node_13152066443,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,26.5715619,88.5404974,,,OpenStreetMap
+OSM_node_13164715323,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,29.5247059,77.7195645,,,OpenStreetMap
+OSM_node_13172547338,Unnamed Charging Station,TATA,1,15.0,yes,unknown,23.3712794,85.350754,,,OpenStreetMap
+OSM_node_13198115513,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.1778318,77.6637027,,,OpenStreetMap
+OSM_node_13208141191,Unnamed Charging Station,Nuego,1,15.0,private,unknown,17.1658504,79.5216444,,,OpenStreetMap
+OSM_node_13238855163,Unnamed Charging Station,Glida,1,15.0,yes,yes,12.9662557,76.7885149,,,OpenStreetMap
+OSM_node_13243279486,Unnamed Charging Station,Independent / Unspecified,2,15.0,yes,unknown,28.4600091,77.0956185,,,OpenStreetMap
+OSM_node_13244932408,Unnamed Charging Station,Nayara,1,15.0,yes,unknown,20.002346,75.131832,,,OpenStreetMap
+OSM_node_13245932038,Unnamed Charging Station,Independent / Unspecified,4,15.0,yes,unknown,28.4951713,77.0912527,,,OpenStreetMap
+OSM_node_13246292161,Unnamed Charging Station,Drive,1,15.0,yes,unknown,19.8655711,75.4208946,,,OpenStreetMap
+OSM_node_13246305030,Unnamed Charging Station,Drive,1,15.0,yes,unknown,19.8690962,75.6074145,,,OpenStreetMap
+OSM_node_13246707689,Unnamed Charging Station,Mercedes-Benz,4,15.0,yes,unknown,28.4601725,77.0956771,,,OpenStreetMap
+OSM_node_13249124236,Unnamed Charging Station,Exiom Charging Station,1,15.0,yes,unknown,10.7731122,76.2794738,,,OpenStreetMap
+OSM_node_13276174617,Unnamed Charging Station,Ather Grid,1,15.0,yes,unknown,9.0712255,76.8561732,,,OpenStreetMap
+OSM_node_13277046524,Honda e:swap,Honda e:swap,12,15.0,yes,yes,13.0235213,77.5497316,,,OpenStreetMap
+OSM_node_13277046525,Honda e:swap,Honda e:swap,12,15.0,yes,yes,13.0235317,77.5497115,,,OpenStreetMap
+OSM_node_13289292621,Unnamed Charging Station,Independent / Unspecified,2,15.0,yes,unknown,13.1824621,77.6738012,,,OpenStreetMap
+OSM_node_13289292622,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.1842301,77.6808688,,,OpenStreetMap
+OSM_node_13294609048,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.587169,77.2413624,,,OpenStreetMap
+OSM_node_13300936973,Unnamed Charging Station,Independent / Unspecified,2,15.0,yes,unknown,28.4952305,77.0880137,,,OpenStreetMap
+OSM_node_13314245144,Unnamed Charging Station,Tata power,4,15.0,yes,yes,17.7000535,83.3029208,,,OpenStreetMap
+OSM_node_13351067902,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6185254,77.2871601,,,OpenStreetMap
+OSM_node_13442312863,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,26.535092,88.6902787,,,OpenStreetMap
+OSM_node_13506982427,Ather Grid Charging station,Ather energy,3,15.0,yes,yes,19.3242434,84.8749989,,,OpenStreetMap
+OSM_node_13516555501,ചാർജ് മോഡ്,KSEB,1,15.0,yes,unknown,9.2814528,76.4549754,,,OpenStreetMap
+OSM_node_13537485378,Ather Grid 6kW,Ather energy,6,15.0,yes,yes,20.2965484,85.8246467,,,OpenStreetMap
+OSM_node_13556517113,EZYGO,EZYGO,60,15.0,yes,yes,10.7844884,76.6561304,,,OpenStreetMap
+OSM_node_13566426890,Unnamed Charging Station,Sun Mobility,1,15.0,yes,unknown,13.0001758,77.6869647,,,OpenStreetMap
+OSM_node_13586349702,Unnamed Charging Station,EVOK ( Electric Vehicle Owners Kerala ),1,15.0,yes,unknown,10.4315979,76.1424753,,,OpenStreetMap
+OSM_node_13589225004,Hyundai EV Charging Station,Hyundai,2,15.0,yes,yes,12.3574005,78.4346233,,,OpenStreetMap
+OSM_node_13593376578,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.490134,76.3203607,,,OpenStreetMap
+OSM_node_13609193888,Unnamed Charging Station,Indian Oil,1,15.0,yes,unknown,10.1168975,76.4870945,,,OpenStreetMap
+OSM_node_13619600201,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.0433272,80.273731,,,OpenStreetMap
+OSM_node_13624573647,Unnamed Charging Station,EESL,1,22,yes,yes,28.5564985,77.2326653,,,OpenStreetMap
+OSM_node_13624573656,Unnamed Charging Station,EESL,1,22,yes,yes,28.5564627,77.2326631,,,OpenStreetMap
+OSM_node_13625197611,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.765215,77.3303554,,,OpenStreetMap
+OSM_node_13626520058,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,26.7700686,88.3785356,,,OpenStreetMap
+OSM_node_13629431945,Unnamed Charging Station,Independent / Unspecified,1,15.0,permissive,unknown,18.9048855,72.8046553,,,OpenStreetMap
+OSM_node_13632992904,Unnamed Charging Station,Honda e:swap,1,15.0,yes,unknown,28.6253953,77.2332995,,,OpenStreetMap
+OSM_node_13632992905,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.625397,77.2331692,,,OpenStreetMap
+OSM_node_13633628620,Unnamed Charging Station,Ather,1,15.0,yes,yes,28.6915005,77.2092134,,,OpenStreetMap
+OSM_node_13639965597,Unnamed Charging Station,tata power,4,15.0,yes,yes,17.7000601,83.3029199,,,OpenStreetMap
+OSM_node_13639989058,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,17.6935649,83.2922641,,,OpenStreetMap
+OSM_node_13639995467,Unnamed Charging Station,ather energy,type2,15.0,yes,unknown,18.0801417,83.3855754,,,OpenStreetMap
+OSM_node_13640015379,Unnamed Charging Station,tata power,5,15.0,yes,yes,17.7106183,83.3011869,,,OpenStreetMap
+OSM_node_13640131586,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,18.0390176,83.4064333,,,OpenStreetMap
+OSM_node_13640131587,Unnamed Charging Station,rama chandra agencies,type120kw,15.0,yes,unknown,18.0390223,83.4064315,,,OpenStreetMap
+OSM_node_13640142200,Unnamed Charging Station,ather energy,1,15.0,yes,unknown,18.2791114,83.5249789,,,OpenStreetMap
+OSM_node_13640389831,Unnamed Charging Station,Zeon,20,15.0,yes,yes,17.7269954,83.3071947,,,OpenStreetMap
+OSM_node_13640768575,Unnamed Charging Station,EVRE,20,15.0,yes,yes,16.5112068,80.6188172,,,OpenStreetMap
+OSM_node_13640776732,Unnamed Charging Station,Ather grid,50,15.0,yes,yes,16.5070863,80.615821,,,OpenStreetMap
+OSM_node_13668832204,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,26.9451215,70.889677,,,OpenStreetMap
+OSM_node_13688377301,Tesla Supercharger,Tesla,1,15.0,yes,yes,28.5515313,77.1218893,,,OpenStreetMap
+OSM_node_13688377501,Tesla Supercharger,Tesla,4,15.0,yes,yes,28.42597,77.0368971,,,OpenStreetMap
+OSM_node_13688398004,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,28.5515415,77.121598,,,OpenStreetMap
+OSM_node_13688398203,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,28.4261625,77.0367783,,,OpenStreetMap
+OSM_node_13737444601,Unnamed Charging Station,Infopark,1,15.0,yes,unknown,10.0083095,76.3647003,,,OpenStreetMap
+OSM_node_13746020730,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5694639,77.2044503,,,OpenStreetMap
+OSM_node_13746020743,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.5466296,77.1950119,,,OpenStreetMap
+OSM_node_13757728976,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5805655,77.1796965,,,OpenStreetMap
+OSM_node_13775144001,Unnamed Charging Station,Zeon,1,15.0,yes,unknown,11.4470857,77.7453537,,,OpenStreetMap
+OSM_node_13775144101,Unnamed Charging Station,Zeon,1,15.0,yes,unknown,11.4469901,77.7451856,,,OpenStreetMap
+OSM_node_13775144302,Unnamed Charging Station,Ather Grid,1,15.0,yes,unknown,11.4470328,77.7453455,,,OpenStreetMap
+OSM_node_13786947403,Unnamed Charging Station,Magenta,1,15.0,yes,unknown,17.2296337,74.4013203,,,OpenStreetMap
+OSM_node_13800324487,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5962686,77.2046077,,,OpenStreetMap
+OSM_node_13805934243,Unnamed Charging Station,Uplug,60,15.0,yes,yes,16.9460013,74.4053945,,,OpenStreetMap
+OSM_node_13805934247,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,16.9460728,74.4053213,,,OpenStreetMap
+OSM_node_13807361239,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5805088,77.1793725,,,OpenStreetMap
+OSM_node_13820100532,Unnamed Charging Station,Vida,1,15.0,yes,unknown,28.5592932,77.232144,,,OpenStreetMap
+OSM_node_13821901602,Shri Datt Smart EV Charging Station,Shri Datt Smart EV Charging Station,1,15.0,yes,unknown,24.1342185,72.4086733,,,OpenStreetMap
+OSM_node_13857810662,Unnamed Charging Station,Bharat Petroleum,1,15.0,yes,yes,12.1640693,79.6113871,,,OpenStreetMap
+OSM_node_13864933927,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,15.1124745,74.0356876,,,OpenStreetMap
+OSM_node_13890311968,IGL EV charging station,Independent / Unspecified,1,15.0,yes,unknown,28.5899305,77.229278,,,OpenStreetMap
+OSM_node_13913881928,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.7217837,75.8363276,,,OpenStreetMap
+OSM_node_13917513464,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.7157725,75.8759735,,,OpenStreetMap
+OSM_node_13917515273,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,22.7251301,75.8816036,,,OpenStreetMap
+OSM_node_13919645475,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,23.1027843,76.8760406,,,OpenStreetMap
+OSM_node_13931872808,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5641298,77.333309,,,OpenStreetMap
+OSM_node_13952066560,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,27.5495366,77.7557237,,,OpenStreetMap
+OSM_node_13952067947,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,27.5495279,77.7553038,,,OpenStreetMap
+OSM_node_13955464891,Unnamed Charging Station,Tata,6,15.0,yes,unknown,28.3190968,77.5517525,,,OpenStreetMap
+OSM_node_13955495821,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.3189147,77.5515785,,,OpenStreetMap
+OSM_node_13957568498,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,27.203849,78.1141208,,,OpenStreetMap
+OSM_node_13961992931,Unnamed Charging Station,Adani,1,15.0,yes,unknown,27.0572006,78.2727739,,,OpenStreetMap
+OSM_node_13962501791,Unnamed Charging Station,GOEC Charging Station,30,15.0,yes,no,10.0355871,76.3364986,,,OpenStreetMap
+OSM_node_13969467531,Unnamed Charging Station,ElectriVa,1,15.0,yes,unknown,28.5698471,77.1852904,,,OpenStreetMap
+OSM_node_13969467543,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5694049,77.1651098,,,OpenStreetMap
+OSM_node_13969665737,EV Charging,Independent / Unspecified,1,15.0,yes,unknown,11.941349,79.7969919,,,OpenStreetMap
+OSM_node_13982741917,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.5610466,77.2312484,,,OpenStreetMap
+OSM_node_13982895901,Unnamed Charging Station,Switch Delhi,1,15.0,yes,unknown,28.576123,77.069508,,,OpenStreetMap
+OSM_node_13990548253,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,8.578671,76.8662104,,,OpenStreetMap
+OSM_node_13992548532,Zeon,Independent / Unspecified,1,15.0,yes,yes,10.5126417,76.2589869,,,OpenStreetMap
+OSM_node_13995333421,EV charging station,Independent / Unspecified,1,15.0,yes,unknown,10.0854803,78.794014,,,OpenStreetMap
+OSM_node_13996697111,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.040732,92.9832015,,,OpenStreetMap
+OSM_node_13997229280,Maha,Independent / Unspecified,1,15.0,yes,unknown,8.4343849,77.0271035,,,OpenStreetMap
+OSM_node_13997784674,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5688051,77.2214679,,,OpenStreetMap
+OSM_node_13999844990,Unnamed Charging Station,ElectriVa,1,15.0,yes,unknown,28.5686034,77.2195292,,,OpenStreetMap
+OSM_node_13999844996,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.5686067,77.2204883,,,OpenStreetMap
+OSM_node_14000305693,Plug pe,Independent / Unspecified,2,15.0,yes,unknown,10.089479,78.794115,,,OpenStreetMap
+OSM_node_14000325470,Unnamed Charging Station,Ather,1,15.0,yes,unknown,10.2405182,76.3735427,,,OpenStreetMap
+OSM_node_14000397140,Unnamed Charging Station,GO EC,1,15.0,yes,unknown,10.0323811,76.3233259,,,OpenStreetMap
+OSM_node_14000450128,Unnamed Charging Station,Daffodils,1,15.0,yes,unknown,10.0320751,76.323341,,,OpenStreetMap
+OSM_node_14001726782,vida charging station,vida,2,15.0,yes,yes,11.0540118,77.0145419,,,OpenStreetMap
+OSM_node_14002814701,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,11.2408331,75.8019461,,,OpenStreetMap
+OSM_node_14005707553,Yash Square GOEC Electric Vehicle (Car) Charging Station 2x60 KW CCS2,Independent / Unspecified,1,15.0,yes,unknown,10.1105981,76.3727711,,,OpenStreetMap
+OSM_node_14016861905,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.584619,77.2204289,,,OpenStreetMap
+OSM_node_14017165298,Unnamed Charging Station,Glida,2,15.0,yes,yes,28.5680604,77.2235189,,,OpenStreetMap
+OSM_node_14017179737,Unnamed Charging Station,Reliable Charge,1,15.0,yes,yes,28.5827644,77.2511763,,,OpenStreetMap
+OSM_node_14017179749,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5838252,77.2502725,,,OpenStreetMap
+OSM_node_14017179796,Unnamed Charging Station,Honda,1,15.0,yes,unknown,28.564806,77.2400299,,,OpenStreetMap
+OSM_node_14017751400,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5719035,77.2578799,,,OpenStreetMap
+OSM_node_14017793416,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5685287,77.2205477,,,OpenStreetMap
+OSM_node_14027946995,Ather Grid Charging station,Ather Energy,2,15.0,yes,yes,11.0792591,77.0027863,coimbatore,,OpenStreetMap
+OSM_node_14028005231,Ather Grid Charging station,Ather Energy,3.3,15.0,yes,yes,11.074846,77.0080344,coimbatore,,OpenStreetMap
+OSM_node_14028012667,Ather Grid Charging station,Ather Energy,2,15.0,yes,yes,11.0957151,77.0154671,,TN,OpenStreetMap
+OSM_node_14028047524,Ather Grid Charging station,Ather Energy,2,15.0,yes,yes,11.0809332,76.9933971,coimbatore,,OpenStreetMap
+OSM_node_14028054151,Ather Grid Charging station,Ather Energy,2,15.0,yes,yes,11.0733347,76.9852954,,,OpenStreetMap
+OSM_node_14028521564,Ather Grid Charging station,Ather Energy,2,15.0,yes,yes,11.0250065,77.011191,coimbatore,,OpenStreetMap
+OSM_node_14028540743,vida charging station,vida,2,15.0,yes,yes,11.0253086,76.9788275,coimbatore,,OpenStreetMap
+OSM_node_14029112723,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5805091,77.2209605,,,OpenStreetMap
+OSM_node_14038442342,Ather Grid Charging station,Ather Energy,1,15.0,yes,yes,11.0462531,76.9468752,,,OpenStreetMap
+OSM_node_14046155283,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5597846,77.1745787,,,OpenStreetMap
+OSM_node_14047497970,Unnamed Charging Station,Statiq,1,15.0,yes,unknown,13.071801,80.2223305,,,OpenStreetMap
+OSM_node_14058615793,Unnamed Charging Station,Ather Grid,2,15.0,yes,yes,11.1658867,76.9492139,,,OpenStreetMap
+OSM_node_14058958230,Unnamed Charging Station,Honda,1,15.0,yes,unknown,28.6938836,77.2093354,,,OpenStreetMap
+OSM_node_14058958254,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,28.6914839,77.2092722,,,OpenStreetMap
+OSM_node_14058958262,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,28.6914946,77.2092346,,,OpenStreetMap
+OSM_node_14058958287,Unnamed Charging Station,Lectrix EV,1,15.0,yes,yes,28.6914877,77.2092591,,,OpenStreetMap
+OSM_node_14058958324,Unnamed Charging Station,Vinfast,1,15.0,yes,yes,28.6914752,77.2092831,,,OpenStreetMap
+OSM_node_14059886602,BPCL Charging Station,Independent / Unspecified,1,15.0,yes,unknown,13.0979111,80.2384469,,,OpenStreetMap
+OSM_node_14063411321,Chargezone EV Charging,Independent / Unspecified,2,15.0,yes,yes,12.5894797,78.1435604,,,OpenStreetMap
+OSM_node_14066036841,Unnamed Charging Station,ElectriVa,1,15.0,yes,unknown,28.5723516,77.1802808,,,OpenStreetMap
+OSM_node_14067934164,Unnamed Charging Station,HP eCharge,2,15.0,yes,yes,11.2831841,76.9708429,Mettupalayam,TN,OpenStreetMap
+OSM_node_14072658776,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,23.2620619,87.8391376,,,OpenStreetMap
+OSM_node_14073868040,Ather Grid Charging station,Ather Energy,2,15.0,yes,yes,11.0366665,76.9275036,,,OpenStreetMap
+OSM_node_14074085866,Tata Power EV Charging,Tata Power,30,15.0,permissive,unknown,28.5947709,77.1333487,,,OpenStreetMap
+OSM_node_14074469426,Hyundai Hotel Arabian Station,Hyundai,2,15.0,yes,yes,11.2265873,76.9594139,,,OpenStreetMap
+OSM_node_14074469427,Ather Grid Charging station,Ather Energy,1,15.0,yes,yes,11.2266184,76.9596876,,,OpenStreetMap
+OSM_node_14074612257,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6890231,77.2070216,,,OpenStreetMap
+OSM_node_14078531523,vida charging station MRG hero,vida,2,15.0,yes,yes,11.0324857,76.9779353,,,OpenStreetMap
+OSM_node_14081555701,Jio BP Pulse,Independent / Unspecified,1,15.0,yes,unknown,16.9357078,75.7391642,,,OpenStreetMap
+OSM_node_14081749954,Unnamed Charging Station,Adani,1,15.0,yes,unknown,17.595456,76.0655753,,,OpenStreetMap
+OSM_node_14090981021,Unnamed Charging Station,HP eCharge,2,15.0,yes,yes,11.2473846,76.9565426,,,OpenStreetMap
+OSM_node_14091005515,Unnamed Charging Station,Independent / Unspecified,2,15.0,yes,yes,11.1133057,76.9353761,,,OpenStreetMap
+OSM_node_14094178511,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.693914,77.2183933,,,OpenStreetMap
+OSM_node_14094459866,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5584955,77.2393014,,,OpenStreetMap
+OSM_node_14096406876,Chargezone EV Charging (Gentari),Independent / Unspecified,1,15.0,yes,unknown,12.5701391,78.1725206,,,OpenStreetMap
+OSM_node_14096682501,Unnamed Charging Station,Tata Power Charging Station,1,15.0,yes,unknown,27.5725047,75.1491202,,,OpenStreetMap
+OSM_node_14096683901,Unnamed Charging Station,Electric Vehicle Charging Station,1,15.0,yes,unknown,27.5721525,75.1496179,,,OpenStreetMap
+OSM_node_14100919780,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5688941,77.2194753,,,OpenStreetMap
+OSM_node_14100919787,Unnamed Charging Station,Blu Smart Charge,2,15.0,yes,unknown,28.5680283,77.2200938,,,OpenStreetMap
+OSM_node_14100954403,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5579483,77.1868818,,,OpenStreetMap
+OSM_node_14100954447,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5611893,77.1880625,,,OpenStreetMap
+OSM_node_14100954555,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.556706,77.1864405,,,OpenStreetMap
+OSM_node_14101571501,TATA power,Independent / Unspecified,1,15.0,yes,unknown,23.2813742,72.7596099,,,OpenStreetMap
+OSM_node_14101585227,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5556409,77.1765669,,,OpenStreetMap
+OSM_node_14101585231,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5422697,77.2272712,,,OpenStreetMap
+OSM_node_14101585246,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5439827,77.2045958,,,OpenStreetMap
+OSM_node_14101585269,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5663604,77.1663358,,,OpenStreetMap
+OSM_node_14101585281,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5459239,77.1970866,,,OpenStreetMap
+OSM_node_14101585294,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5600235,77.1708457,,,OpenStreetMap
+OSM_node_14106405348,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.6183593,77.2871019,,,OpenStreetMap
+OSM_node_14107361746,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,15.283211,76.3868679,,,OpenStreetMap
+OSM_node_14110771703,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,17.7216493,83.307115,,,OpenStreetMap
+OSM_node_14114661618,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,15.3626357,75.2130756,,,OpenStreetMap
+OSM_node_14115719957,Unnamed Charging Station,Vinfast,1,15.0,yes,unknown,28.6883428,77.2211638,,,OpenStreetMap
+OSM_node_14115719958,Unnamed Charging Station,Ather,1,15.0,yes,unknown,28.6883767,77.2211596,,,OpenStreetMap
+OSM_node_14115719961,Unnamed Charging Station,Lectrix EV,1,15.0,yes,unknown,28.6884319,77.2211588,,,OpenStreetMap
+OSM_node_14127552402,ചാർജമോഡ് ഇവി ചാർജിങ് സ്റ്റേഷൻ,KSEB,1,15.0,yes,unknown,9.3143146,76.4290674,,,OpenStreetMap
+OSM_node_14131315924,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5592915,77.2361389,,,OpenStreetMap
+OSM_node_14133758030,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,12.5820463,78.1571461,,,OpenStreetMap
+OSM_node_14158954590,Unnamed Charging Station,Honda,1,15.0,yes,unknown,19.146307,72.8336534,,,OpenStreetMap
+OSM_node_14159740576,Ather Fast Charger,Independent / Unspecified,1,15.0,yes,unknown,12.8316517,77.703681,,,OpenStreetMap
+OSM_node_14166994014,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.7066521,77.1820925,,,OpenStreetMap
+OSM_node_14168509564,KSEB Charging Station,KSEB,1,15.0,yes,yes,10.5605486,76.2702145,,,OpenStreetMap
+OSM_node_14188555471,Unnamed Charging Station,Yuma,1,15.0,yes,unknown,28.4505419,77.0906876,,,OpenStreetMap
+OSM_node_14190528261,Zeon,Zeon,1,15.0,yes,yes,11.2808074,77.5577801,,,OpenStreetMap
+OSM_node_14190626710,Ather,Ather,1,15.0,yes,unknown,11.2808334,77.5577496,,,OpenStreetMap
+OSM_node_14197852532,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,19.1302336,72.8314106,,,OpenStreetMap
+OSM_node_14206472850,Ather Grid,Independent / Unspecified,1,15.0,yes,unknown,15.6060819,73.8227874,,,OpenStreetMap
+OSM_node_14209698341,Unnamed Charging Station,Tajalli Tech Pvt Ltd,7.4,15.0,yes,no,26.8887622,80.9460332,,,OpenStreetMap
+OSM_node_14214180458,Unnamed Charging Station,BSES,1,15.0,yes,unknown,28.5732896,77.2108081,,,OpenStreetMap
+OSM_node_14236721105,vida charging station,vida,1,15.0,yes,yes,11.1644682,76.9490164,,,OpenStreetMap
+OSM_node_14236728075,vida charging station,vida,1,15.0,yes,yes,11.0747855,76.9417466,,,OpenStreetMap
+OSM_node_14241358114,Unnamed Charging Station,"Charge Zone , Charging Station",1,15.0,yes,unknown,15.7064165,78.1279998,,,OpenStreetMap
+OSM_node_14243811707,procharge,procharge,2,15.0,yes,yes,12.2103972,79.0840447,,,OpenStreetMap
+OSM_node_14250100816,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,yes,11.7529748,78.0505436,,,OpenStreetMap
+OSM_node_14303949793,Unnamed Charging Station,Ather,1,15.0,yes,unknown,10.9731816,76.8722075,,,OpenStreetMap
+OSM_way_359699641,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,18.5912547,73.7488124,,,OpenStreetMap
+OSM_way_360242628,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,18.5882782,73.784882,,,OpenStreetMap
+OSM_way_639223862,Unnamed Charging Station,KSEB,1,15.0,yes,unknown,9.4254744,76.3467396,,,OpenStreetMap
+OSM_way_858680571,E bus Depot,smart city srinagar,1,15.0,yes,unknown,34.0382201,74.8770646,,,OpenStreetMap
+OSM_way_1097173824,Unnamed Charging Station,Independent / Unspecified,1,15.0,permit,unknown,25.4161544,81.862514,,,OpenStreetMap
+OSM_way_1150511285,Unnamed Charging Station,Shell,4,15.0,customers,no,12.9725414,77.7078105,,,OpenStreetMap
+OSM_way_1150599656,Unnamed Charging Station,EV charging station,1,15.0,yes,unknown,26.5099261,80.2407412,,,OpenStreetMap
+OSM_way_1152420782,Unnamed Charging Station,Tata Power,2,15.0,yes,unknown,18.6165794,73.7476226,,,OpenStreetMap
+OSM_way_1152421163,Unnamed Charging Station,Tata Power,2,15.0,yes,unknown,18.6234031,73.7454767,,,OpenStreetMap
+OSM_way_1152424877,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,18.5994671,73.7807696,,,OpenStreetMap
+OSM_way_1152427340,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,18.5807735,73.8158088,,,OpenStreetMap
+OSM_way_1198553894,Unnamed Charging Station,Government,1,15.0,yes,unknown,8.5086606,76.9460986,,,OpenStreetMap
+OSM_way_1200990773,Unnamed Charging Station,Independent / Unspecified,4,15.0,yes,unknown,28.5888756,77.2530636,,,OpenStreetMap
+OSM_way_1215901273,Unnamed Charging Station,KSEB,4,15.0,yes,yes,9.9629214,76.319215,,,OpenStreetMap
+OSM_way_1217492370,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,9.632726,76.5244079,,,OpenStreetMap
+OSM_way_1221529119,Shell EV Charging Station,Shell,1,15.0,yes,unknown,18.4571766,73.8053923,,,OpenStreetMap
+OSM_way_1222357597,Unnamed Charging Station,Independent / Unspecified,7,15.0,private,unknown,18.5794696,73.73858,,,OpenStreetMap
+OSM_way_1230812469,Unnamed Charging Station,TerraCharge,1,15.0,yes,unknown,28.6250807,77.3055103,,,OpenStreetMap
+OSM_way_1231361851,Unnamed Charging Station,KSEB,100,15.0,yes,yes,10.0159012,76.5651977,,,OpenStreetMap
+OSM_way_1250660872,Unnamed Charging Station,O S Overseas,1,15.0,customers,unknown,18.4926136,73.9990571,,,OpenStreetMap
+OSM_way_1299079174,Unnamed Charging Station,FreshBus Charging Point,1,15.0,private,unknown,17.4048114,78.3333396,,,OpenStreetMap
+OSM_way_1318570394,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5658947,77.2488941,,,OpenStreetMap
+OSM_way_1334165085,Unnamed Charging Station,Jio BP,1,15.0,yes,unknown,12.9517505,77.7024581,,,OpenStreetMap
+OSM_way_1353053241,Jio BP,Independent / Unspecified,1,15.0,yes,unknown,13.0878799,77.6601841,,,OpenStreetMap
+OSM_way_1354947073,Unnamed Charging Station,ather,1,15.0,yes,unknown,10.1229471,76.3407691,,,OpenStreetMap
+OSM_way_1362135033,Unnamed Charging Station,Kerala State Electricity Board,1,15.0,yes,unknown,9.5428922,76.5141398,,,OpenStreetMap
+OSM_way_1362820338,Urja Charging Station,Independent / Unspecified,5,15.0,yes,unknown,13.0089749,74.7937015,,,OpenStreetMap
+OSM_way_1385715146,Unnamed Charging Station,ChargeZone,2,15.0,permissive,yes,22.3327298,73.2163384,,,OpenStreetMap
+OSM_way_1385850870,Unnamed Charging Station,ChargeZone,60,15.0,yes,yes,22.3247522,73.17047,,,OpenStreetMap
+OSM_way_1387453961,Unnamed Charging Station,Kerala State Electricity Board,1,15.0,yes,unknown,10.6327721,76.0857412,,,OpenStreetMap
+OSM_way_1388052885,Unnamed Charging Station,Kerala State Electricity Board,1,15.0,yes,unknown,10.6571627,76.2605525,,,OpenStreetMap
+OSM_way_1412674423,Unnamed Charging Station,EESL,1,15.0,yes,unknown,9.6338224,76.3336829,,,OpenStreetMap
+OSM_way_1428252016,Unnamed Charging Station,Statiq,1,15.0,yes,unknown,30.3245543,78.041805,,,OpenStreetMap
+OSM_way_1453071780,Unnamed Charging Station,BESCOM,1,15.0,yes,unknown,13.1831753,77.6792437,,,OpenStreetMap
+OSM_way_1476227828,Unnamed Charging Station,Nashik Municipal Corporation,1,15.0,yes,unknown,19.9730341,73.72786,,,OpenStreetMap
+OSM_way_1478610222,Charj Karo,HLL Infra Tech Services,1,15.0,yes,unknown,28.6335149,77.216504,,,OpenStreetMap
+OSM_way_1491010012,Unnamed Charging Station,Bolt Earth,1,15.0,private,yes,12.9284786,77.7459842,,,OpenStreetMap
+OSM_way_1491224554,Unnamed Charging Station,Bolt Earth,1,15.0,private,yes,12.9301172,77.7442461,,,OpenStreetMap
+OSM_way_1491224555,Unnamed Charging Station,Bolt Earth,1,15.0,private,yes,12.9321299,77.7463558,,,OpenStreetMap
+OSM_way_1496159597,Unnamed Charging Station,Kerala State Electricity Board,1,15.0,customers,unknown,11.4440948,75.9558235,,,OpenStreetMap
+OSM_way_1510242804,Unnamed Charging Station,Uplug,60,15.0,yes,yes,16.9459866,74.4053918,,,OpenStreetMap
+OSM_way_1528697596,Unnamed Charging Station,Independent / Unspecified,1,15.0,yes,unknown,28.5745564,77.3554084,,,OpenStreetMap
+OSM_way_1531209911,Unnamed Charging Station,Shell,1,15.0,yes,yes,12.9221172,80.1654923,,,OpenStreetMap
+OSM_way_1536737974,Unnamed Charging Station,Indofast Energy,1,15.0,yes,unknown,8.5104241,76.8972637,,,OpenStreetMap

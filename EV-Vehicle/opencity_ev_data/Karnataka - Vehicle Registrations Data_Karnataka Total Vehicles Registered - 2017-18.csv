@@ -1,0 +1,27 @@
+SL. No,Category,Type of Vehicle,Vehicles added ,Total Registered vehicles
+1,Non-transport vehicles (private),Two Wheelers,1185182,16082941
+2,Non-transport vehicles (private),Cars,201247,3378183
+3,Non-transport vehicles (private),Omni Buses,197,14965
+4,Non-transport vehicles (private),Tractors,32209,513792
+5,Non-transport vehicles (private),Trailers,14200,300150
+6,Non-transport vehicles (private),Construction Moving Equipment,227,1394
+7,Non-transport vehicles (private),Private Service Vehicle,12,522
+8,Non-transport vehicles (private),Other Vehicles,9637,71212
+,Total Non-transport(private) vehicles (A),,1442911,20363159
+9(a),Transport Vehicle,Multi Axled/Articulated Vehicle,2129,18162
+9(b),Transport Vehicle,Trucks and Lorries,12909,448947
+9,Total Transport Vehicles,,15038,467109
+10(a),Light Goods vehicles,Four Wheeler,31676,461687
+10(b),Light Goods vehicles,Three Wheeler,8546,177777
+10,Total LGVs,,40222,639464
+11(a),Buses,Buses,10561,243373
+11,Total Buses,,10561,243373
+12(a),Taxies,Motor Cabs,22500,290250
+12(b),Taxies,Maxi Cabs,3736,107073
+12(c),Taxies,Others,0,22
+12,Total Taxies,,26236,397345
+13,LMV Passenger,Three Seater(A/R),30178,638898
+14,LMV Passenger,Other Vehicles,5440,91763
+,Total LMV Passenger,,35618,730661
+,TOTAL TRANSPORT(B),,127675,2477952
+,TOTAL (A)+(B),,1570586,22841111

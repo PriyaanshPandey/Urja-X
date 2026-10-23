@@ -1,0 +1,27 @@
+SL. No,Category,Type of Vehicle,Total registered vehicles in 2023-24,Newly added in 24-25,Total registered as of 31-03-2025
+1,Non-transport vehicles (private),Two Wheelers,22404763,1295534,23700297
+2,Non-transport vehicles (private),Cars,4649983,266786,4916769
+3,Non-transport vehicles (private),Omni Buses,17381,804,18185
+4,Non-transport vehicles (private),Tractors,781046,50860,831906
+5,Non-transport vehicles (private),Trailers,381251,11835,393086
+6,Non-transport vehicles (private),Construction Moving Equipment,17812,4246,22058
+7,Non-transport vehicles (private),Private Service Vehicle,2153,107,2260
+8,Non-transport vehicles (private),Other Vehicles,116080,7546,123626
+,Total Non-transport(private) vehicles (A),,28370469,1637718,30008187
+9(a),Transport Vehicle,Multi Axled/Articulated Vehicle,21402,766,22168
+9(b),Transport Vehicle,Trucks and Lorries,543221,16641,559862
+9,Total Transport Vehicles,,564623,17407,582030
+10(a),Light Goods vehicles,Four Wheeler,685718,46356,732074
+10(b),Light Goods vehicles,Three Wheeler,225682,10905,236587
+10,Total LGVs,,911400,57261,968661
+11(a),Buses,Buses,278812,10533,289345
+11,Total Buses,,278812,10533,289345
+12(a),Taxies,Motor Cabs,387770,33186,420956
+12(b),Taxies,Maxi Cabs,121705,2871,124576
+12(c),Taxies,Others,305,0,305
+12,Total Taxies,,509780,36057,545837
+13,LMV Passenger,Three Seater(A/R),823757,61388,885145
+14,LMV Passenger,Other Vehicles,178697,13463,192160
+,Total LMV Passenger,,1002454,74851,1077305
+,TOTAL TRANSPORT(B),,3267069,196109,3463178
+,TOTAL (A)+(B),,31637538,1833827,33471365
