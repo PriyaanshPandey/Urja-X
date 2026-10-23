@@ -37,23 +37,48 @@ FILTERS = {
     ],
 }
 
-def find_osmium_binary():
-    # 1. Check system PATH
-    bin_path = shutil.which("osmium")
-    if bin_path:
-        return bin_path
+# def find_osmium_binary():
+#     # 1. Check system PATH
+#     bin_path = shutil.which("osmium")
+#     if bin_path:
+#         return bin_path
     
-    # 2. Check conda environments
-    user_home = Path.home()
-    possible_conda_paths = [
-        user_home / "anaconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
-        user_home / "miniconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
-        user_home / "anaconda3" / "Scripts" / "osmium.exe",
-    ]
-    for p in possible_conda_paths:
-        if p.exists():
-            return str(p)
-    return None
+#     # 2. Check conda environments
+#     user_home = Path.home()
+#     possible_conda_paths = [
+#         user_home / "anaconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
+#         user_home / "miniconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
+#         user_home / "anaconda3" / "Scripts" / "osmium.exe",
+#     ]
+#     for p in possible_conda_paths:
+#         if p.exists():
+#             return str(p)
+#     return None
+
+# def find_osmium_binary():
+#     # 1. Check system PATH first
+#     bin_path = shutil.which("osmium")
+#     if bin_path:
+#         return bin_path
+    
+#     # 2. Check conda environments for osmium (without .exe suffix first, or general lookup)
+#     user_home = Path.home()
+#     possible_conda_paths = [
+#         user_home / "anaconda3" / "envs" / "osm" / "Library" / "bin" / "osmium",
+#         user_home / "miniconda3" / "envs" / "osm" / "Library" / "bin" / "osmium",
+#         user_home / "anaconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
+#         user_home / "miniconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
+#     ]
+#     for p in possible_conda_paths:
+#         if p.exists():
+#             return str(p)
+            
+#     # Fallback to general lookup if active in path
+#     return shutil.which("osmium")
+
+def find_osmium_binary():
+    # Force use of the global system/conda command path directly
+    return "osmium"
 
 def find_ogr2ogr_binary():
     bin_path = shutil.which("ogr2ogr")
