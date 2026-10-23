@@ -37,6 +37,7 @@ FILTERS = {
     ],
 }
 
+<<<<<<< HEAD
 # def find_osmium_binary():
 #     # 1. Check system PATH
 #     bin_path = shutil.which("osmium")
@@ -79,6 +80,25 @@ FILTERS = {
 def find_osmium_binary():
     # Force use of the global system/conda command path directly
     return "osmium"
+=======
+def find_osmium_binary():
+    # 1. Check system PATH
+    bin_path = shutil.which("osmium")
+    if bin_path:
+        return bin_path
+    
+    # 2. Check conda environments
+    user_home = Path.home()
+    possible_conda_paths = [
+        user_home / "anaconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
+        user_home / "miniconda3" / "envs" / "osm" / "Library" / "bin" / "osmium.exe",
+        user_home / "anaconda3" / "Scripts" / "osmium.exe",
+    ]
+    for p in possible_conda_paths:
+        if p.exists():
+            return str(p)
+    return None
+>>>>>>> 1b22c1d78ecd2551d2a162bb3305036e18304b4c
 
 def find_ogr2ogr_binary():
     bin_path = shutil.which("ogr2ogr")
