@@ -79,3 +79,4 @@ if old_cost in mvp_text:
     print("SUCCESS: Updated MVP Specification file!")
 else:
     print("Target cost text not found in MVP spec.")
+
