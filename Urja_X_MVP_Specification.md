@@ -90,7 +90,7 @@ Inside any selected corridor desert or deficit district, clicking a candidate si
 │   ➜ Situated on 6-lane NH-48 with heavy intercity passenger and freight traffic.       │
 │ • Power Grid Proximity (25% weight): Score 86/100                                      │
 │   ➜ Nearest 33/11 kV Substation is 1.1 km away (Kotputli DISCOM feeder).              │
-│   ➜ Line voltage drop within CEA 6% limit; HV extension capex < ₹4.5 Lakhs.           │
+│   ➜ Line voltage drop within CEA 6% limit; feeder distance 1.1 km is well within the 5 km technical limit.           │
 │ • Brownfield Advantage (15% weight): Score 90/100                                      │
 │   ➜ Co-located with an operational HPCL Petrol Pump & 24/7 Food Court.                 │
 │   ➜ 0 days land acquisition delay; existing dedicated parking bays and 24/7 lighting.  │

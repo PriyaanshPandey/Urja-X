@@ -273,29 +273,30 @@ We test all nine real-world parameters outlined in national planning guidelines:
 9. **Commercial Amenities & Dhabas:** Restroom facilities, food courts, and 24/7 safe parking.
 
 #### 2. Stage 1: How We Test Individual Factors Without Metric Bias
-If an evaluation metric only measured grid cost, the grid factor would unfairly win 100% of the weight. If it only measured EV count, vehicle density would win 100%. 
+If an evaluation metric only measured substation distance, the grid factor would unfairly win 100% of the weight. If it only measured vehicle count, EV density would unfairly win 100%. 
 
-To give every factor an equal, unbiased chance, Urja-X evaluates each factor's proposed network across **three physical, non-negotiable dimensions** combined using a **Geometric Mean** (so failing on any one dimension collapses the factor's score):
+To ensure absolute fairness without relying on unverified financial cost data, Urja-X evaluates each factor across **three empirical physical dimensions** grounded in our verified datasets, combined using a **Geometric Mean**:
 
-$$\text{Factor Score } S_i = \sqrt[3]{M_{\text{service}} \times M_{\text{commercial}} \times M_{\text{operability}}}$$
+$$\text{Factor Score } S_i = \sqrt[3]{M_{\text{service}} \times M_{\text{demand}} \times M_{\text{readiness}}}$$
 
-* **$M_{\text{service}}$ (Service Effectiveness):** Trip completion percentage and reduction of highway charging deserts (prevents stranded vehicles).
-* **$M_{\text{commercial}}$ (Commercial Viability):** Station utilization rate and daily kWh throughput (prevents under-utilized "ghost stations").
-* **$M_{\text{operability}}$ (Technical Operability):** Proximity to electrical grid substations and presence of brownfield amenities (prevents multi-year commissioning delays).
+* **$M_{\text{service}}$ (Corridor Service & Desert Elimination):** Percentage of the highway corridor where inter-station distance satisfies the statutory $25\text{ km}$ MoP benchmark (derived from `india_nh.gpkg`).
+* **$M_{\text{demand}}$ (Fleet Demand Alignment):** Concentration of registered electric vehicles captured within a $15\text{ km}$ corridor catchment buffer (derived from VAHAN 4 `EV Sales Data.xlsx`).
+* **$M_{\text{readiness}}$ (Infrastructure & Grid Readiness):** Physical distance to verified $11\text{kV}/33\text{kV}$ substations (from `india_electricity_final.csv`) and co-location with verified fuel retail outlets (from `india_pois.gpkg`).
 
 **Why This Is Fair:**
-* If a strategy sites chargers based **only on the Power Grid**, it scores 100% on Operability, but nearly 0% on Commercial Viability and Service (chargers end up in empty fields with no traffic).
+* If a strategy sites chargers based **only on the Power Grid**, it scores 100% on Infrastructure Readiness, but near 0% on Demand and Service (chargers end up placed in rural empty fields with no traffic).
 * If a strategy sites chargers based **only on EV Density**, it clumps all chargers in big cities, stranding long-distance highway travelers.
-* Factors that achieve a balanced, high score across all three real-world dimensions naturally receive higher empirical weights ($W_i = S_i / \sum S_j$).
+* If a strategy sites chargers based **only on Distance**, it places chargers in remote forests 20 km away from any electrical substation.
+* Factors that achieve a balanced, high score across all three physical dimensions naturally receive higher empirical weights ($W_i = S_i / \sum S_j$).
 
-#### 3. Stage 2: Algorithm Battle & Tournament
-Once the objective weights are derived, we test which **algorithm** best selects the final $K$ stations across a highway corridor:
-* **Algorithm A (Greedy Ranker):** Picks highest-scoring sites directly (prone to clustering).
-* **Algorithm B (Spatial K-Medoids):** Balances high scores with anti-clustering distance constraints.
-* **Algorithm C (Integer Linear Programming - ILP):** Formulates placement as an optimal set-cover problem.
-* **Algorithm D (NSGA-II Multi-Objective Genetic Optimizer):** Evolves station combinations over 50 generations to maximize total corridor coverage while minimizing infrastructure capex.
+#### 3. Stage 2: Algorithm Battle & Strategy Tournament
+Once objective weights are derived, we benchmark which **optimization algorithm** selects the best set of $K$ stations along a highway:
+* **Algorithm A (Greedy Ranker):** Picks highest-scoring sites directly (prone to spatial clustering).
+* **Algorithm B (Spatial K-Medoids):** Partitions candidate points into clusters, enforcing spatial dispersion.
+* **Algorithm C (Integer Linear Programming - ILP):** Formulates placement as an optimal binary set-cover problem.
+* **Algorithm D (NSGA-II Multi-Objective Genetic Optimizer):** Evolves station combinations over 50 generations to simultaneously maximize corridor coverage and brownfield matching while minimizing substation distance.
 
-The algorithms are benchmarked on **Capital-Adjusted Service Efficiency (CASE)**, measuring total highway coverage percentage achieved per crore of public investment with zero spatial redundancy.
+The algorithms are benchmarked on **Spatial Optimization Quality (SOQ)**: measuring corridor coverage percentage ($\%$), average physical distance to substations (km), and zero spatial clustering overlap.
 
 ---
 
