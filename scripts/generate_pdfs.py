@@ -161,4 +161,5 @@ def convert_md_to_pdf(md_filename, pdf_filename):
 if __name__ == "__main__":
     convert_md_to_pdf("Round_1_Submission_EV_Infra_Map_India_Urja_X.md", "Round_1_Submission_EV_Infra_Map_India_Urja_X.pdf")
     convert_md_to_pdf("Urja_X_MVP_Specification.md", "Urja_X_MVP_Specification.pdf")
+    convert_md_to_pdf("Urja_X_Detailed_MVP_Plan.md", "Urja_X_Detailed_MVP_Plan.pdf")
     convert_md_to_pdf("Urja_X_Simulation_Testing_Framework.md", "Urja_X_Simulation_Testing_Framework.pdf")
