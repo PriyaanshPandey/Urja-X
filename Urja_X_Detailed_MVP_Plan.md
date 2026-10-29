@@ -278,3 +278,4 @@ The technical implementation is organized into four modular sprints leading to t
 │   • Electrical Grid Network (Substations & Lines in `Electricity-Data/`)        │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
+
