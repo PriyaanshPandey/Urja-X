@@ -160,3 +160,4 @@ if norm_target in norm_text:
         print("Positions not found:", start_pos, end_pos)
 else:
     print("Normalized target not found.")
+

@@ -134,3 +134,4 @@ Embedded at the bottom of the Agency portal for instant policy execution:
 | **Corridor Desert Radar** | Discretizes linear highway vectors into 5 km windows to pinpoint real-world range anxiety. | Others rely on district centroid circles that fail on linear intercity corridors. |
 | **Grid-Feasible Siting** | Pre-evaluates proximity to $11\text{kV}/33\text{kV}$ substations using empirical electrical grid data. | Blind placement on roads lacking high-voltage grid access, causing massive commissioning delays. |
 | **Policy-to-Tender Workflow** | One-click export of PM E-DRIVE compliant tender spreadsheets and executive DPRs. | Manual, months-long consulting cycles to translate GIS maps into actionable procurement tenders. |
+
