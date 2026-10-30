@@ -1,0 +1,206 @@
+{
+  "total_test_cases_evaluated": 250,
+  "evaluation_metric": "Triad Network Health Index (Geometric Mean: M_service * M_demand * M_readiness)^(1/3)",
+  "ranked_factors": [
+    {
+      "factor_id": "f7_substation",
+      "factor_name": "Electricity Grid Substation Proximity",
+      "mean_triad_score": 0.7032,
+      "score_std": 0.1849,
+      "mean_service_ms": 0.9835,
+      "mean_demand_md": 0.676,
+      "mean_readiness_mr": 0.6152,
+      "derived_weight": 0.1128,
+      "derived_weight_pct": "11.3%"
+    },
+    {
+      "factor_id": "f3_traffic_flow",
+      "factor_name": "Highway Traffic Flow (IHMCL PCU)",
+      "mean_triad_score": 0.7002,
+      "score_std": 0.19,
+      "mean_service_ms": 0.9782,
+      "mean_demand_md": 0.7102,
+      "mean_readiness_mr": 0.591,
+      "derived_weight": 0.1123,
+      "derived_weight_pct": "11.2%"
+    },
+    {
+      "factor_id": "f9_dhaba_amenity",
+      "factor_name": "Commercial Amenities & Dhabas",
+      "mean_triad_score": 0.697,
+      "score_std": 0.1895,
+      "mean_service_ms": 0.9772,
+      "mean_demand_md": 0.6801,
+      "mean_readiness_mr": 0.6062,
+      "derived_weight": 0.1118,
+      "derived_weight_pct": "11.2%"
+    },
+    {
+      "factor_id": "f8_fuel_station",
+      "factor_name": "Fuel Stations / Brownfield Points",
+      "mean_triad_score": 0.6958,
+      "score_std": 0.1965,
+      "mean_service_ms": 0.9782,
+      "mean_demand_md": 0.6824,
+      "mean_readiness_mr": 0.6091,
+      "derived_weight": 0.1116,
+      "derived_weight_pct": "11.2%"
+    },
+    {
+      "factor_id": "f6_tourism",
+      "factor_name": "Tourism & Waypoint Pull",
+      "mean_triad_score": 0.6902,
+      "score_std": 0.1907,
+      "mean_service_ms": 0.9835,
+      "mean_demand_md": 0.6818,
+      "mean_readiness_mr": 0.5903,
+      "derived_weight": 0.1107,
+      "derived_weight_pct": "11.1%"
+    },
+    {
+      "factor_id": "f4_population",
+      "factor_name": "Human Population Density",
+      "mean_triad_score": 0.6892,
+      "score_std": 0.1918,
+      "mean_service_ms": 0.99,
+      "mean_demand_md": 0.6808,
+      "mean_readiness_mr": 0.5838,
+      "derived_weight": 0.1105,
+      "derived_weight_pct": "11.1%"
+    },
+    {
+      "factor_id": "f2_ev_fleet",
+      "factor_name": "EV Fleet Density (VAHAN Registrations)",
+      "mean_triad_score": 0.6884,
+      "score_std": 0.1951,
+      "mean_service_ms": 0.9752,
+      "mean_demand_md": 0.6832,
+      "mean_readiness_mr": 0.5906,
+      "derived_weight": 0.1104,
+      "derived_weight_pct": "11.0%"
+    },
+    {
+      "factor_id": "f5_economic",
+      "factor_name": "Economic / Night-Lights Radiance",
+      "mean_triad_score": 0.687,
+      "score_std": 0.1932,
+      "mean_service_ms": 0.99,
+      "mean_demand_md": 0.6804,
+      "mean_readiness_mr": 0.5812,
+      "derived_weight": 0.1102,
+      "derived_weight_pct": "11.0%"
+    },
+    {
+      "factor_id": "f1_distance",
+      "factor_name": "Inter-Charger Distance (<100 km)",
+      "mean_triad_score": 0.6853,
+      "score_std": 0.193,
+      "mean_service_ms": 0.9795,
+      "mean_demand_md": 0.6792,
+      "mean_readiness_mr": 0.583,
+      "derived_weight": 0.1099,
+      "derived_weight_pct": "11.0%"
+    }
+  ],
+  "raw_factor_data": {
+    "f1_distance": {
+      "factor_id": "f1_distance",
+      "factor_name": "Inter-Charger Distance (<100 km)",
+      "mean_triad_score": 0.6853,
+      "score_std": 0.193,
+      "mean_service_ms": 0.9795,
+      "mean_demand_md": 0.6792,
+      "mean_readiness_mr": 0.583,
+      "derived_weight": 0.1099,
+      "derived_weight_pct": "11.0%"
+    },
+    "f2_ev_fleet": {
+      "factor_id": "f2_ev_fleet",
+      "factor_name": "EV Fleet Density (VAHAN Registrations)",
+      "mean_triad_score": 0.6884,
+      "score_std": 0.1951,
+      "mean_service_ms": 0.9752,
+      "mean_demand_md": 0.6832,
+      "mean_readiness_mr": 0.5906,
+      "derived_weight": 0.1104,
+      "derived_weight_pct": "11.0%"
+    },
+    "f3_traffic_flow": {
+      "factor_id": "f3_traffic_flow",
+      "factor_name": "Highway Traffic Flow (IHMCL PCU)",
+      "mean_triad_score": 0.7002,
+      "score_std": 0.19,
+      "mean_service_ms": 0.9782,
+      "mean_demand_md": 0.7102,
+      "mean_readiness_mr": 0.591,
+      "derived_weight": 0.1123,
+      "derived_weight_pct": "11.2%"
+    },
+    "f4_population": {
+      "factor_id": "f4_population",
+      "factor_name": "Human Population Density",
+      "mean_triad_score": 0.6892,
+      "score_std": 0.1918,
+      "mean_service_ms": 0.99,
+      "mean_demand_md": 0.6808,
+      "mean_readiness_mr": 0.5838,
+      "derived_weight": 0.1105,
+      "derived_weight_pct": "11.1%"
+    },
+    "f5_economic": {
+      "factor_id": "f5_economic",
+      "factor_name": "Economic / Night-Lights Radiance",
+      "mean_triad_score": 0.687,
+      "score_std": 0.1932,
+      "mean_service_ms": 0.99,
+      "mean_demand_md": 0.6804,
+      "mean_readiness_mr": 0.5812,
+      "derived_weight": 0.1102,
+      "derived_weight_pct": "11.0%"
+    },
+    "f6_tourism": {
+      "factor_id": "f6_tourism",
+      "factor_name": "Tourism & Waypoint Pull",
+      "mean_triad_score": 0.6902,
+      "score_std": 0.1907,
+      "mean_service_ms": 0.9835,
+      "mean_demand_md": 0.6818,
+      "mean_readiness_mr": 0.5903,
+      "derived_weight": 0.1107,
+      "derived_weight_pct": "11.1%"
+    },
+    "f7_substation": {
+      "factor_id": "f7_substation",
+      "factor_name": "Electricity Grid Substation Proximity",
+      "mean_triad_score": 0.7032,
+      "score_std": 0.1849,
+      "mean_service_ms": 0.9835,
+      "mean_demand_md": 0.676,
+      "mean_readiness_mr": 0.6152,
+      "derived_weight": 0.1128,
+      "derived_weight_pct": "11.3%"
+    },
+    "f8_fuel_station": {
+      "factor_id": "f8_fuel_station",
+      "factor_name": "Fuel Stations / Brownfield Points",
+      "mean_triad_score": 0.6958,
+      "score_std": 0.1965,
+      "mean_service_ms": 0.9782,
+      "mean_demand_md": 0.6824,
+      "mean_readiness_mr": 0.6091,
+      "derived_weight": 0.1116,
+      "derived_weight_pct": "11.2%"
+    },
+    "f9_dhaba_amenity": {
+      "factor_id": "f9_dhaba_amenity",
+      "factor_name": "Commercial Amenities & Dhabas",
+      "mean_triad_score": 0.697,
+      "score_std": 0.1895,
+      "mean_service_ms": 0.9772,
+      "mean_demand_md": 0.6801,
+      "mean_readiness_mr": 0.6062,
+      "derived_weight": 0.1118,
+      "derived_weight_pct": "11.2%"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "total_test_cases_benchmarked": 250,
+  "benchmark_metric": "Spatial Optimization Quality (SOQ)",
+  "winning_algorithm": "Integer Linear Programming (ILP Set-Cover)",
+  "ranked_algorithms": [
+    {
+      "algorithm_id": "algo_ilp",
+      "algorithm_name": "Integer Linear Programming (ILP Set-Cover)",
+      "mean_soq_score": 16.06,
+      "soq_std": 17.17,
+      "mean_corridor_coverage_pct": 99.3,
+      "mean_demand_capture_pct": 92.8,
+      "mean_brownfield_match_pct": 35.7,
+      "mean_substation_dist_km": 2.89,
+      "mean_clustering_overlap_pct": 86.8
+    },
+    {
+      "algorithm_id": "algo_greedy",
+      "algorithm_name": "Greedy Score Ranker (AHP / TOPSIS)",
+      "mean_soq_score": 15.85,
+      "soq_std": 16.86,
+      "mean_corridor_coverage_pct": 98.7,
+      "mean_demand_capture_pct": 92.7,
+      "mean_brownfield_match_pct": 37.3,
+      "mean_substation_dist_km": 2.84,
+      "mean_clustering_overlap_pct": 94.2
+    },
+    {
+      "algorithm_id": "algo_nsga2",
+      "algorithm_name": "NSGA-II Multi-Objective Genetic Optimizer",
+      "mean_soq_score": 15.49,
+      "soq_std": 16.54,
+      "mean_corridor_coverage_pct": 98.3,
+      "mean_demand_capture_pct": 92.3,
+      "mean_brownfield_match_pct": 37.7,
+      "mean_substation_dist_km": 2.8,
+      "mean_clustering_overlap_pct": 100.0
+    },
+    {
+      "algorithm_id": "algo_frlm",
+      "algorithm_name": "Flow Refueling Location Model (FRLM / FCLM)",
+      "mean_soq_score": 15.25,
+      "soq_std": 16.61,
+      "mean_corridor_coverage_pct": 99.1,
+      "mean_demand_capture_pct": 92.3,
+      "mean_brownfield_match_pct": 33.5,
+      "mean_substation_dist_km": 2.99,
+      "mean_clustering_overlap_pct": 83.0
+    },
+    {
+      "algorithm_id": "algo_kmedoids",
+      "algorithm_name": "Spatial K-Medoids (Anti-Clustering)",
+      "mean_soq_score": 15.22,
+      "soq_std": 16.53,
+      "mean_corridor_coverage_pct": 99.2,
+      "mean_demand_capture_pct": 92.1,
+      "mean_brownfield_match_pct": 34.7,
+      "mean_substation_dist_km": 2.96,
+      "mean_clustering_overlap_pct": 88.6
+    }
+  ],
+  "algorithm_details": {
+    "algo_greedy": {
+      "algorithm_id": "algo_greedy",
+      "algorithm_name": "Greedy Score Ranker (AHP / TOPSIS)",
+      "mean_soq_score": 15.85,
+      "soq_std": 16.86,
+      "mean_corridor_coverage_pct": 98.7,
+      "mean_demand_capture_pct": 92.7,
+      "mean_brownfield_match_pct": 37.3,
+      "mean_substation_dist_km": 2.84,
+      "mean_clustering_overlap_pct": 94.2
+    },
+    "algo_kmedoids": {
+      "algorithm_id": "algo_kmedoids",
+      "algorithm_name": "Spatial K-Medoids (Anti-Clustering)",
+      "mean_soq_score": 15.22,
+      "soq_std": 16.53,
+      "mean_corridor_coverage_pct": 99.2,
+      "mean_demand_capture_pct": 92.1,
+      "mean_brownfield_match_pct": 34.7,
+      "mean_substation_dist_km": 2.96,
+      "mean_clustering_overlap_pct": 88.6
+    },
+    "algo_frlm": {
+      "algorithm_id": "algo_frlm",
+      "algorithm_name": "Flow Refueling Location Model (FRLM / FCLM)",
+      "mean_soq_score": 15.25,
+      "soq_std": 16.61,
+      "mean_corridor_coverage_pct": 99.1,
+      "mean_demand_capture_pct": 92.3,
+      "mean_brownfield_match_pct": 33.5,
+      "mean_substation_dist_km": 2.99,
+      "mean_clustering_overlap_pct": 83.0
+    },
+    "algo_ilp": {
+      "algorithm_id": "algo_ilp",
+      "algorithm_name": "Integer Linear Programming (ILP Set-Cover)",
+      "mean_soq_score": 16.06,
+      "soq_std": 17.17,
+      "mean_corridor_coverage_pct": 99.3,
+      "mean_demand_capture_pct": 92.8,
+      "mean_brownfield_match_pct": 35.7,
+      "mean_substation_dist_km": 2.89,
+      "mean_clustering_overlap_pct": 86.8
+    },
+    "algo_nsga2": {
+      "algorithm_id": "algo_nsga2",
+      "algorithm_name": "NSGA-II Multi-Objective Genetic Optimizer",
+      "mean_soq_score": 15.49,
+      "soq_std": 16.54,
+      "mean_corridor_coverage_pct": 98.3,
+      "mean_demand_capture_pct": 92.3,
+      "mean_brownfield_match_pct": 37.7,
+      "mean_substation_dist_km": 2.8,
+      "mean_clustering_overlap_pct": 100.0
+    }
+  }
+}
