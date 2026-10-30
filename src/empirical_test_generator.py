@@ -1,6 +1,6 @@
 """
-Urja-X: Empirical Corridor Test Case Generator
-Extracts real highway corridors across India from OpenStreetMap (india_nh.gpkg),
+Urja-X: Empirical Corridor Test Case Generator (500+ Test Cases)
+Extracts real continuous highway corridors across India from OpenStreetMap (india_nh.gpkg),
 matches them with real VAHAN registrations, IHMCL toll traffic, electrical substations,
 and POIs to generate hundreds of empirical benchmark test cases.
 """
@@ -11,6 +11,8 @@ import json
 import time
 import sqlite3
 import random
+import re
+from collections import defaultdict
 import numpy as np
 import pandas as pd
 from scipy.spatial import cKDTree
@@ -22,8 +24,8 @@ DATA_DIR = "data"
 os.makedirs(DATA_DIR, exist_ok=True)
 
 print("=" * 80)
-print("⚡ URJA-X: EMPIRICAL TEST CASE GENERATION ENGINE")
-print("Sampling real highway corridors across India with multi-layer spatial indices")
+print("⚡ URJA-X: EMPIRICAL TEST CASE GENERATION ENGINE (SCALE: 500 SCENARIOS)")
+print("Sampling real 100-350 km highway corridors across India with multi-layer spatial indices")
 print("=" * 80)
 
 # 1. Load Operational EV Chargers
@@ -110,40 +112,41 @@ state_ev_weights = {
 max_bov = max(state_ev_weights.values())
 
 # 6. Extract Highway Corridors from india_nh.gpkg
-print("\n[6/6] Slicing National Highways from india_nh.gpkg into Corridor Scenarios...")
+print("\n[6/6] Grouping and Slicing Continuous 100-350 km Corridors from india_nh.gpkg...")
 conn_nh = sqlite3.connect('EV-Roads/india_nh.gpkg')
 cur_nh = conn_nh.cursor()
 
-# Query major lines with significant coordinates
-cur_nh.execute("SELECT fid, name, other_tags, geom FROM lines WHERE other_tags LIKE '%\"ref\"=>\"NH%' OR name IS NOT NULL")
+# Query lines by highway ref
+cur_nh.execute("SELECT fid, name, other_tags, geom FROM lines WHERE other_tags LIKE '%ref%'")
 all_hw_lines = cur_nh.fetchall()
 print(f"  ✓ Found {len(all_hw_lines):,} highway segments in database.")
 
-# Group coordinates into continuous or distinct corridor corridors
-random.seed(42)
-np.random.seed(42)
+# Group coordinates by highway ref
+ref_points = defaultdict(list)
+ref_names = {}
+ref_tags = {}
 
-# Select diverse candidate segments
-corridors_pool = []
-for row in all_hw_lines:
-    fid, name, tags, raw_geom = row
-    try:
-        line_geom = parse_gpkg_geom(raw_geom)
-        coords = list(line_geom.coords)
-        if len(coords) >= 15: # substantial segment
-            corridors_pool.append({
-                'fid': fid,
-                'name': name if name else 'National Highway Corridor',
-                'tags': tags if tags else '',
-                'coords': coords
-            })
-    except Exception:
-        pass
+for fid, name, tags, raw_geom in all_hw_lines:
+    m = re.search(r'"ref"=>"([^"]+)"', tags)
+    if m:
+        ref = m.group(1).split(';')[0].strip()
+        try:
+            line_geom = parse_gpkg_geom(raw_geom)
+            coords = list(line_geom.coords)
+            ref_points[ref].extend(coords)
+            if ref not in ref_names and name:
+                ref_names[ref] = name
+            if ref not in ref_tags and tags:
+                ref_tags[ref] = tags
+        except Exception:
+            pass
 
-print(f"  ✓ Identified {len(corridors_pool):,} major highway polyline segments.")
 conn_nh.close()
 
-# Generate Test Cases
+# Filter highways with at least 100 points
+viable_refs = [r for r, pts in ref_points.items() if len(pts) >= 100]
+print(f"  ✓ Identified {len(viable_refs)} major National Highway systems with dense geometries.")
+
 EARTH_R = 6371.0 # km
 
 def haversine_km(lat1, lon1, lat2, lon2):
@@ -153,47 +156,65 @@ def haversine_km(lat1, lon1, lat2, lon2):
     c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1 - a))
     return EARTH_R * c
 
-def generate_test_cases(num_cases=200):
+def generate_500_corridor_test_cases(num_cases=500):
     test_cases = []
+    random.seed(42)
+    np.random.seed(42)
     
-    # Shuffle corridors to ensure random sampling across all regions
-    shuffled_corridors = list(corridors_pool)
-    random.shuffle(shuffled_corridors)
+    # Sort viable refs by point count descending, prioritize top 100 corridors
+    sorted_viable = sorted(viable_refs, key=lambda r: len(ref_points[r]), reverse=True)
     
-    selected_corridors = shuffled_corridors[:num_cases]
-    if len(selected_corridors) < num_cases:
-        # Repeat with slight perturbations if pool is smaller
-        selected_corridors = (selected_corridors * (num_cases // len(selected_corridors) + 1))[:num_cases]
+    tc_idx = 0
+    attempts = 0
+    max_attempts = num_cases * 10
+    
+    while tc_idx < num_cases and attempts < max_attempts:
+        attempts += 1
+        # Pick a highway ref
+        ref = random.choice(sorted_viable[:60]) # top 60 major national highways
+        pts = ref_points[ref]
         
-    for tc_idx, corr in enumerate(selected_corridors):
-        coords = corr['coords']
-        corr_name = corr['name']
-        tags = corr['tags']
+        # Sort points geographically (alternate north-south or east-west depending on highway orientation)
+        lat_span = max(p[1] for p in pts) - min(p[1] for p in pts)
+        lon_span = max(p[0] for p in pts) - min(p[0] for p in pts)
         
-        # Calculate length of line in km
-        total_len_km = 0.0
-        cum_dists = [0.0]
-        for i in range(len(coords) - 1):
-            seg_km = haversine_km(coords[i][1], coords[i][0], coords[i+1][1], coords[i+1][0])
-            total_len_km += seg_km
-            cum_dists.append(total_len_km)
+        if lat_span >= lon_span:
+            pts_sorted = sorted(pts, key=lambda p: p[1], reverse=random.choice([True, False]))
+        else:
+            pts_sorted = sorted(pts, key=lambda p: p[0], reverse=random.choice([True, False]))
             
-        # Target length between 150 km and 350 km (expand if short)
-        scale_factor = 1.0
-        if total_len_km < 100.0:
-            scale_factor = random.uniform(2.5, 4.5)
-            total_len_km *= scale_factor
-            
-        # Discretize into 5 km windows: N candidate points
-        num_candidates = max(15, min(45, int(total_len_km / 5.0)))
+        # Pick random starting index
+        if len(pts_sorted) < 50:
+            continue
+        start_i = random.randint(0, max(0, len(pts_sorted) - 40))
         
-        # Interpolate points along corridor
-        step_idx = len(coords) / float(num_candidates)
+        # Target length between 120 km and 320 km
+        target_len = random.uniform(140.0, 320.0)
+        
+        corridor_pts = [pts_sorted[start_i]]
+        cum_len = 0.0
+        for pt in pts_sorted[start_i + 1:]:
+            d = haversine_km(corridor_pts[-1][1], corridor_pts[-1][0], pt[1], pt[0])
+            # Only advance if distance is reasonable (between 0.8 km and 15 km)
+            if 0.8 <= d <= 15.0:
+                cum_len += d
+                corridor_pts.append(pt)
+                if cum_len >= target_len:
+                    break
+                    
+        if cum_len < 100.0 or len(corridor_pts) < 15:
+            continue # corridor too short, re-sample
+            
+        total_len_km = round(cum_len, 1)
+        
+        # Discretize into 5 km candidate windows
+        num_candidates = max(18, min(50, int(total_len_km / 5.0)))
+        step_idx = len(corridor_pts) / float(num_candidates)
         candidate_nodes = []
         
         for k in range(num_candidates):
-            c_idx = min(len(coords) - 1, int(k * step_idx))
-            lon, lat = coords[c_idx]
+            c_idx = min(len(corridor_pts) - 1, int(k * step_idx))
+            lon, lat = corridor_pts[c_idx]
             km_mark = round(k * 5.0 * (total_len_km / (num_candidates * 5.0)), 1)
             
             node_rad = np.radians([[lat, lon]])
@@ -213,24 +234,24 @@ def generate_test_cases(num_cases=200):
             if dist_traf_km < 35.0: # within reasonable catchment of plaza
                 traffic_pcu = int(traffic_counts[traf_idx[0]])
             else:
-                traffic_pcu = int(random.uniform(12000, 38000)) # typical highway daily PCU
+                traffic_pcu = int(random.uniform(14000, 42000)) # typical highway daily PCU
                 
             # 4. Brownfield Fuel Station
             dist_fuel_rad, _ = tree_fuel.query(node_rad)
             dist_fuel_km = round(float(dist_fuel_rad[0] * EARTH_R), 2)
-            has_fuel_station = bool(dist_fuel_km <= 2.0)
+            has_fuel_station = bool(dist_fuel_km <= 2.5)
             
             # 5. Commercial Dhaba / Amenities
             dist_dhaba_rad, _ = tree_dhaba.query(node_rad)
             dist_dhaba_km = round(float(dist_dhaba_rad[0] * EARTH_R), 2)
-            has_amenity = bool(dist_dhaba_km <= 2.5)
+            has_amenity = bool(dist_dhaba_km <= 3.0)
             
             # 6. Road Hierarchy (speed, lanes)
-            is_expressway = "expressway" in corr_name.lower() or "motorway" in tags.lower()
+            corr_name_str = ref_names.get(ref, f"{ref} Highway Corridor")
+            is_expressway = "expressway" in corr_name_str.lower() or "motorway" in ref_tags.get(ref, '').lower()
             road_class_weight = 1.0 if is_expressway else 0.85
             
             # 7. Regional EV Fleet Adoption proxy
-            # Assign regional state context based on latitude
             if lat > 26.0:
                 state_est = 'Uttar Pradesh' if lon > 78.0 else 'Rajasthan'
             elif lat > 20.0:
@@ -243,13 +264,14 @@ def generate_test_cases(num_cases=200):
             state_ev_count = state_ev_weights.get(state_est, 250000)
             ev_demand_norm = round(state_ev_count / float(max_bov), 3)
             
-            # 8. Population density & Night-lights proxy (derived from proximity to city clusters)
-            near_city_bonus = 1.0 if dist_chg_km < 15.0 else max(0.15, 1.0 - (dist_chg_km / 80.0))
-            pop_density_proxy = round(near_city_bonus * random.uniform(0.7, 1.0), 3)
-            ntl_radiance_proxy = round(near_city_bonus * random.uniform(0.6, 0.95), 3)
+            # 8. Population density & Night-lights proxy (realistic highway dispersion)
+            # High near cities (charger dist < 15km), dropping along rural stretches
+            near_city_bonus = 1.0 if dist_chg_km < 15.0 else max(0.12, 1.0 - (dist_chg_km / 70.0))
+            pop_density_proxy = round(near_city_bonus * random.uniform(0.65, 1.0), 3)
+            ntl_radiance_proxy = round(near_city_bonus * random.uniform(0.55, 0.95), 3)
             
             # 9. Tourism Pull
-            tourism_score = round(random.choice([0.1, 0.2, 0.5, 0.85, 0.95]) if lat < 16.0 or lat > 28.0 else random.choice([0.1, 0.2, 0.4]), 2)
+            tourism_score = round(random.choice([0.15, 0.25, 0.55, 0.85, 0.95]) if lat < 16.0 or lat > 28.0 else random.choice([0.10, 0.20, 0.40]), 2)
             
             candidate_nodes.append({
                 'node_id': f"N{k+1:02d}",
@@ -272,24 +294,29 @@ def generate_test_cases(num_cases=200):
                 }
             })
             
-        # Target deployment budget K (number of stations to fund under PM E-DRIVE)
-        k_target = max(3, min(8, int(total_len_km / 35.0)))
+        # Target deployment budget K (number of stations to fund under PM E-DRIVE, typical 1 station per 35-45 km)
+        k_target = max(3, min(9, int(total_len_km / 35.0)))
         
+        tc_idx += 1
         test_cases.append({
-            'test_case_id': f"TC-{tc_idx+1:03d}",
-            'corridor_name': corr_name,
+            'test_case_id': f"TC-{tc_idx:03d}",
+            'corridor_ref': ref,
+            'corridor_name': corr_name_str,
             'state_region': state_est,
-            'total_corridor_len_km': round(total_len_km, 1),
+            'total_corridor_len_km': total_len_km,
             'target_station_quota_k': k_target,
             'num_candidate_nodes': len(candidate_nodes),
             'candidate_nodes': candidate_nodes
         })
         
+        if tc_idx % 100 == 0 or tc_idx == num_cases:
+            print(f"  ... generated {tc_idx}/{num_cases} corridor scenarios")
+            
     return test_cases
 
-print("\nGenerating 250 empirical corridor test cases across India...")
+print("\nGenerating 500 empirical corridor test cases across India...")
 t_gen = time.time()
-test_cases_bank = generate_test_cases(num_cases=250)
+test_cases_bank = generate_500_corridor_test_cases(num_cases=500)
 print(f"✓ Generated {len(test_cases_bank)} comprehensive corridor test cases in {time.time()-t_gen:.2f}s!")
 
 # Save to JSON
