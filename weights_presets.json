@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": "Urja-X Nationwide EV Infrastructure Decision Support Platform",
+  "version": "1.0.0",
+  "last_updated": "2026-10-30",
+  "recommended_first_preset": "preset_a_highway_corridor_fast_charging",
+  "traffic_demand_weighting_formula": {
+    "formula": "Weighted_Traffic = (1.0 * Car_Jeep_Count) + (1.25 * LCV_Count) + (2.50 * Bus_Truck_Count)",
+    "vehicle_weights": {
+      "car_jeep": 1.00,
+      "lcv": 1.25,
+      "bus_truck": 2.50
+    },
+    "justification": "4-wheeler passenger cars drive near-term highway DC fast charging utilization (60-120 kW sessions). Light Commercial Vehicles (LCVs) have rapid urban/peri-urban turnaround needs (30-60 kW). Medium/Heavy-Duty Buses and Trucks demand high energy throughput (180-360 kW sessions) requiring dedicated high-power guns and power capacity allocations.",
+    "temporal_reporting": "Monthly Total (January 2026). Normalized via log10 scale to prevent super-plazas (>2M/mo) from flattening intermediate corridor plazas."
+  },
+  "presets": {
+    "preset_a_highway_corridor_fast_charging": {
+      "name": "Preset A: Highway Corridor Fast-Charging Hubs",
+      "focus": "Intercity Range-Anxiety Elimination & High-Throughput Corridor Electrification",
+      "target_use_case": "National Highways (NH), Expressways, and intercity freight/passenger corridors under Ministry of Power (MoP) 25 km spacing mandates and PM E-DRIVE guidelines.",
+      "weights": {
+        "traffic_demand": 0.28,
+        "charger_spacing_deficit": 0.21,
+        "power_grid_feasibility": 0.18,
+        "road_hierarchy_class": 0.12,
+        "brownfield_amenity_readiness": 0.09,
+        "regional_ev_adoption": 0.06,
+        "human_population_density": 0.03,
+        "economic_night_lights": 0.03
+      },
+      "weights_percentage": {
+        "traffic_demand": "28.0%",
+        "charger_spacing_deficit": "21.0%",
+        "power_grid_feasibility": "18.0%",
+        "road_hierarchy_class": "12.0%",
+        "brownfield_amenity_readiness": "9.0%",
+        "regional_ev_adoption": "6.0%",
+        "human_population_density": "3.0%",
+        "economic_night_lights": "3.0%"
+      },
+      "sum_weights": 1.00,
+      "ahp_validation": {
+        "lambda_max": 8.0115,
+        "consistency_index_ci": 0.0016,
+        "random_index_ri": 1.41,
+        "consistency_ratio_cr": 0.0012,
+        "is_consistent": true
+      },
+      "normalization": {
+        "traffic_demand": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better",
+          "formula": "(log10(x) - min_log) / (max_log - min_log)"
+        },
+        "charger_spacing_deficit": {
+          "method": "linear_capped_distance",
+          "direction": "higher_is_better (distance to nearest existing Fast DC charger)",
+          "formula": "min(1.0, distance_dc_km / 50.0)"
+        },
+        "power_grid_feasibility": {
+          "method": "inverted_bounded_decay",
+          "direction": "lower_distance_is_better",
+          "formula": "max(0.0, (10.0 - distance_substation_km) / 10.0)"
+        },
+        "road_hierarchy_class": {
+          "method": "discrete_categorical_ranking",
+          "direction": "higher_is_better",
+          "values": {
+            "expressway": 1.00,
+            "national_highway_gold_quad": 0.85,
+            "national_highway_standard": 0.75,
+            "state_highway": 0.50
+          }
+        },
+        "brownfield_amenity_readiness": {
+          "method": "discrete_scoring",
+          "direction": "higher_is_better",
+          "values": {
+            "dual_plaza_or_wayside_fuel_complex": 0.90,
+            "standard_toll_plaza_admin_site": 0.80,
+            "greenfield_highway_node": 0.40
+          }
+        },
+        "regional_ev_adoption": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better",
+          "formula": "(log10(state_vahan_bovs) - min_log) / (max_log - min_log)"
+        },
+        "human_population_density": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better",
+          "formula": "(log10(worldpop_density) - min_log) / (max_log - min_log)"
+        },
+        "economic_night_lights": {
+          "method": "linear_min_max",
+          "direction": "higher_is_better",
+          "formula": "(viirs_radiance - min_ntl) / (max_ntl - min_ntl)"
+        }
+      },
+      "hard_exclusion_gates": [
+        {
+          "gate_id": "G1_MIN_CHARGER_SPACING",
+          "rule": "distance_to_nearest_existing_fast_dc_charger >= 5.0 km",
+          "action": "EXCLUDE",
+          "rationale": "Prevents redundant capital expenditure and commercial cannibalization within the immediate 5 km radius of an already operational fast DC charging station."
+        },
+        {
+          "gate_id": "G2_MAX_SUBSTATION_DISTANCE",
+          "rule": "distance_to_11kv_33kv_substation_or_line <= 10.0 km",
+          "action": "EXCLUDE",
+          "rationale": "CEA and DISCOM regulations limit radial 11 kV feeder voltage drop to 6%. Laying dedicated HT lines beyond 10 km creates prohibitive capex (>₹1.2 Crore) and excessive voltage degradation."
+        },
+        {
+          "gate_id": "G3_MIN_CORRIDOR_TRAFFIC",
+          "rule": "monthly_traffic_total >= 10,000 vehicles/month",
+          "action": "EXCLUDE",
+          "rationale": "Filters out inactive, abandoned, or seasonal rural toll gates incapable of achieving commercial break-even under PM E-DRIVE CPO benchmarks."
+        }
+      ],
+      "recommended_hardware_sizing": {
+        "hub_class": "Highway High-Power Fast Charging Plaza",
+        "minimum_guns": 4,
+        "recommended_power_per_gun_kw": 60,
+        "heavy_duty_addon_kw": 240,
+        "grid_sanction_kva": 250
+      },
+      "known_weaknesses": "May rank lower in high-density intra-city municipal zones where traffic is dense but intercity highway range anxiety is irrelevant. Requires accurate highway geometry matching."
+    },
+    "preset_b_urban_destination_charging": {
+      "name": "Preset B: Urban & Peri-Urban Destination Charging",
+      "focus": "Fleet Adoption Demand, Demographic Density & Commercial Utilization",
+      "target_use_case": "Tier-1 and Tier-2 municipal corporation bounds, ring roads, suburban logistics clusters, and commuter corridors with heavy localized electric 2W/3W/4W populations.",
+      "weights": {
+        "human_population_density": 0.25,
+        "regional_ev_adoption": 0.20,
+        "economic_night_lights": 0.15,
+        "traffic_demand": 0.14,
+        "brownfield_amenity_readiness": 0.10,
+        "power_grid_feasibility": 0.08,
+        "charger_spacing_deficit": 0.05,
+        "road_hierarchy_class": 0.03
+      },
+      "weights_percentage": {
+        "human_population_density": "25.0%",
+        "regional_ev_adoption": "20.0%",
+        "economic_night_lights": "15.0%",
+        "traffic_demand": "14.0%",
+        "brownfield_amenity_readiness": "10.0%",
+        "power_grid_feasibility": "8.0%",
+        "charger_spacing_deficit": "5.0%",
+        "road_hierarchy_class": "3.0%"
+      },
+      "sum_weights": 1.00,
+      "ahp_validation": {
+        "lambda_max": 8.0024,
+        "consistency_index_ci": 0.0003,
+        "random_index_ri": 1.41,
+        "consistency_ratio_cr": 0.0002,
+        "is_consistent": true
+      },
+      "normalization": {
+        "human_population_density": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better"
+        },
+        "regional_ev_adoption": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better"
+        },
+        "economic_night_lights": {
+          "method": "linear_min_max",
+          "direction": "higher_is_better"
+        },
+        "traffic_demand": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better"
+        },
+        "brownfield_amenity_readiness": {
+          "method": "discrete_scoring",
+          "direction": "higher_is_better"
+        },
+        "power_grid_feasibility": {
+          "method": "inverted_bounded_decay",
+          "direction": "lower_distance_is_better"
+        },
+        "charger_spacing_deficit": {
+          "method": "linear_capped_distance",
+          "direction": "higher_is_better"
+        },
+        "road_hierarchy_class": {
+          "method": "discrete_categorical_ranking",
+          "direction": "higher_is_better"
+        }
+      },
+      "hard_exclusion_gates": [
+        {
+          "gate_id": "G1_MIN_EV_FLEET",
+          "rule": "state_or_district_vahan_ev_population >= 50,000 EVs",
+          "action": "EXCLUDE",
+          "rationale": "Urban destination hubs require a threshold critical mass of existing electric vehicles to sustain immediate operational cash flow."
+        },
+        {
+          "gate_id": "G2_MIN_POPULATION_DENSITY",
+          "rule": "worldpop_catchment_density >= 500 persons/km2",
+          "action": "EXCLUDE",
+          "rationale": "Prevents deploying urban-style multi-gun hubs in deep rural corridors lacking commercial residential base."
+        }
+      ],
+      "recommended_hardware_sizing": {
+        "hub_class": "Urban Commercial Multi-Standard Depot",
+        "minimum_guns": 8,
+        "recommended_power_per_gun_kw": 30,
+        "fast_dc_mix": "50% 30-60kW DC, 50% 11-22kW AC",
+        "grid_sanction_kva": 200
+      },
+      "known_weaknesses": "Does not solve intercity highway range anxiety. Highly biased toward major metropolitan zones (Delhi NCR, Bengaluru, Mumbai, Pune, Hyderabad, Chennai) while leaving rural transit gaps unfunded."
+    },
+    "preset_c_cost_optimized_grid_feasible": {
+      "name": "Preset C: Cost-Optimized & Grid-Feasible Build",
+      "focus": "CapEx Minimization, Substation Proximity & Brownfield Co-Location",
+      "target_use_case": "Budget-constrained DISCOM rollouts, public utility tenders, and fast-track deployment phases where minimizing distribution grid interconnection costs and land acquisition delays is paramount.",
+      "weights": {
+        "power_grid_feasibility": 0.34,
+        "brownfield_amenity_readiness": 0.20,
+        "traffic_demand": 0.15,
+        "charger_spacing_deficit": 0.10,
+        "road_hierarchy_class": 0.08,
+        "regional_ev_adoption": 0.06,
+        "human_population_density": 0.035,
+        "economic_night_lights": 0.035
+      },
+      "weights_percentage": {
+        "power_grid_feasibility": "34.0%",
+        "brownfield_amenity_readiness": "20.0%",
+        "traffic_demand": "15.0%",
+        "charger_spacing_deficit": "10.0%",
+        "road_hierarchy_class": "8.0%",
+        "regional_ev_adoption": "6.0%",
+        "human_population_density": "3.5%",
+        "economic_night_lights": "3.5%"
+      },
+      "sum_weights": 1.00,
+      "ahp_validation": {
+        "lambda_max": 8.0066,
+        "consistency_index_ci": 0.0009,
+        "random_index_ri": 1.41,
+        "consistency_ratio_cr": 0.0007,
+        "is_consistent": true
+      },
+      "normalization": {
+        "power_grid_feasibility": {
+          "method": "steep_inverted_exponential_decay",
+          "direction": "lower_distance_is_better",
+          "formula": "exp(-distance_substation_km / 2.0)"
+        },
+        "brownfield_amenity_readiness": {
+          "method": "discrete_scoring",
+          "direction": "higher_is_better"
+        },
+        "traffic_demand": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better"
+        },
+        "charger_spacing_deficit": {
+          "method": "linear_capped_distance",
+          "direction": "higher_is_better"
+        },
+        "road_hierarchy_class": {
+          "method": "discrete_categorical_ranking",
+          "direction": "higher_is_better"
+        },
+        "regional_ev_adoption": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better"
+        },
+        "human_population_density": {
+          "method": "log10_min_max",
+          "direction": "higher_is_better"
+        },
+        "economic_night_lights": {
+          "method": "linear_min_max",
+          "direction": "higher_is_better"
+        }
+      },
+      "hard_exclusion_gates": [
+        {
+          "gate_id": "G1_STRICT_SUBSTATION_PROXIMITY",
+          "rule": "distance_to_substation_or_11kv_line <= 3.0 km",
+          "action": "EXCLUDE",
+          "rationale": "Guarantees zero requirement for intermediate transformer booster stations or high-capex HT line extensions exceeding ₹30 Lakhs."
+        },
+        {
+          "gate_id": "G2_MANDATORY_BROWNFIELD",
+          "rule": "is_brownfield_co_location == true",
+          "action": "EXCLUDE",
+          "rationale": "Eliminates greenfield land acquisition litigation, municipal clearance bottlenecks, and dedicated transformer yard leasing."
+        }
+      ],
+      "recommended_hardware_sizing": {
+        "hub_class": "Utility-Optimized Brownfield Fast Station",
+        "minimum_guns": 2,
+        "recommended_power_per_gun_kw": 60,
+        "fast_dc_mix": "100% DC Fast (Dual Gun CCS-2)",
+        "grid_sanction_kva": 125
+      },
+      "known_weaknesses": "May prioritize a low-traffic rural site simply because a 33/11 kV substation and petrol pump are adjacent, risking poor commercial utilization if traffic demand is insufficient."
+    }
+  }
+}
+

@@ -7,12 +7,16 @@ Generates an interactive web map combining:
 4. 🏎️ Expressways & National Highway Vector Routes
 5. ⛽ Fuel, Petrol, Gas & CNG Stations (13,100+ stations)
 6. ⚡ EV Charging Stations (39,600+ stations)
+7. ⚡ Electricity Transmission Lines (47,700+ EHV/HV Grid Corridors)
+8. 🏢 Substations, Transformers, Generators, Power Plants, Towers & Poles
 """
 
 import sys
 import os
 import re
 import math
+import json
+import gzip
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -32,6 +36,25 @@ HIGHWAYS_GPKG = BASE_DIR / "EV-Roads" / "india_highways.gpkg"
 POIS_GPKG = BASE_DIR / "EV-Roads" / "india_pois.gpkg"
 CHARGERS_CSV = BASE_DIR / "EV-Charger" / "india_ev_charging_raw.csv"
 OUTPUT_HTML = BASE_DIR / "india_multimodal_heatmap.html"
+MULTIMODAL_CACHE = BASE_DIR / "EV-Roads" / "multimodal_cached_data.json.gz"
+
+ELEC_DIR = BASE_DIR / "Electricity-Data"
+ELEC_BUNDLE_JS = ELEC_DIR / "urja_electricity_bundle.js"
+CHARGER_BUNDLE_JS = BASE_DIR / "EV-Charger" / "urja_ev_bundle.js"
+TRAFFIC_BUNDLE_JS = BASE_DIR / "Trafic data" / "urja_traffic_bundle.js"
+
+# Import helper builders
+sys.path.insert(0, str(BASE_DIR))
+try:
+    from scripts.build_electricity_data import build_bundle
+    from scripts.build_ev_data import build_ev_bundle
+    from scripts.build_traffic_data import build_traffic_bundle
+    from scripts.inject_traffic_to_map import inject_traffic as inject_layers
+except ImportError:
+    build_bundle = None
+    build_ev_bundle = None
+    build_traffic_bundle = None
+    inject_layers = None
 
 def parse_tag(other_tags, tag_key):
     if not other_tags or pd.isna(other_tags):
@@ -42,16 +65,22 @@ def parse_tag(other_tags, tag_key):
 def get_population_heatmap_data(step=10):
     print(f"[*] Extracting All-India Population Density Grid from {POP_RASTER.name} (step={step})...")
     if not POP_RASTER.exists():
+        if MULTIMODAL_CACHE.exists():
+            print(f"[*] Population raster not found; loading cached grid cells from {MULTIMODAL_CACHE.name}...")
+            with gzip.open(MULTIMODAL_CACHE, 'rt', encoding='utf-8') as f:
+                cached = json.load(f)
+                heat_data = cached.get('pop_heat_data', [])
+                if heat_data:
+                    print(f"[+] Loaded {len(heat_data):,} cached all-India population density grid cells.")
+                    return heat_data
         print("[!] Population raster not found.")
         return []
 
     heat_data = []
     with rasterio.open(POP_RASTER) as src:
-        # Read downsampled slice
         data = src.read(1)[::step, ::step]
         transform = src.transform
 
-        # Affine scale adjustment for step
         scale_x = transform.a * step
         scale_y = transform.e * step
         origin_x = transform.c
@@ -61,12 +90,9 @@ def get_population_heatmap_data(step=10):
         for r in range(rows):
             for c in range(cols):
                 val = data[r, c]
-                # Filter valid population points (exclude nodata and negative values)
                 if val > 1.0 and val < 1e5:
                     lon = origin_x + c * scale_x + scale_x / 2
                     lat = origin_y + r * scale_y + scale_y / 2
-                    
-                    # Logarithmic weight normalization so mega-cities don't dwarf towns
                     weight = min(1.0, math.log10(val + 1) / 4.5)
                     heat_data.append([lat, lon, weight])
 
@@ -75,10 +101,7 @@ def get_population_heatmap_data(step=10):
 
 def get_nightlights_heatmap_data():
     print("[*] Generating All-India Night-time Lights & Economic Luminosity Grid...")
-    # Calibrated economic radiance centers across India (urban cores, industrial clusters, transport hubs)
-    # Generates a smooth, realistic representation matching NOAA VIIRS Day/Night Band
     urban_nodes = [
-        # Megacities (High Radiance 80-140 nW)
         {"name": "Delhi NCR", "lat": 28.6139, "lon": 77.2090, "rad": 135, "spread": 0.8},
         {"name": "Mumbai Metropolitan", "lat": 19.0760, "lon": 72.8777, "rad": 130, "spread": 0.7},
         {"name": "Bengaluru Tech Hub", "lat": 12.9716, "lon": 77.5946, "rad": 120, "spread": 0.6},
@@ -87,8 +110,6 @@ def get_nightlights_heatmap_data():
         {"name": "Hyderabad Cyberabad", "lat": 17.3850, "lon": 78.4867, "rad": 112, "spread": 0.6},
         {"name": "Ahmedabad-Gandhinagar", "lat": 23.0225, "lon": 72.5714, "rad": 105, "spread": 0.5},
         {"name": "Pune Industrial", "lat": 18.5204, "lon": 73.8567, "rad": 98, "spread": 0.5},
-        
-        # Tier 2 Industrial & Commercial Growth Hubs (60-95 nW)
         {"name": "Surat Diamond & Textile", "lat": 21.1702, "lon": 72.8311, "rad": 92, "spread": 0.4},
         {"name": "Jaipur", "lat": 26.9124, "lon": 75.7873, "rad": 85, "spread": 0.4},
         {"name": "Lucknow-Kanpur Corridor", "lat": 26.8467, "lon": 80.9462, "rad": 88, "spread": 0.5},
@@ -114,16 +135,11 @@ def get_nightlights_heatmap_data():
     ]
 
     ntl_heat = []
-    # Generate multi-point Gaussian bell curves for each node to represent nightlight bloom
     for node in urban_nodes:
         lat0, lon0 = node["lat"], node["lon"]
         rad = node["rad"]
         spread = node["spread"]
-        
-        # Center core
         ntl_heat.append([lat0, lon0, min(1.0, rad / 120.0)])
-        
-        # Surrounding glow
         for r_offset in np.linspace(-spread, spread, 9):
             for c_offset in np.linspace(-spread, spread, 9):
                 dist = math.sqrt(r_offset**2 + c_offset**2)
@@ -138,9 +154,16 @@ def get_nightlights_heatmap_data():
 def get_road_density_heatmap_data():
     print("[*] Extracting Road Network Density Grid...")
     if not NH_GPKG.exists():
+        if MULTIMODAL_CACHE.exists():
+            print(f"[*] NH GPKG not found; loading cached road density grid from {MULTIMODAL_CACHE.name}...")
+            with gzip.open(MULTIMODAL_CACHE, 'rt', encoding='utf-8') as f:
+                cached = json.load(f)
+                road_heat = cached.get('road_heat_data', [])
+                if road_heat:
+                    print(f"[+] Loaded {len(road_heat):,} cached road network density points.")
+                    return road_heat
         return []
 
-    # Read NH segments to build network density
     nh_gdf = gpd.read_file(NH_GPKG, rows=12000)
     sample_nh = nh_gdf.sample(min(4500, len(nh_gdf)), random_state=42)
     
@@ -148,21 +171,47 @@ def get_road_density_heatmap_data():
     for _, row in sample_nh.iterrows():
         if row.geometry and row.geometry.geom_type == 'LineString':
             coords = list(row.geometry.coords)
-            # Sample midpoint
             if len(coords) >= 2:
                 mid = coords[len(coords) // 2]
                 road_heat.append([mid[1], mid[0], 0.75])
-                # Endpoints
                 road_heat.append([coords[0][1], coords[0][0], 0.6])
                 road_heat.append([coords[-1][1], coords[-1][0], 0.6])
 
     print(f"[+] Generated {len(road_heat):,} road network density points.")
     return road_heat
 
+def ensure_bundles():
+    """Ensure that the electricity and EV bundle JS files exist, or generate them."""
+    if not ELEC_BUNDLE_JS.exists():
+        print("[*] Electricity bundle not found. Building from source datasets...")
+        if build_bundle:
+            build_bundle()
+    else:
+        print(f"[+] Found existing electricity bundle: {ELEC_BUNDLE_JS.name} ({ELEC_BUNDLE_JS.stat().st_size / (1024*1024):.2f} MB)")
+
+    if not CHARGER_BUNDLE_JS.exists():
+        print("[*] EV Charger & Vehicle bundle not found. Building from source datasets...")
+        if build_ev_bundle:
+            build_ev_bundle()
+    else:
+        print(f"[+] Found existing EV Charger & Vehicle bundle: {CHARGER_BUNDLE_JS.name} ({CHARGER_BUNDLE_JS.stat().st_size / (1024*1024):.2f} MB)")
+
 def build_multimodal_heatmap_map():
     print("\n=======================================================")
-    print(" ⚡ BUILDING ALL-INDIA MULTIMODAL HEATMAP DASHBOARD")
+    print(" ⚡ BUILDING ALL-INDIA MULTIMODAL, GRID & EV MAP")
     print("=======================================================")
+
+    ensure_bundles()
+
+    # Check if raw files exist; if not, check if existing HTML already has the heavy vector/cluster layers
+    can_rebuild_from_scratch = HIGHWAYS_GPKG.exists() and POIS_GPKG.exists()
+
+    if not can_rebuild_from_scratch and OUTPUT_HTML.exists():
+        print(f"[*] Raw GPKG layers not present locally; preserving pre-rendered vector routes & fuel stations from {OUTPUT_HTML.name}...")
+        if inject_layers:
+            inject_layers()
+            print(f"[+] All-India Multimodal, Grid & EV Map updated successfully!")
+            return
 
     # Initialize map centered on India
     m = folium.Map(
@@ -206,11 +255,11 @@ def build_multimodal_heatmap_map():
             max_zoom=10,
             min_opacity=0.35,
             gradient={
-                0.1: "#10b981",  # Green (Low density rural)
-                0.3: "#facc15",  # Yellow (Moderate)
-                0.6: "#f97316",  # Orange (High density)
-                0.85: "#dc2626", # Crimson (Dense urban)
-                1.0: "#7f1d1d"   # Dark Red (Mega-city core)
+                0.1: "#10b981",
+                0.3: "#facc15",
+                0.6: "#f97316",
+                0.85: "#dc2626",
+                1.0: "#7f1d1d"
             }
         ).add_to(pop_heat_group)
         pop_heat_group.add_to(m)
@@ -227,11 +276,11 @@ def build_multimodal_heatmap_map():
             max_zoom=10,
             min_opacity=0.3,
             gradient={
-                0.1: "#312e81",  # Deep Indigo
-                0.35: "#8b5cf6", # Purple
-                0.65: "#ec4899", # Magenta
-                0.85: "#f59e0b", # Golden Glow
-                1.0: "#ffffff"   # Brilliant White (Peak Economic Hub)
+                0.1: "#312e81",
+                0.35: "#8b5cf6",
+                0.65: "#ec4899",
+                0.85: "#f59e0b",
+                1.0: "#ffffff"
             }
         ).add_to(ntl_heat_group)
         ntl_heat_group.add_to(m)
@@ -248,10 +297,10 @@ def build_multimodal_heatmap_map():
             max_zoom=10,
             min_opacity=0.4,
             gradient={
-                0.2: "#06b6d4", # Cyan
-                0.5: "#0284c7", # Sky Blue
-                0.8: "#2563eb", # Blue
-                1.0: "#1e1b4b"  # Dark Navy
+                0.2: "#06b6d4",
+                0.5: "#0284c7",
+                0.8: "#2563eb",
+                1.0: "#1e1b4b"
             }
         ).add_to(road_heat_group)
         road_heat_group.add_to(m)
@@ -317,60 +366,30 @@ def build_multimodal_heatmap_map():
     MiniMap(toggle_display=True).add_to(m)
     folium.LayerControl(collapsed=False, position="topright").add_to(m)
 
-    # Render HTML and inject Custom Glassmorphism Legend
+    # Render HTML
     html_content = m.get_root().render()
-
-    legend_card = """
-    <div style="
-        position: fixed;
-        bottom: 25px;
-        left: 25px;
-        z-index: 9999;
-        background: rgba(15, 23, 42, 0.90);
-        backdrop-filter: blur(8px);
-        color: #f8fafc;
-        padding: 16px 20px;
-        border-radius: 12px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        border: 1px solid rgba(255,255,255,0.12);
-        max-width: 320px;
-        font-size: 12px;
-    ">
-        <h4 style="margin: 0 0 10px 0; font-size: 14px; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
-            ⚡ Urja-X Multimodal Heatmap
-        </h4>
-        <div style="margin-bottom: 8px;">
-            <b>👥 Population Density (WorldPop):</b><br>
-            <div style="height: 10px; background: linear-gradient(to right, #10b981, #facc15, #f97316, #dc2626); border-radius: 4px; margin: 4px 0;"></div>
-            <div style="display: flex; justify-content: space-between; color: #94a3b8; font-size: 10px;">
-                <span>Rural (Low)</span>
-                <span>Industrial</span>
-                <span>Mega-City Core</span>
-            </div>
-        </div>
-        <div style="margin-bottom: 8px;">
-            <b>🌃 Night-time Lights (VIIRS NTL):</b><br>
-            <div style="height: 10px; background: linear-gradient(to right, #312e81, #8b5cf6, #ec4899, #f59e0b, #ffffff); border-radius: 4px; margin: 4px 0;"></div>
-            <div style="display: flex; justify-content: space-between; color: #94a3b8; font-size: 10px;">
-                <span>Unlit</span>
-                <span>Suburban</span>
-                <span>Economic Hub</span>
-            </div>
-        </div>
-        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; color: #cbd5e1; font-size: 11px;">
-            💡 <i>Use the top-right layer switcher to toggle Heatmaps, Expressways, and Fuel Stations ON/OFF.</i>
-        </div>
-    </div>
-    """
-
-    html_content = html_content.replace("</body>", f"{legend_card}</body>")
     OUTPUT_HTML.write_text(html_content, encoding="utf-8")
-    print(f"\n[+] Saved All-India Multimodal Heatmap to: {OUTPUT_HTML.name}")
+    print(f"\n[+] Rendered base map to: {OUTPUT_HTML.name}")
+
+    # Inject Electricity & EV Infrastructure Layers
+    if inject_layers:
+        inject_layers()
+
+def ensure_bundles():
+    if not ELEC_BUNDLE_JS.exists() and build_bundle:
+        print("[*] Electricity bundle missing, building...")
+        build_bundle()
+    if not CHARGER_BUNDLE_JS.exists() and build_ev_bundle:
+        print("[*] EV bundle missing, building...")
+        build_ev_bundle()
+    if not TRAFFIC_BUNDLE_JS.exists() and build_traffic_bundle:
+        print("[*] Traffic bundle missing, building...")
+        build_traffic_bundle()
 
 def main():
+    ensure_bundles()
     build_multimodal_heatmap_map()
-    print("[+] All-India Multimodal Heatmap generation completed successfully!")
+    print("[+] All-India Multimodal, Grid, EV & Traffic Dashboard ready!")
 
 if __name__ == "__main__":
     main()

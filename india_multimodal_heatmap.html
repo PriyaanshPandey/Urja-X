@@ -58,6 +58,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="Electricity-Data/urja_electricity_bundle.js"></script>
+    <script src="EV-Charger/urja_ev_bundle.js"></script>
+    <script src="Trafic data/urja_traffic_bundle.js"></script>
 </head>
 <body>
     
@@ -69,41 +72,128 @@
         position: fixed;
         bottom: 25px;
         left: 25px;
-        z-index: 9999;
+        z-index: 1000;
         background: rgba(15, 23, 42, 0.90);
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(12px);
         color: #f8fafc;
-        padding: 16px 20px;
+        padding: 14px 18px;
         border-radius: 12px;
+        box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.5);
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        border: 1px solid rgba(255,255,255,0.12);
-        max-width: 320px;
-        font-size: 12px;
+        border: 1px solid rgba(255,255,255,0.15);
+        max-width: 355px;
+        font-size: 11px;
     ">
-        <h4 style="margin: 0 0 10px 0; font-size: 14px; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
-            ⚡ Urja-X Multimodal Heatmap
+        <h4 style="margin: 0 0 10px 0; font-size: 13.5px; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
+            ⚡ Urja-X Unified Multimodal, Grid & EV Map
         </h4>
-        <div style="margin-bottom: 8px;">
-            <b>👥 Population Density (WorldPop):</b><br>
-            <div style="height: 10px; background: linear-gradient(to right, #10b981, #facc15, #f97316, #dc2626); border-radius: 4px; margin: 4px 0;"></div>
-            <div style="display: flex; justify-content: space-between; color: #94a3b8; font-size: 10px;">
-                <span>Rural (Low)</span>
-                <span>Industrial</span>
-                <span>Mega-City Core</span>
+
+        <!-- Population Density -->
+        <div style="margin-bottom: 6px;">
+            <b style="color: #cbd5e1;">👥 Population Density (WorldPop):</b><br>
+            <div style="margin-top: 3px; width: 100%; height: 8px; border-radius: 4px; background: linear-gradient(to right, #00ffff, #00ff00, #ffff00, #ff0000); opacity: 0.85;"></div>
+            <div style="display: flex; justify-content: space-between; font-size: 9px; color: #94a3b8; margin-top: 2px;">
+                <span>Rural (Low)</span><span>Industrial</span><span>Mega-City Core</span>
             </div>
         </div>
-        <div style="margin-bottom: 8px;">
-            <b>🌃 Night-time Lights (VIIRS NTL):</b><br>
-            <div style="height: 10px; background: linear-gradient(to right, #312e81, #8b5cf6, #ec4899, #f59e0b, #ffffff); border-radius: 4px; margin: 4px 0;"></div>
-            <div style="display: flex; justify-content: space-between; color: #94a3b8; font-size: 10px;">
-                <span>Unlit</span>
-                <span>Suburban</span>
-                <span>Economic Hub</span>
+
+        <!-- Night-time Lights -->
+        <div style="margin-bottom: 6px;">
+            <b style="color: #cbd5e1;">🌃 Night-time Lights (VIIRS NTL):</b><br>
+            <div style="margin-top: 3px; width: 100%; height: 8px; border-radius: 4px; background: linear-gradient(to right, #2c003e, #6a0d83, #d74b76, #f39060, #fed7aa); opacity: 0.85;"></div>
+            <div style="display: flex; justify-content: space-between; font-size: 9px; color: #94a3b8; margin-top: 2px;">
+                <span>Unlit</span><span>Suburban</span><span>Economic Hub</span>
             </div>
         </div>
-        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; color: #cbd5e1; font-size: 11px;">
-            💡 <i>Use the top-right layer switcher to toggle Heatmaps, Expressways, and Fuel Stations ON/OFF.</i>
+
+        <!-- Road Network Density -->
+        <div style="margin-bottom: 6px;">
+            <b style="color: #cbd5e1;">🛣️ Highway & Road Density:</b><br>
+            <div style="margin-top: 3px; width: 100%; height: 8px; border-radius: 4px; background: linear-gradient(to right, #10b981, #06b6d4, #6366f1, #1e1b4b); opacity: 0.85;"></div>
+            <div style="display: flex; justify-content: space-between; font-size: 9px; color: #94a3b8; margin-top: 2px;">
+                <span>Local</span><span>Connecting</span><span>Dense Corridor</span>
+            </div>
+        </div>
+
+        <!-- Electricity Grid Infrastructure -->
+        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;">
+            <b style="color: #fde047; display: flex; align-items: center; justify-content: space-between;">
+                <span>⚡ Power Grid Transmission (OSM):</span>
+                <span style="font-size: 9px; color: #94a3b8; font-weight: normal;">47K+ km</span>
+            </b>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; font-size: 10px;">
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:12px; height:3px; background:#dc2626;"></span>
+                    <span><b>765+ kV</b> (UHV)</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:12px; height:2.5px; background:#ea580c;"></span>
+                    <span><b>400 kV</b> (EHV)</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:12px; height:2px; background:#eab308;"></span>
+                    <span><b>220 kV</b> (HV)</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:12px; height:1.5px; background:#38bdf8;"></span>
+                    <span><b>132/66 kV</b> (MV)</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- EV Infrastructure & Fleet -->
+        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;">
+            <b style="color: #38bdf8; display: flex; align-items: center; justify-content: space-between;">
+                <span>🚗 EV Charging & Fleet Adoption:</span>
+                <span style="font-size: 9px; color: #94a3b8; font-weight: normal;">39.5K Plugs</span>
+            </b>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; font-size: 10px;">
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:8px; height:8px; background:#06b6d4; border-radius:50%; border:1.5px solid #fff;"></span>
+                    <span><b>Fast DC</b> (≥25 kW)</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%; border:1.5px solid #fff;"></span>
+                    <span><b>Standard AC</b></span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; padding: 1px 4px; background:#4f46e5; border-radius:4px; color:#fff; font-size:9px; font-weight:bold;">5.8M EVs</span>
+                    <span><b>VAHAN Fleet</b></span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Traffic Toll Plazas (Jan 2026 Monthly) -->
+        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px;">
+            <b style="color: #fed7aa; display: flex; align-items: center; justify-content: space-between;">
+                <span>🚦 NHAI/IHMCL Toll Traffic (Jan 2026):</span>
+                <span style="font-size: 9px; color: #fb923c; font-weight: 600;">Monthly Counts</span>
+            </b>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 4px; font-size: 10px;">
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:9px; height:9px; background:#dc2626; border-radius:50%; border:1px solid #fff;"></span>
+                    <span>≥ 500K / mo</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:8px; height:8px; background:#ea580c; border-radius:50%; border:1px solid #fff;"></span>
+                    <span>250K - 500K</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:7px; height:7px; background:#eab308; border-radius:50%; border:1px solid #fff;"></span>
+                    <span>100K - 250K</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                    <span style="display:inline-block; width:6px; height:6px; background:#14b8a6; border-radius:50%; border:1px solid #fff;"></span>
+                    <span>< 100K / mo</span>
+                </span>
+            </div>
+            <div style="font-size: 8.5px; color: #fca5a5; margin-top: 3px; font-style: italic;">
+                * Monthly traffic counts (Jan 2026). Not daily counts or AADT.
+            </div>
+        </div>
+
+        <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 6px; color: #94a3b8; font-size: 8.5px; line-height: 1.3;">
+            <i>* Sources: OpenStreetMap (ODbL), BEE, VAHAN (MoRTH), and IHMCL/NHAI FASTag. Mapped lines do not imply grid-connection feasibility.</i>
         </div>
     </div>
     </body>
@@ -173369,6 +173459,805 @@ Payments ;
 }
             ).addTo(map_59c3977f0a9c71c4f9bafb19999db5e2);
 
+
+// ============================================================================
+// ⚡ URJA-X ELECTRICITY INFRASTRUCTURE INTEGRATION
+// ============================================================================
+function initUrjaElectricity(map, layerControl) {
+    if (typeof URJA_ELECTRICITY_DATA === 'undefined') {
+        console.warn("[Urja-X] Electricity data bundle not detected.");
+        return;
+    }
+    if (!map || !layerControl) {
+        console.error("[Urja-X] Leaflet map or layerControl instance not provided.");
+        return;
+    }
+
+    console.log("[Urja-X] Initializing Electricity Infrastructure layers...");
+
+    // 1. TRANSMISSION LINES (HTML5 Canvas Renderer for 60fps performance)
+    var linesRenderer = L.canvas({ tolerance: 5 });
+    var transmissionLinesLayer = L.geoJSON(URJA_ELECTRICITY_DATA.transmission_lines, {
+        renderer: linesRenderer,
+        style: function(feat) {
+            var p = feat.properties || {};
+            var isUHV = p.v && p.v >= 765000;
+            var isEHV = p.v && p.v >= 350000;
+            return {
+                color: p.c || '#94a3b8',
+                weight: p.w || 2,
+                opacity: isUHV ? 0.95 : (isEHV ? 0.90 : 0.80),
+                dashArray: p.d || null
+            };
+        },
+        onEachFeature: function(feat, layer) {
+            var p = feat.properties || {};
+            var vDisplay = p.v ? ((p.v / 1000).toLocaleString() + ' kV (' + p.v.toLocaleString() + ' V)') : 'Unspecified (Heuristic Grid Corridor)';
+            var opDisplay = p.o ? p.o : 'Not specified in OSM';
+            var nameDisplay = p.n ? ('⚡ ' + p.n) : '⚡ Power Transmission Corridor';
+            var circInfo = p.circ ? ('<div><b>Circuits:</b> ' + p.circ + ' | <b>Cables:</b> ' + (p.cabl || 'N/A') + '</div>') : '';
+            
+            var popupHtml = `
+                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width: 260px; padding: 4px; color: #0f172a;">
+                    <div style="background: #1e293b; color: #f8fafc; padding: 8px 12px; border-radius: 6px 6px 0 0; margin: -4px -4px 8px -4px;">
+                        <div style="font-weight: bold; font-size: 13px;">${nameDisplay}</div>
+                        <span style="display: inline-block; margin-top: 4px; background: ${p.c}; color: #fff; font-size: 10px; font-weight: bold; padding: 2px 7px; border-radius: 4px;">
+                            ${p.t}
+                        </span>
+                    </div>
+                    <div style="font-size: 11px; line-height: 1.6; color: #334155;">
+                        <div><b>Operating Voltage:</b> <span style="color: #0284c7; font-weight: bold;">${vDisplay}</span></div>
+                        <div><b>Grid Operator:</b> ${opDisplay}</div>
+                        ${circInfo}
+                        <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 10px; color: #64748b; font-style: italic;">
+                            ℹ️ Mapped OSM grid infrastructure. Proximity does not infer available electrical capacity or verified grid connection feasibility.
+                        </div>
+                    </div>
+                </div>
+            `;
+            layer.bindPopup(popupHtml, { maxWidth: 300 });
+            layer.bindTooltip('⚡ ' + p.t + (p.o ? ' (' + p.o + ')' : ''), { sticky: true });
+        }
+    });
+
+    // 2. SUBSTATIONS (Distinctive High-Visibility Markers)
+    var substationsLayer = L.featureGroup();
+    URJA_ELECTRICITY_DATA.substations.forEach(function(sub) {
+        var marker = L.circleMarker([sub.lat, sub.lon], {
+            radius: 8,
+            fillColor: '#8b5cf6',
+            color: '#ffffff',
+            weight: 2.5,
+            opacity: 1.0,
+            fillOpacity: 0.95
+        });
         
+        var nameDisplay = sub.name || 'Substation (OSM Node)';
+        var voltDisplay = sub.voltage || 'Not recorded in OSM';
+        var operDisplay = sub.operator || 'Not recorded in OSM';
+        var subType = (sub.substation || 'Grid').toUpperCase();
+        
+        var popupHtml = `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width: 250px; padding: 4px; color: #0f172a;">
+                <div style="background: #5b21b6; color: #f8fafc; padding: 8px 12px; border-radius: 6px 6px 0 0; margin: -4px -4px 8px -4px;">
+                    <div style="font-weight: bold; font-size: 13px;">🏢 ${nameDisplay}</div>
+                    <span style="font-size: 10px; color: #ddd6fe; text-transform: uppercase; font-weight: 600;">${subType} SUBSTATION</span>
+                </div>
+                <div style="font-size: 11px; line-height: 1.6; color: #334155; padding-top: 4px;">
+                    <div><b>Operating Voltage:</b> <span style="color: #7c3aed; font-weight: bold;">${voltDisplay}</span></div>
+                    <div><b>Grid Operator / Utility:</b> ${operDisplay}</div>
+                    <div><b>Coordinates:</b> ${sub.lat.toFixed(5)}, ${sub.lon.toFixed(5)}</div>
+                    <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 10px; color: #64748b; font-style: italic;">
+                        ℹ️ Verified OSM node location. Interconnection feasibility requires utility load-flow and transformer headroom studies.
+                    </div>
+                </div>
+            </div>
+        `;
+        marker.bindPopup(popupHtml, { maxWidth: 290 });
+        marker.bindTooltip('🏢 ' + nameDisplay + ' (' + voltDisplay + ')', { sticky: true });
+        marker.addTo(substationsLayer);
+    });
+
+    // 3. TRANSFORMERS (Clustered)
+    var transformersCluster = L.markerClusterGroup({
+        maxClusterRadius: 45,
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        iconCreateFunction: function(cluster) {
+            return L.divIcon({
+                html: '<div style="background:rgba(217, 119, 6, 0.92);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.4);">' + cluster.getChildCount() + '</div>',
+                className: 'urja-tr-cluster',
+                iconSize: L.point(32, 32)
+            });
+        }
+    });
+    URJA_ELECTRICITY_DATA.transformers.forEach(function(tr) {
+        var m = L.circleMarker([tr[0], tr[1]], {
+            radius: 4.5,
+            fillColor: '#d97706',
+            color: '#ffffff',
+            weight: 1.5,
+            opacity: 0.9,
+            fillOpacity: 0.85
+        });
+        m.bindTooltip('🔌 ' + tr[2] + (tr[3] ? ' (' + tr[3] + ')' : ''), { sticky: true });
+        m.bindPopup(`
+            <div style="font-family:sans-serif; font-size:11px; padding:2px;">
+                <b>🔌 ${tr[2]}</b><br>
+                <b>Voltage:</b> ${tr[3] || 'Not recorded'}<br>
+                <b>Operator:</b> ${tr[4] || 'Not recorded'}<br>
+                <b>Coordinates:</b> ${tr[0]}, ${tr[1]}
+            </div>
+        `);
+        transformersCluster.addLayer(m);
+    });
+
+    // 4. POWER GENERATORS & PLANTS (Clustered)
+    var generatorsCluster = L.markerClusterGroup({
+        maxClusterRadius: 45,
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        iconCreateFunction: function(cluster) {
+            return L.divIcon({
+                html: '<div style="background:rgba(16, 185, 129, 0.92);color:white;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.4);">' + cluster.getChildCount() + '</div>',
+                className: 'urja-gen-cluster',
+                iconSize: L.point(34, 34)
+            });
+        }
+    });
+    URJA_ELECTRICITY_DATA.generators.forEach(function(gen) {
+        var isPlant = gen[3] === 'plant';
+        var m = L.circleMarker([gen[0], gen[1]], {
+            radius: isPlant ? 6.5 : 4,
+            fillColor: isPlant ? '#047857' : '#10b981',
+            color: '#ffffff',
+            weight: isPlant ? 2 : 1.2,
+            opacity: 0.95,
+            fillOpacity: 0.85
+        });
+        m.bindTooltip('🏭 ' + gen[2] + (isPlant ? ' [Power Plant]' : ' [Generator]'), { sticky: true });
+        m.bindPopup(`
+            <div style="font-family:sans-serif; font-size:11px; padding:2px;">
+                <b>🏭 ${gen[2]}</b><br>
+                <b>Facility:</b> ${isPlant ? 'Power Generation Plant' : 'Power Generator'}<br>
+                <b>Operator:</b> ${gen[3] || 'Not recorded'}<br>
+                <b>Coordinates:</b> ${gen[0]}, ${gen[1]}
+            </div>
+        `);
+        generatorsCluster.addLayer(m);
+    });
+
+    // 5. UTILITY POLES (Clustered)
+    var polesCluster = L.markerClusterGroup({
+        maxClusterRadius: 40,
+        showCoverageOnHover: false,
+        iconCreateFunction: function(cluster) {
+            return L.divIcon({
+                html: '<div style="background:rgba(2, 132, 199, 0.90);color:white;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.4);">' + cluster.getChildCount() + '</div>',
+                className: 'urja-pole-cluster',
+                iconSize: L.point(30, 30)
+            });
+        }
+    });
+    URJA_ELECTRICITY_DATA.poles.forEach(function(pol) {
+        var m = L.circleMarker([pol[0], pol[1]], {
+            radius: 3,
+            fillColor: '#0284c7',
+            color: '#ffffff',
+            weight: 1,
+            opacity: 0.85,
+            fillOpacity: 0.8
+        });
+        m.bindTooltip('📍 ' + pol[3] + (pol[2] ? ' (' + pol[2] + ')' : ''), { sticky: true });
+        polesCluster.addLayer(m);
+    });
+
+    // 6. TRANSMISSION TOWERS (Tiled Regional Loading Strategy for 1.6M nodes)
+    var towersLayerGroup = L.layerGroup();
+    var towersCanvasRenderer = L.canvas({ tolerance: 3 });
+    var towersActiveDetailLayer = L.layerGroup();
+    var towersActiveSummaryLayer = L.layerGroup();
+    towersLayerGroup.addLayer(towersActiveSummaryLayer);
+    towersLayerGroup.addLayer(towersActiveDetailLayer);
+
+    function updateTowersView() {
+        if (!map.hasLayer(towersLayerGroup)) return;
+        var zoom = map.getZoom();
+        if (zoom < 10) {
+            towersActiveDetailLayer.clearLayers();
+            if (towersActiveSummaryLayer.getLayers().length === 0) {
+                URJA_ELECTRICITY_DATA.towers_summary.forEach(function(ts) {
+                    var rad = Math.min(24, Math.max(9, Math.round(Math.log10(ts.count + 1) * 4.6)));
+                    var m = L.circleMarker([ts.lat, ts.lon], {
+                        radius: rad,
+                        fillColor: '#475569',
+                        color: '#f8fafc',
+                        weight: 1.5,
+                        fillOpacity: 0.75
+                    });
+                    m.bindTooltip(`🗼 Regional Tower Cluster: <b>${ts.count.toLocaleString()}</b> towers<br><span style="font-size:10px;color:#94a3b8;">Zoom in (level 10+) to view individual towers</span>`, { sticky: true });
+                    towersActiveSummaryLayer.addLayer(m);
+                });
+            }
+        } else {
+            towersActiveSummaryLayer.clearLayers();
+            towersActiveDetailLayer.clearLayers();
+            var bounds = map.getBounds();
+            var minLat = Math.floor(bounds.getSouth());
+            var maxLat = Math.floor(bounds.getNorth());
+            var minLon = Math.floor(bounds.getWest());
+            var maxLon = Math.floor(bounds.getEast());
+            
+            for (var latIdx = minLat; latIdx <= maxLat; latIdx++) {
+                for (var lonIdx = minLon; lonIdx <= maxLon; lonIdx++) {
+                    var cellKey = latIdx + '_' + lonIdx;
+                    var cellTowers = URJA_ELECTRICITY_DATA.towers_by_cell[cellKey];
+                    if (cellTowers) {
+                        for (var i = 0; i < cellTowers.length; i++) {
+                            var tLat = cellTowers[i][0];
+                            var tLon = cellTowers[i][1];
+                            if (bounds.contains([tLat, tLon])) {
+                                var tm = L.circleMarker([tLat, tLon], {
+                                    renderer: towersCanvasRenderer,
+                                    radius: 3,
+                                    fillColor: '#94a3b8',
+                                    color: '#334155',
+                                    weight: 1,
+                                    fillOpacity: 0.8
+                                });
+                                tm.bindTooltip('🗼 Transmission Tower', { sticky: true });
+                                towersActiveDetailLayer.addLayer(tm);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    map.on('moveend', updateTowersView);
+    map.on('layeradd', function(e) {
+        if (e.layer === towersLayerGroup) updateTowersView();
+    });
+
+    // 7. ADD TO MAP (Default Core Layers ON)
+    transmissionLinesLayer.addTo(map);
+    substationsLayer.addTo(map);
+
+    // 8. REGISTER OVERLAYS IN LAYER CONTROL
+    layerControl.addOverlay(transmissionLinesLayer, "⚡ [Grid] Transmission Lines (EHV/HV)");
+    layerControl.addOverlay(substationsLayer, "🏢 [Grid] Substations (OSM Nodes)");
+    layerControl.addOverlay(transformersCluster, "🔌 [Grid] Transformers (5.7K Clustered)");
+    layerControl.addOverlay(generatorsCluster, "🏭 [Grid] Power Plants & Generators (37.7K)");
+    layerControl.addOverlay(towersLayerGroup, "🗼 [Grid] Transmission Towers (1.6M Tiled)");
+    layerControl.addOverlay(polesCluster, "📍 [Grid] Utility Poles (15K Clustered)");
+
+    // 9. FORMAT LAYER SWITCHER WITH ELECTRICITY SECTION
+    function formatControl() {
+        var container = document.querySelector('.leaflet-control-layers-overlays');
+        if (!container) return;
+        var labels = container.querySelectorAll('label');
+        var firstGridLabel = null;
+        labels.forEach(function(lbl) {
+            var txt = lbl.textContent || '';
+            if (txt.includes('[Grid]')) {
+                if (!firstGridLabel) firstGridLabel = lbl;
+                lbl.style.display = 'block';
+                lbl.style.paddingLeft = '4px';
+            }
+        });
+
+        if (firstGridLabel && !document.getElementById('urja-elec-divider')) {
+            var div = document.createElement('div');
+            div.id = 'urja-elec-divider';
+            div.style.cssText = 'margin: 10px 0 6px 0; border-top: 1px solid rgba(56, 189, 248, 0.4); padding-top: 8px;';
+            div.innerHTML = '<div style="font-weight: 700; color: #0284c7; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">⚡ Electricity Infrastructure</div>';
+            firstGridLabel.parentNode.insertBefore(div, firstGridLabel);
+        }
+    }
+    setTimeout(formatControl, 200);
+    setTimeout(formatControl, 800);
+
+    console.log("[Urja-X] Electricity Infrastructure layers initialized successfully.");
+}
+initUrjaElectricity(map_59c3977f0a9c71c4f9bafb19999db5e2, layer_control_c9ebf40afdacb90a65d4d99428468ab9);
+
+
+
+// ============================================================================
+// 🚗 URJA-X EV CHARGERS & VEHICLE FLEET INTEGRATION
+// ============================================================================
+function initUrjaEV(map, layerControl) {
+    if (typeof URJA_EV_DATA === 'undefined') {
+        console.warn("[Urja-X] EV data bundle not detected.");
+        return;
+    }
+    if (!map || !layerControl) {
+        console.error("[Urja-X] Leaflet map or layerControl instance not provided.");
+        return;
+    }
+
+    console.log("[Urja-X] Initializing EV Chargers & Vehicle Fleet layers...");
+
+    // 1. FAST DC CHARGING STATIONS (>= 25 kW)
+    var fastDcCluster = L.markerClusterGroup({
+        maxClusterRadius: 45,
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        iconCreateFunction: function(cluster) {
+            return L.divIcon({
+                html: '<div style="background: rgba(6, 182, 212, 0.95); color: white; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">' + cluster.getChildCount() + '</div>',
+                className: 'urja-dc-cluster',
+                iconSize: L.point(34, 34)
+            });
+        }
+    });
+
+    URJA_EV_DATA.dc_chargers.forEach(function(c) {
+        var lat = c[0], lon = c[1], cpo = c[2], loc = c[3], conn = c[4], rating = c[5], ports = c[6], govtPvt = c[7], city = c[8], state = c[9];
+        
+        var m = L.circleMarker([lat, lon], {
+            radius: 5,
+            fillColor: '#06b6d4',
+            color: '#ffffff',
+            weight: 1.8,
+            opacity: 1.0,
+            fillOpacity: 0.92
+        });
+
+        var popupHtml = `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width: 250px; padding: 4px; color: #0f172a;">
+                <div style="background: #0891b2; color: #f8fafc; padding: 8px 12px; border-radius: 6px 6px 0 0; margin: -4px -4px 8px -4px;">
+                    <div style="font-weight: bold; font-size: 13px;">⚡ ${cpo} Fast DC Hub</div>
+                    <span style="font-size: 10px; color: #cffafe; font-weight: 600; text-transform: uppercase;">${govtPvt} CPO</span>
+                </div>
+                <div style="font-size: 11px; line-height: 1.6; color: #334155; padding-top: 4px;">
+                    <div><b>Power Output:</b> <span style="color: #0891b2; font-weight: bold;">${rating > 0 ? rating + ' kW DC Fast' : 'High-Power DC'}</span></div>
+                    <div><b>Connectors:</b> ${conn} (${ports} port${ports > 1 ? 's' : ''})</div>
+                    <div><b>Location:</b> ${loc || city || 'Highway Transit Site'}</div>
+                    <div><b>Region:</b> ${city ? city + ', ' : ''}${state}</div>
+                    <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 10px; color: #64748b; font-style: italic;">
+                        ⚡ Verified Operational Public DC Fast Charger.
+                    </div>
+                </div>
+            </div>
+        `;
+        m.bindPopup(popupHtml, { maxWidth: 290 });
+        m.bindTooltip('⚡ ' + cpo + ' (' + rating + ' kW DC)', { sticky: true });
+        fastDcCluster.addLayer(m);
+    });
+
+    // 2. STANDARD AC CHARGERS (< 25 kW)
+    var standardAcCluster = L.markerClusterGroup({
+        maxClusterRadius: 45,
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        iconCreateFunction: function(cluster) {
+            return L.divIcon({
+                html: '<div style="background: rgba(16, 185, 129, 0.95); color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.4);">' + cluster.getChildCount() + '</div>',
+                className: 'urja-ac-cluster',
+                iconSize: L.point(32, 32)
+            });
+        }
+    });
+
+    URJA_EV_DATA.ac_chargers.forEach(function(c) {
+        var lat = c[0], lon = c[1], cpo = c[2], loc = c[3], conn = c[4], rating = c[5], ports = c[6], govtPvt = c[7], city = c[8], state = c[9];
+        
+        var m = L.circleMarker([lat, lon], {
+            radius: 4,
+            fillColor: '#10b981',
+            color: '#ffffff',
+            weight: 1.4,
+            opacity: 0.9,
+            fillOpacity: 0.85
+        });
+
+        var popupHtml = `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width: 240px; padding: 4px; color: #0f172a;">
+                <div style="background: #059669; color: #f8fafc; padding: 8px 12px; border-radius: 6px 6px 0 0; margin: -4px -4px 8px -4px;">
+                    <div style="font-weight: bold; font-size: 13px;">🔌 ${cpo} AC Station</div>
+                    <span style="font-size: 10px; color: #d1fae5; font-weight: 600;">${govtPvt} Operator</span>
+                </div>
+                <div style="font-size: 11px; line-height: 1.6; color: #334155; padding-top: 4px;">
+                    <div><b>Rating:</b> ${rating > 0 ? rating + ' kW AC' : 'Standard AC'}</div>
+                    <div><b>Connector Type:</b> ${conn}</div>
+                    <div><b>Location:</b> ${loc || city || 'Urban / Commercial Hub'}</div>
+                    <div><b>Region:</b> ${city ? city + ', ' : ''}${state}</div>
+                </div>
+            </div>
+        `;
+        m.bindPopup(popupHtml, { maxWidth: 280 });
+        m.bindTooltip('🔌 ' + cpo + ' (' + (rating > 0 ? rating + ' kW' : 'AC') + ')', { sticky: true });
+        standardAcCluster.addLayer(m);
+    });
+
+    // 3. STATE EV FLEET ADOPTION BADGES (5.8M Registered Vehicles from VAHAN)
+    var stateFleetGroup = L.featureGroup();
+
+    function formatNumber(num) {
+        if (num >= 1000000) return (num / 1000000).toFixed(2) + 'M';
+        if (num >= 1000) return Math.round(num / 1000) + 'K';
+        return num.toLocaleString();
+    }
+
+    URJA_EV_DATA.state_fleet.forEach(function(sf) {
+        var countStr = formatNumber(sf.total);
+        var iconHtml = `
+            <div style="
+                background: linear-gradient(135deg, #4f46e5, #7c3aed);
+                color: #ffffff;
+                padding: 4px 8px;
+                border-radius: 12px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-weight: 800;
+                font-size: 11px;
+                white-space: nowrap;
+                box-shadow: 0 4px 12px rgba(79, 70, 229, 0.45);
+                border: 2px solid #ffffff;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            ">
+                <span style="font-size: 10px;">🚗</span> ${sf.state.length > 10 ? sf.state.substring(0, 8) + '..' : sf.state}: <span style="color: #fde047;">${countStr}</span>
+            </div>
+        `;
+
+        var badgeIcon = L.divIcon({
+            html: iconHtml,
+            className: 'urja-fleet-badge',
+            iconSize: [110, 26],
+            iconAnchor: [55, 13]
+        });
+
+        var m = L.marker([sf.lat, sf.lon], { icon: badgeIcon });
+
+        var w2Pct = sf.total > 0 ? ((sf.w2 / sf.total) * 100).toFixed(1) : 0;
+        var w3Pct = sf.total > 0 ? ((sf.w3 / sf.total) * 100).toFixed(1) : 0;
+        var w4Pct = sf.total > 0 ? ((sf.w4 / sf.total) * 100).toFixed(1) : 0;
+
+        var popupHtml = `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width: 270px; padding: 4px; color: #0f172a;">
+                <div style="background: linear-gradient(135deg, #4338ca, #6d28d9); color: #f8fafc; padding: 10px 14px; border-radius: 6px 6px 0 0; margin: -4px -4px 8px -4px;">
+                    <div style="font-weight: bold; font-size: 14px;">🚗 ${sf.state} EV Fleet</div>
+                    <div style="font-size: 11px; color: #c7d2fe; margin-top: 2px;">
+                        Total Registered EVs: <b style="color: #fde047; font-size: 13px;">${sf.total.toLocaleString()}</b>
+                    </div>
+                </div>
+                <div style="font-size: 11.5px; line-height: 1.6; color: #334155;">
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding: 2px 0;">
+                        <span>🛵 <b>2-Wheelers (E-2W):</b></span>
+                        <span><b>${sf.w2.toLocaleString()}</b> <span style="color:#64748b; font-size:10px;">(${w2Pct}%)</span></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding: 2px 0;">
+                        <span>🛺 <b>3-Wheelers (E-3W / Rickshaws):</b></span>
+                        <span><b>${sf.w3.toLocaleString()}</b> <span style="color:#64748b; font-size:10px;">(${w3Pct}%)</span></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding: 2px 0;">
+                        <span>🚙 <b>4-Wheelers (Personal & Cabs):</b></span>
+                        <span><b>${sf.w4.toLocaleString()}</b> <span style="color:#64748b; font-size:10px;">(${w4Pct}%)</span></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding: 2px 0;">
+                        <span>🚌 <b>Electric Buses:</b></span>
+                        <span><b>${sf.bus.toLocaleString()}</b></span>
+                    </div>
+                    ${sf.others > 0 ? `
+                    <div style="display: flex; justify-content: space-between; padding: 2px 0;">
+                        <span>📦 <b>Commercial Goods & Others:</b></span>
+                        <span><b>${sf.others.toLocaleString()}</b></span>
+                    </div>` : ''}
+                    <div style="margin-top: 8px; padding-top: 6px; border-top: 1px dashed #cbd5e1; font-size: 10px; color: #64748b; font-style: italic;">
+                        📊 Official VAHAN Dashboard Ground Truth (MoRTH, Govt. of India).
+                    </div>
+                </div>
+            </div>
+        `;
+        m.bindPopup(popupHtml, { maxWidth: 300 });
+        m.bindTooltip('🚗 ' + sf.state + ': ' + sf.total.toLocaleString() + ' EVs', { sticky: true });
+        stateFleetGroup.addLayer(m);
+    });
+
+    // 4. EV FLEET DENSITY HEATMAP
+    var evFleetHeatLayer = L.heatLayer(URJA_EV_DATA.heat_points, {
+        name: "EV Fleet Heatmap",
+        radius: 35,
+        blur: 32,
+        max_zoom: 9,
+        min_opacity: 0.35,
+        gradient: {
+            0.15: "#312e81",
+            0.40: "#6366f1",
+            0.65: "#a855f7",
+            0.85: "#ec4899",
+            1.00: "#fde047"
+        }
+    });
+
+    // ADD TO MAP (Default: Fast DC & State Fleet ON)
+    fastDcCluster.addTo(map);
+    stateFleetGroup.addTo(map);
+
+    // REGISTER IN LAYER CONTROL
+    layerControl.addOverlay(fastDcCluster, "⚡ [EV] Fast DC Chargers (12K Stations)");
+    layerControl.addOverlay(standardAcCluster, "🔌 [EV] Standard AC Chargers (27.5K Stations)");
+    layerControl.addOverlay(stateFleetGroup, "🚗 [EV] State Fleet Adoption Badges (5.8M EVs)");
+    layerControl.addOverlay(evFleetHeatLayer, "🔥 [EV] Vehicle Fleet Density Heatmap");
+
+    // FORMAT LAYER SWITCHER WITH EV INFRASTRUCTURE SECTION
+    function formatEVControl() {
+        var container = document.querySelector('.leaflet-control-layers-overlays');
+        if (!container) return;
+        var labels = container.querySelectorAll('label');
+        var firstEVLabel = null;
+        labels.forEach(function(lbl) {
+            var txt = lbl.textContent || '';
+            if (txt.includes('[EV]')) {
+                if (!firstEVLabel) firstEVLabel = lbl;
+                lbl.style.display = 'block';
+                lbl.style.paddingLeft = '4px';
+            }
+        });
+
+        if (firstEVLabel && !document.getElementById('urja-ev-divider')) {
+            var div = document.createElement('div');
+            div.id = 'urja-ev-divider';
+            div.style.cssText = 'margin: 10px 0 6px 0; border-top: 1px solid rgba(6, 182, 212, 0.4); padding-top: 8px;';
+            div.innerHTML = '<div style="font-weight: 700; color: #0891b2; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">🚗 EV Chargers & Fleet Demand</div>';
+            firstEVLabel.parentNode.insertBefore(div, firstEVLabel);
+        }
+    }
+    setTimeout(formatEVControl, 300);
+    setTimeout(formatEVControl, 900);
+
+    console.log("[Urja-X] EV Chargers & Vehicle Fleet layers initialized successfully.");
+}
+
+initUrjaEV(map_59c3977f0a9c71c4f9bafb19999db5e2, layer_control_c9ebf40afdacb90a65d4d99428468ab9);
+
+
+// ============================================================================
+// 🚦 URJA-X TRAFFIC (IHMCL FASTAG TOLL PLAZAS) INTEGRATION
+// ============================================================================
+function initUrjaTraffic(map, layerControl) {
+    if (typeof URJA_TRAFFIC_DATA === 'undefined') {
+        console.warn("[Urja-X] Traffic data bundle not detected.");
+        return;
+    }
+    if (!map || !layerControl) {
+        console.error("[Urja-X] Leaflet map or layerControl instance not provided.");
+        return;
+    }
+
+    console.log("[Urja-X] Initializing Traffic Toll Plazas layer...");
+
+    // 1. TRAFFIC MARKER CLUSTER GROUP
+    var trafficCluster = L.markerClusterGroup({
+        maxClusterRadius: 40,
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        iconCreateFunction: function(cluster) {
+            var count = cluster.getChildCount();
+            return L.divIcon({
+                html: '<div style="background: rgba(234, 88, 12, 0.95); color: #ffffff; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; border: 2px solid #fed7aa; box-shadow: 0 2px 8px rgba(0,0,0,0.45);">' + count + '</div>',
+                className: 'urja-traffic-cluster',
+                iconSize: L.point(34, 34)
+            });
+        }
+    });
+
+    // Marker lookup map for search & direct navigation
+    var markerRegistry = [];
+
+    // 2. PLOT TOLL PLAZAS
+    URJA_TRAFFIC_DATA.locations.forEach(function(loc) {
+        var m = L.circleMarker([loc.lat, loc.lon], {
+            radius: loc.radius || 6,
+            fillColor: loc.color || '#ea580c',
+            color: '#ffffff',
+            weight: 1.8,
+            opacity: 1.0,
+            fillOpacity: 0.92
+        });
+
+        // Format underlying records (handles single & paired/multi records gracefully)
+        var recordsHtml = loc.records.map(function(r, idx) {
+            var pairHeader = loc.records.length > 1 
+                ? '<div style="font-size: 10.5px; font-weight: bold; color: #ea580c; margin-bottom: 4px; padding-bottom: 2px; border-bottom: 1px dashed #fed7aa;">Record ' + (idx + 1) + ' of ' + loc.records.length + ' (Paired / Dual Plaza)</div>'
+                : '';
+
+            var carJeep = Number(r.car_jeep_cnt || 0).toLocaleString();
+            var lcv = Number(r.lcv_cnt || 0).toLocaleString();
+            var busTruck = Number(r.bus_truck_cnt || 0).toLocaleString();
+            var totalCnt = Number(r.total_cnt || 0).toLocaleString();
+            var revenue = r.total_amt ? '₹' + Number(r.total_amt).toLocaleString() : 'N/A';
+            var authority = (r.piu || r.ro) ? ('PIU: ' + (r.piu || 'N/A') + ' | RO: ' + (r.ro || 'N/A')) : '';
+
+            return `
+                <div style="margin-bottom: 8px;">
+                    ${pairHeader}
+                    <div style="font-size: 11px; line-height: 1.6; color: #334155;">
+                        <div><b>IHMCL Plaza:</b> <span style="font-weight: 600; color: #0f172a;">${r.plaza_name_report}</span></div>
+                        <div><b>Matched Plaza:</b> <span style="color: #475569;">${r.plaza_name_source}</span></div>
+                    </div>
+                    <div style="margin: 6px 0; background: #fff7ed; padding: 6px 8px; border-radius: 5px; border-left: 3px solid #ea580c;">
+                        <div style="font-size: 12px; font-weight: bold; color: #c2410c;">
+                            Total Monthly Count: ${totalCnt}
+                        </div>
+                        <div style="font-size: 10px; color: #9a3412;">Reporting Month: ${r.reporting_month} (Monthly Volume)</div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; font-size: 10.5px; background: #f8fafc; padding: 6px; border-radius: 4px; border: 1px solid #e2e8f0; margin-bottom: 4px;">
+                        <div>🚗 <b>Car/Jeep:</b> <br><span style="font-weight: 600; color: #1e293b;">${carJeep}</span></div>
+                        <div>🚐 <b>LCV:</b> <br><span style="font-weight: 600; color: #1e293b;">${lcv}</span></div>
+                        <div>🚛 <b>Bus/Truck:</b> <br><span style="font-weight: 600; color: #1e293b;">${busTruck}</span></div>
+                        <div>💰 <b>Toll Revenue:</b> <br><span style="font-weight: 600; color: #059669;">${revenue}</span></div>
+                    </div>
+                    ${authority ? '<div style="font-size: 9.5px; color: #64748b; margin-top: 2px;">🏛️ <b>Authority:</b> ' + authority + '</div>' : ''}
+                </div>
+            `;
+        }).join('<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 8px 0;">');
+
+        var popupHtml = `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; min-width: 270px; max-width: 330px; padding: 4px; color: #0f172a;">
+                <div style="background: linear-gradient(135deg, #ea580c, #c2410c); color: #fff; padding: 8px 12px; border-radius: 6px 6px 0 0; margin: -4px -4px 8px -4px;">
+                    <div style="font-weight: bold; font-size: 13px; display: flex; align-items: center; justify-content: space-between;">
+                        <span>🚦 ${loc.name}</span>
+                    </div>
+                    <div style="font-size: 10px; color: #ffedd5; display: flex; justify-content: space-between; align-items: center; margin-top: 2px;">
+                        <span>${loc.tier}</span>
+                        <span>Combined: ${Number(loc.combined_total).toLocaleString()}</span>
+                    </div>
+                </div>
+                <div style="margin-bottom: 6px; font-size: 10px; color: #64748b; display: flex; justify-content: space-between;">
+                    <span>📍 <b>Lat/Lon:</b> ${loc.lat.toFixed(6)}, ${loc.lon.toFixed(6)}</span>
+                    <span>${loc.records.length > 1 ? '<b style="color:#ea580c;">' + loc.records.length + ' Plazas At Coords</b>' : ''}</span>
+                </div>
+                ${recordsHtml}
+                <div style="margin-top: 8px; padding: 6px 8px; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 5px; font-size: 9.5px; color: #be123c; line-height: 1.35;">
+                    <b>⚠️ Monthly Traffic Count (January 2026):</b> These figures reflect the cumulative monthly toll throughput and must <u>NOT</u> be interpreted as daily traffic counts or AADT.
+                </div>
+            </div>
+        `;
+
+        m.bindPopup(popupHtml, { maxWidth: 350 });
+        m.bindTooltip('🚦 ' + loc.name + ' (' + Number(loc.combined_total).toLocaleString() + ' /mo)', { sticky: true });
+        trafficCluster.addLayer(m);
+
+        // Store for search
+        markerRegistry.push({
+            name: loc.name,
+            lat: loc.lat,
+            lon: loc.lon,
+            total: loc.combined_total,
+            marker: m,
+            searchKeys: loc.records.map(function(r) { return (r.plaza_name_report + ' ' + r.plaza_name_source + ' ' + (r.piu || '') + ' ' + (r.ro || '')).toLowerCase(); }).join(' ')
+        });
+    });
+
+    // Add traffic layer to map by default so it's immediately active
+    trafficCluster.addTo(map);
+
+    // 3. REGISTER IN LAYER CONTROL
+    layerControl.addOverlay(trafficCluster, '<span style="color:#ea580c; font-weight:bold;">🚦 [Traffic] NHAI Toll Plazas (Jan 2026 Monthly)</span>');
+
+    // 4. FORMAT LAYER SWITCHER WITH TRAFFIC SECTION DIVIDER
+    function formatTrafficControl() {
+        var container = document.querySelector('.leaflet-control-layers-overlays');
+        if (!container) return;
+        var labels = container.querySelectorAll('label');
+        var firstTrafficLabel = null;
+        labels.forEach(function(lbl) {
+            var txt = lbl.textContent || '';
+            if (txt.includes('[Traffic]')) {
+                if (!firstTrafficLabel) firstTrafficLabel = lbl;
+                lbl.style.display = 'block';
+                lbl.style.paddingLeft = '4px';
+            }
+        });
+
+        if (firstTrafficLabel && !document.getElementById('urja-traffic-divider')) {
+            var div = document.createElement('div');
+            div.id = 'urja-traffic-divider';
+            div.style.cssText = 'margin: 10px 0 6px 0; border-top: 1px solid rgba(234, 88, 12, 0.4); padding-top: 8px;';
+            div.innerHTML = '<div style="font-weight: 700; color: #ea580c; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">🚦 Traffic & Corridor Demand</div>';
+            firstTrafficLabel.parentNode.insertBefore(div, firstTrafficLabel);
+        }
+    }
+    setTimeout(formatTrafficControl, 350);
+    setTimeout(formatTrafficControl, 1000);
+
+    // 5. SEARCH & FILTER CONTROL FOR TOLL PLAZAS
+    var searchControl = L.control({ position: 'topleft' });
+    searchControl.onAdd = function() {
+        var div = L.DomUtil.create('div', 'urja-traffic-search-container');
+        div.style.cssText = 'background: rgba(15, 23, 42, 0.90); backdrop-filter: blur(8px); padding: 7px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 14px rgba(0,0,0,0.4); font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin-top: 10px; width: 220px;';
+        div.innerHTML = `
+            <div style="position: relative;">
+                <input id="urja-plaza-search-input" type="text" placeholder="🔍 Find Toll Plaza..." 
+                    style="width: 100%; box-sizing: border-box; padding: 6px 9px; background: rgba(30, 41, 59, 0.95); border: 1px solid #475569; border-radius: 6px; color: #f8fafc; font-size: 11px; outline: none;">
+                <div id="urja-search-dropdown" style="display: none; position: absolute; top: 32px; left: 0; right: 0; max-height: 220px; overflow-y: auto; background: #0f172a; border: 1px solid #334155; border-radius: 6px; z-index: 1500; box-shadow: 0 8px 16px rgba(0,0,0,0.6);"></div>
+            </div>
+        `;
+        L.DomEvent.disableClickPropagation(div);
+        L.DomEvent.disableScrollPropagation(div);
+        return div;
+    };
+    searchControl.addTo(map);
+
+    // Wire up search input handling
+    setTimeout(function() {
+        var input = document.getElementById('urja-plaza-search-input');
+        var dropdown = document.getElementById('urja-search-dropdown');
+        if (!input || !dropdown) return;
+
+        input.addEventListener('input', function() {
+            var query = input.value.trim().toLowerCase();
+            if (query.length < 2) {
+                dropdown.style.display = 'none';
+                dropdown.innerHTML = '';
+                return;
+            }
+
+            var matches = markerRegistry.filter(function(item) {
+                return item.searchKeys.includes(query);
+            }).slice(0, 8);
+
+            if (matches.length === 0) {
+                dropdown.innerHTML = '<div style="padding: 8px 10px; color: #94a3b8; font-size: 11px; font-style: italic;">No toll plazas found</div>';
+                dropdown.style.display = 'block';
+                return;
+            }
+
+            dropdown.innerHTML = matches.map(function(item) {
+                return `
+                    <div class="urja-search-item" data-lat="${item.lat}" data-lon="${item.lon}" 
+                        style="padding: 7px 10px; border-bottom: 1px solid #1e293b; cursor: pointer; color: #f1f5f9; font-size: 11px; transition: background 0.15s ease;">
+                        <div style="font-weight: bold; color: #fdba74;">🚦 ${item.name}</div>
+                        <div style="font-size: 9.5px; color: #94a3b8; display: flex; justify-content: space-between; margin-top: 2px;">
+                            <span>Monthly Count:</span>
+                            <span style="color: #fb923c; font-weight: 600;">${Number(item.total).toLocaleString()}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            dropdown.style.display = 'block';
+
+            // Click on suggestion to navigate
+            dropdown.querySelectorAll('.urja-search-item').forEach(function(el) {
+                el.addEventListener('mouseover', function() { el.style.background = '#1e293b'; });
+                el.addEventListener('mouseout', function() { el.style.background = 'transparent'; });
+                el.addEventListener('click', function() {
+                    var lat = parseFloat(el.getAttribute('data-lat'));
+                    var lon = parseFloat(el.getAttribute('data-lon'));
+                    var target = markerRegistry.find(function(it) { return Math.abs(it.lat - lat) < 0.0001 && Math.abs(it.lon - lon) < 0.0001; });
+
+                    if (!map.hasLayer(trafficCluster)) {
+                        map.addLayer(trafficCluster);
+                    }
+
+                    map.setView([lat, lon], 13);
+                    if (target && target.marker) {
+                        trafficCluster.zoomToShowLayer(target.marker, function() {
+                            target.marker.openPopup();
+                        });
+                    }
+                    dropdown.style.display = 'none';
+                    input.value = target ? target.name : '';
+                });
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.urja-traffic-search-container')) {
+                dropdown.style.display = 'none';
+            }
+        });
+    }, 400);
+
+    console.log("[Urja-X] Traffic Toll Plazas layer initialized successfully (" + URJA_TRAFFIC_DATA.locations.length + " locations, " + URJA_TRAFFIC_DATA.metadata.total_records + " records).");
+}
+
+initUrjaTraffic(map_59c3977f0a9c71c4f9bafb19999db5e2, layer_control_c9ebf40afdacb90a65d4d99428468ab9);
+
 </script>
 </html>
